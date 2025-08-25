@@ -32,6 +32,7 @@ footer {
 
 .footer-col p {
     font: 15px Poppins, sans-serif;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .footer-col h4 {
@@ -49,13 +50,33 @@ footer {
 
 .footer-col ul li a {
     text-decoration: none;
-    color: inherit;
+    color: rgba(255, 255, 255, 0.8);
     font: 400 15px Poppins, sans-serif;
+}
+
+.footer-col ul li a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 .social-icons {
     display: flex;
     gap: 15px;
+}
+
+.social-icons a i {
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: 0.2s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-2px);
+}
+
+.social-icons i:hover {
+    color: #fff;
 }
 
 @media screen and (max-width: 700px) {

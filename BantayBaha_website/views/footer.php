@@ -1,4 +1,8 @@
-<footer>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <footer>
         <div class="footer-row1">
             <div class="footer-col">
                 
@@ -15,7 +19,7 @@
             <div class="footer-col">
                 <h4>Important Links</h4>
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li><a href="../pages/home.php">Home</a></li>
                     <li><a href="">River Monitoring</a></li>
                     <li><a href="">Community Reports</a></li>
                     <li><a href="">Flood Alerts</a></li>
@@ -33,18 +37,19 @@
             </div>
             <div class="footer-col social-icons">
                 <a href="">
-                    <img width="25" height="25" src="../icons/fb.png" alt="Facebook">
+                    <i class="ri-facebook-fill"></i>
                 </a>
                 <a href="">
-                    <img width="25" height="25" src="../icons/ig.png" alt="Instagram">
+                    <i class="ri-instagram-line"></i>
                 </a>
                 <a href="">
-                    <img width="25" height="25"src="../icons/x.png" alt="X">
+                    <i class="ri-twitter-x-line"></i>
                 </a>
                 <a href="">
-                    <img width="25" height="25" src="../icons/tiktok.png" alt="Tiktok">
+                    <i class="ri-tiktok-fill"></i>
                 </a>
             </div>
         </div>
 
     </footer>
+</body>

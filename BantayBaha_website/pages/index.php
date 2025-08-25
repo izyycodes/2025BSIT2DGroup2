@@ -46,7 +46,7 @@
             <!-- River Monitoring -->
             <div class="features-card">
                 <div class="features-title">
-                    <img width="35" height="35" src="../icons/river_monitoring.png" alt="River Monitoring">
+                    <i class="fa-solid fa-water"></i>
                     <h4>River Monitoring</h4>
                 </div>
 
@@ -56,7 +56,7 @@
             <!-- Community Reports -->
             <div class="features-card">
                 <div class="features-title">
-                    <img width="35" height="35" src="../icons/community_reports.png" alt="Community Reports">
+                    <i class="fa-solid fa-bullhorn"></i>
                     <h4>Community Reports</h4>
                 </div>
                 
@@ -67,7 +67,7 @@
             <!-- Flood Alerts -->
             <div class="features-card">
                 <div class="features-title">
-                    <img width="35" height="35" src="../icons/flood_alerts.png" alt="Flood Alerts">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
                     <h4>Flood Alerts</h4>
                 </div>
                 
@@ -78,7 +78,7 @@
             <!-- Help Requests -->
             <div class="features-card">
                 <div class="features-title">
-                    <img width="35" height="35" src="../icons/help_requests.png" alt="Help Requests">
+                    <i class="fa-solid fa-circle-question"></i>
                     <h4>Help Requests</h4>
                 </div>
                 
@@ -91,5 +91,6 @@
 
     <?php require "../views/footer.php" ?>
     
+    <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>
 </body>
 </html>

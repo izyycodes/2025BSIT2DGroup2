@@ -97,9 +97,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .8rem;
+    gap: 15px;
     border-bottom: 2px solid rgba(51, 106, 126, 0.5);
     padding: 1rem;
+}
+
+.features-title i {
+    font-size: 25px;
+    color: #002D3C;
 }
 
 .features-title h4 {
