@@ -24,15 +24,15 @@
 
         <section class="home-card-container">
             <div class="home-card">
-                <img src="../icons/report.png" alt="Report Your Situation">
+                <img src="../images/report.png" alt="Report Your Situation">
                 <h4>Report Your Situation</h4>
             </div>
             <div class="home-card" id="map">
-                <img src="../icons/map.png" alt="Map">
+                <img src="../images/map.png" alt="Map">
                 <h4>Map</h4>
             </div>
             <div class="home-card">
-                <img src="../icons/weather.png" alt="Weather Forecast">
+                <img src="../images/weather.png" alt="Weather Forecast">
                 <h4>Weather Forecast</h4>
             </div>
         </section>
