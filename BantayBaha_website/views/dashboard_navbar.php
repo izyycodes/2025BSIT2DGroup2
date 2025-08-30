@@ -25,9 +25,13 @@
             <span>|</span>
             <span id="time"></span>
             <span>|</span>
-            <i class="ri-notification-2-fill" style="font-size: 20px;"></i>
+            <a href="../pages/notifications.php">
+                <i class="ri-notification-2-fill" style="font-size: 20px;"></i>
+            </a>
             <span>|</span>
-            <i class="ri-account-circle-line" style="font-size: 28px;"></i>
+            <a href="../pages/profile.php">
+                <i class="ri-account-circle-line" style="font-size: 28px;"></i>
+            </a>
         </div>
         
     </header>
