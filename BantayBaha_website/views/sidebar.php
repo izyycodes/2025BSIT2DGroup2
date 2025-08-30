@@ -1,6 +1,6 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
 </head>
 <body>
     <div class="sidebar">
@@ -9,11 +9,11 @@
         </div>
         <ul class="side-list">
             <li>
-                <a href="../pages/home.php" class="active">
+                <a href="../pages/dashboard.php" class="active">
                     <i class="fa-solid fa-house"></i>
-                    <span class="links-name">Home</span>
+                    <span class="links-name">Dashboard</span>
                 </a>
-                <span class="tooltip">Home</span>
+                <span class="tooltip">Dashboard</span>
             </li>
             <li>
                 <a href="">
@@ -54,7 +54,7 @@
                     <span class="tooltip">Profile</span>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="../pages/index.php" id="logout-btn">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <span class="links-name">Logout</span>
                     </a>
@@ -99,6 +99,12 @@
                 // Reset icon back to "fold"
                 btn.classList.replace("ri-menu-unfold-line", "ri-menu-fold-line");
             }
+        });
+
+        document.getElementById("logout-btn").addEventListener("click", function(e) {
+            e.preventDefault();
+            localStorage.removeItem("isLoggedIn"); // clear login
+            window.location.href = "../pages/index.php"; // back to login
         });
 
     </script>

@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <link rel="icon" type="image/ico" href="../assets/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 <body>
 
     <?php require "../views/index_navbar.php" ?>
 
     <div class="signup-container">
-        <form action="../pages/home.php" id="signup-form">
+        <form id="signup-form"">
 
             <h2>Sign Up</h2>
 
@@ -35,7 +36,7 @@
             <div class="form-row">
                 <div class="form-column">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="signup-email" name="signup-email" required>
                 </div>
                 <div class="form-column">
                     <label for="phone">Phone Number</label>
@@ -47,7 +48,7 @@
                 <div class="form-column">
                     <label for="password">Password</label>
                     <div class="password-box">
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="signup-password" name="signup-password" required>
                         <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                     </div>
                 </div>
@@ -74,6 +75,20 @@
 
     <?php require "../views/footer.php" ?>
 
-    <script src="../js/script.js"></script>
+    <script>
+        // Sign up verification
+        document.getElementById("signup-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+
+            // ✅ Here you’d normally save to a database.
+            // For now, just set login state and go to dashboard.
+            localStorage.setItem("isLoggedIn", "true");
+
+            window.location.href = "../pages/dashboard.php";
+        });
+    </script>
 </body>
 </html>

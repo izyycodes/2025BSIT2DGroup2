@@ -3,9 +3,9 @@
     <input type="checkbox" id="toggler">
     <label for="toggler"><i class="ri-menu-line"></i></label>
 
-    <a href="../pages/home.php">
+    <a href="../pages/dashboard.php">
         <div class="logo">
-            <img src="../images/logo.png" alt="logo">
+            <img src="../assets/images/logo.png" alt="logo">
             <h1 class="logo-name">BantayBaha</h1>
         </div>
     </a>

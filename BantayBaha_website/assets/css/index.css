@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    background-color: #f5f5f5;
+    font-family: Poppins, sans-serif;
+}
+
+.hero-container {
+    position: relative;
+    background: url('../images/hero.png') center/cover no-repeat;
+    height: 800px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-img {
+    width: 100%;
+}   
+
+.hero-text {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 100%;
+    padding: .5rem;
+}
+
+.bantay-baha {
+    font: 5rem Alice, serif;
+    text-transform: uppercase;
+}
+
+.slash {
+    font-size: 9rem;
+    font-weight: 250;
+}
+
+.tagline {
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.hero-button {
+    position: absolute; 
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.get-started-button {
+    border: none;
+    border-radius: 12px;
+    background-color: #87BBD0;
+    color: #002D3C;
+    font: 600 1.3rem Poppins, sans-serif;
+    padding: 10px 25px;
+    text-transform: uppercase;
+}
+
+.features h3 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: #336A7E;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 50px;
+}
+
+.features-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    margin-bottom: 70px;
+}
+
+.features-card {
+    background-color: #87BBD0;
+    border-radius: 20px;
+    width: 325px;
+    height: 225px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.features-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.features-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-bottom: 2px solid rgba(51, 106, 126, 0.5);
+    padding: 1rem;
+}
+
+.features-title i {
+    font-size: 25px;
+    color: #002D3C;
+}
+
+.features-title h4 {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #002D3C;
+}
+
+.features-card p {
+    display: block;
+    text-align: left;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #002D3C;
+    margin: 25px;
+}
+
+@media screen and (max-width: 800px) {
+    .features-container {
+        grid-template-columns: auto;
+        gap: 3rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .bantay-baha {
+        font: 3rem Alice, serif;
+        text-transform: uppercase;
+    }
+
+    .slash {
+        font-size: 5rem;
+    }
+
+    .tagline {
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
+    .hero-button {
+        position: absolute; 
+        top: 63%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .get-started-button {
+        font-weight: 600;
+        font-size: 1rem;
+    }
+}
