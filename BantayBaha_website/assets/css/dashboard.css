@@ -14,17 +14,32 @@ body {
     color: white;
     padding: 15px 20px;
     border-radius: 10px;
-    margin: 50px;
+    margin: 50px 50px 30px 50px;
     text-align: center;
     animation: pulse 2s infinite;
     box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 50px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 530px; 
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 25px;
-    margin: 50px;
+    margin: 30px 50px 50px 50px;
 }
 
 .dashboard-card {
@@ -85,6 +100,200 @@ body {
     background: linear-gradient(180deg, #ffb445, #e97804);
 }
 
+.small-map-container {
+    height: 200px;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-placeholder {
+    color: #1976d2;
+    font-weight: bold;
+    text-align: center;
+}
+
+.point {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.point1 {
+    top: 30%;
+    left: 25%;
+    background: #4CAF50;
+}
+
+.point2 {
+    top: 50%;
+    left: 45%;
+    background: #ff9800;
+}
+
+.point3 {
+    top: 70%;
+    left: 65%;
+    background: #f44336;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.status-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.safe {
+    background: #4CAF50;
+}
+
+.caution {
+    background: #ff9800;
+}
+
+.danger {
+    background: #f44336;
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.action-buttons img {
+    width: 15px;
+    height: 15px;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #2196F3, #1976d2);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+} 
+
+.btn-warning {
+    background: linear-gradient(45deg, #ff9800, #f57c00);
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #f44336, #d32f2f);
+    color: white;
+}
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.recent-activity {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 15px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.activity-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+}
+
+.activity-details {
+    font-size: 14px;
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.metric-value {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.weather-advisory {
+    margin: 15px 0;
+    padding: 15px; 
+    background: #fff3cd; 
+    border-radius: 8px; 
+    border-left: 4px solid #ffc107;
+}
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -99,98 +308,20 @@ body {
     }
 }
 
+@media screen and (max-width: 500px) {
+    .dashboard-grid, .alert-banner {
+        margin: 30px;
+    }
+    .map-container {
+        padding: 0px 30px;
+    }
+    .map-container iframe {
+        height: 500px; 
+    }
+}
+
 @media screen and (max-width: 700px) {
     .dashboard-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 }
-
-@media screen and (max-width: 500px) {
-    .dashboard-grid, .alert-banner {
-        margin: 30px;
-    }
-}
-
-/* .main-content .map-container {
-    margin: 50px 75px 75px 75px
-}
-
-.main-content .water-container h1, .main-content .map-container h1 {
-    text-align: center;
-    text-transform: uppercase;
-    color: #002D3C;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 30px;
-}
-
-
-.main-content .home-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 50px;
-    margin-bottom: 70px;
-}
-
-.main-content .home-card {
-    background-color: #C6E6F5;
-    border-radius: 30px;
-    width: 300px;
-    height: 300px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-.main-content .home-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    cursor: pointer;
-}
-
-.main-content .home-card img {
-    width: 185px;
-    height: 185px;
-}
-
-.main-content .home-card h4 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #002D3C;
-}
-
-.main-content .map-container iframe {
-    width: 100%;
-    height: 750px; 
-    border: none;
-}
-
-@media screen and (max-width: 600px) {
-    .main-content .map-container {
-        margin: 50px;
-    }
-    .main-content .map-container iframe {
-        width: 100%;
-        height: 500px; 
-        border: none;
-    }
-    .main-content .home-card {
-        width: 250px;
-        height: 250px;
-    }
-    .main-content .home-card img {
-        width: 135px;
-        height: 135px;
-    }
-    .main-content .home-card h4 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #002D3C;
-    }
-} */
