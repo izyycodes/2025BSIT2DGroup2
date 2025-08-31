@@ -16,6 +16,12 @@
     <?php require "../views/sidebar.php" ?>
 
     <div class="main-content">
+        <button class="back-button">
+            <a href="../pages/index.php">
+                <i class="ri-arrow-left-line"></i>
+                Back
+            </a>
+        </button>
         
         <!-- Put form code here -->
 

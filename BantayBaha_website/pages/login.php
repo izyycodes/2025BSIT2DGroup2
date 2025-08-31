@@ -17,6 +17,13 @@
 
     <?php require "../views/index_navbar.php" ?>
 
+    <button class="back-button">
+        <a href="../pages/index.php">
+            <i class="ri-arrow-left-line"></i>
+            Back
+        </a>
+    </button>
+    
     <div class="login-container">
         <form id="login-form">
 

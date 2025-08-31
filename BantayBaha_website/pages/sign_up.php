@@ -6,7 +6,7 @@
     <title>Sign Up</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
+    <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/login.css">
@@ -17,7 +17,15 @@
 
     <?php require "../views/index_navbar.php" ?>
 
+    <button class="back-button">
+        <a href="../pages/index.php">
+            <i class="ri-arrow-left-line"></i>
+            Back
+        </a>
+    </button>
+
     <div class="signup-container">
+
         <form id="signup-form"">
 
             <h2>Sign Up</h2>
@@ -76,6 +84,19 @@
     <?php require "../views/footer.php" ?>
 
     <script>
+        // Toggle password 
+        function togglePassword(icon) {
+            const passwordField = icon.previousElementSibling;
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                icon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        }
+        
         // Sign up verification
         document.getElementById("signup-form").addEventListener("submit", function(e) {
             e.preventDefault();
