@@ -68,11 +68,11 @@ footer {
 .social-icons a i {
     font-size: 25px;
     color: rgba(255, 255, 255, 0.8);
-    transition: 0.2s ease;
 }
 
 .social-icons a:hover {
     transform: translateY(-2px);
+    transition: all 0.5s ease;
 }
 
 .social-icons i:hover {

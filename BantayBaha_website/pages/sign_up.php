@@ -83,8 +83,7 @@
             const email = document.getElementById("signup-email").value;
             const password = document.getElementById("signup-password").value;
 
-            // ✅ Here you’d normally save to a database.
-            // For now, just set login state and go to dashboard.
+            // Set login state and go to dashboard.
             localStorage.setItem("isLoggedIn", "true");
 
             window.location.href = "../pages/dashboard.php";

@@ -141,25 +141,25 @@ body {
     width: 100%;
 }
 
-.home-content {
+.main-content {
     position: absolute;
     width: calc(100% - 250px);
     left: 250px;
     transition: 0.4s ease;
 }
 
-.sidebar.collapsed ~ .home-content {
+.sidebar.collapsed ~ .main-content {
     width: calc(100% - 60px);
     left: 60px;
 }
 
 @media screen and (max-width: 600px) {
-    .home-content {
+    .main-content {
         position: relative;
         width: 100%;
         left: 0;
     }
-    .sidebar ~ .home-content {
+    .sidebar ~ .main-content {
         width: 100%;
         left: 0;
     }

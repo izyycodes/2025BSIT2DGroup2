@@ -1,5 +1,6 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/sidebar.css">
 </head>
 <body>
@@ -68,7 +69,6 @@
         </div>
     </div>
     
-    <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>
     <script>
         const sidebar = document.querySelector(".sidebar");
         const sidebarToggler = document. querySelector(".sidebar-toggler");
