@@ -26,7 +26,9 @@ document.getElementById("login-form").addEventListener("submit", function(e) {
         localStorage.setItem("isLoggedIn", "true");
 
         // redirect to dashboard
-        window.location.href = "../pages/dashboard.php";
+        const redirectPage = localStorage.getItem("redirectAfterLogin") || "../pages/dashboard.php";
+        localStorage.removeItem("redirectAfterLogin"); // clear it
+        window.location.href = redirectPage;
     } else {
         errorMessage.style.display = "block";
         errorMessage.innerHTML = "Wrong password! Try again or <span id='forgot-password-link' style='color: #1386b3; cursor: pointer;text-decoration: underline;'>Forgot password</span> to reset it.";

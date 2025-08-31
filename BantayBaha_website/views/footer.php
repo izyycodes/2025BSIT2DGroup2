@@ -19,11 +19,11 @@
             <div class="footer-col">
                 <h4>Important Links</h4>
                 <ul>
-                    <li><a href="#" id="dashboard-link">Dashboard</a></li>
-                    <li><a href="">River Monitoring</a></li>
-                    <li><a href="">Community Reports</a></li>
-                    <li><a href="">Flood Alerts</a></li>
-                    <li><a href="">Help Requests</a></li>
+                    <li><a href="../pages/dashboard.php">Dashboard</a></li>
+                    <li><a href="../pages/river_monitoring.php">River Monitoring</a></li>
+                    <li><a href="../pages/community_reports.php">Community Reports</a></li>
+                    <li><a href="../pages/flood_alerts.php">Flood Alerts</a></li>
+                    <li><a href="../pages/help_requests.php">Help Requests</a></li>
                 </ul>
             </div>
 
@@ -62,19 +62,36 @@
     </footer>
 
     <script>
-        const dashboardLink = document.getElementById("dashboard-link");
+        // const dashboardLink = document.getElementById("dashboard-link");
 
-        dashboardLink.addEventListener("click", function(e) {
-            e.preventDefault();
+        // dashboardLink.addEventListener("click", function(e) {
+        //     e.preventDefault();
 
-            if (localStorage.getItem("isLoggedIn") === "true") {
-            // Go directly if logged in
-            window.location.href = "../pages/dashboard.php";
-            } else {
-            // Redirect to login first
-            alert("Please login or sign up first.");
-            window.location.href = "../pages/login.php";
-            }
+        //     if (localStorage.getItem("isLoggedIn") === "true") {
+        //     // Go directly if logged in
+        //     window.location.href = "../pages/dashboard.php";
+        //     } else {
+        //     // Redirect to login first
+        //     alert("Please login or sign up first.");
+        //     window.location.href = "../pages/login.php";
+        //     }
+        // });
+
+        function isLoggedIn() {
+            return localStorage.getItem("isLoggedIn") === "true";
+        }
+
+        // ==== Handle footer link clicks ====
+        document.querySelectorAll("footer a").forEach(link => {
+            link.addEventListener("click", function (e) {
+                if (!isLoggedIn()) {
+                    e.preventDefault(); // stop going directly to the page
+                    const targetPage = this.getAttribute("href"); // save where user wanted to go
+                    localStorage.setItem("redirectAfterLogin", targetPage);
+                    alert("Please login or sign up first.");
+                    window.location.href = "../pages/login.php"; // go to login first
+                }
+            });
         });
 
     </script>

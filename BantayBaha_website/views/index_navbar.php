@@ -3,12 +3,10 @@
     <input type="checkbox" id="toggler">
     <label for="toggler"><i class="ri-menu-line"></i></label>
 
-    <a href="../pages/dashboard.php">
-        <div class="logo">
-            <img src="../assets/images/logo.png" alt="logo">
-            <h1 class="logo-name">BantayBaha</h1>
-        </div>
-    </a>
+    <div class="logo">
+        <img src="../assets/images/logo.png" alt="logo">
+        <h1 class="logo-name">BantayBaha</h1>
+    </div>
 
     <div class="landing-buttons">
         <button class="login-button">

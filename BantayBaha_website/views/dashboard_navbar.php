@@ -6,12 +6,10 @@
         <input type="checkbox" id="toggler">
         <label for="toggler"><i class="ri-menu-line"></i></label>
 
-        <a href="../pages/index.php">
-            <div class="logo">
-                <img src="../assets/images/logo.png" alt="logo">
-                <h1 class="logo-name">BantayBaha</h1>
-            </div>
-        </a>
+        <div class="logo">
+            <img src="../assets/images/logo.png" alt="logo">
+            <h1 class="logo-name">BantayBaha</h1>
+        </div>
         
         <?php 
             $date = date("d F Y");
