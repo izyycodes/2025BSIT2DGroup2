@@ -71,10 +71,6 @@ body {
     font-family: Poppins, sans-serif;
 }
 
-input:hover, select:hover {
-    background-color: #f5f5f5;
-}
-
 .form-group {
     margin-top: 25px;
     display: flex;

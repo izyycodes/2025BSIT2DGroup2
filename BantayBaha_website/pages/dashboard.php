@@ -63,14 +63,14 @@
                     <span>Point 3: Impassable (2.1m)</span>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn btn-primary" id="map">
+                    <a class="btn btn-primary" id="map">
                         <img src="../assets/images/location.png" alt="location">
                         View Full Map
-                    </button>
-                    <button class="btn btn-success">
+                    </a>
+                    <a class="btn btn-success">
                         <img src="../assets/images/stats.png" alt="stats">
                         Water Levels
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -132,18 +132,18 @@
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn btn-primary">
+                    <a href="../pages/submit_new_report.php" class="btn btn-primary">
                         <img src="../assets/images/file-pen.png" alt="file pen">
                         Submit Report
-                    </button>
-                    <button class="btn btn-success">
+                    </a>
+                    <a href="../pages/community_reports.php" class="btn btn-success">
                         <img src="../assets/images/check.png" alt="check">
                         Verify Reports
-                    </button>
-                    <button class="btn btn-warning">
+                    </a>
+                    <a href="../pages/community_reports.php" class="btn btn-warning">
                         <img src="../assets/images/graph.png" alt="graph">
                         View All
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -172,14 +172,14 @@
                     Heavy rainfall expected from 6-8 PM. Monitor river levels closely.
                 </div>
                 <div class="action-buttons">
-                    <button class="btn btn-warning">
+                    <a class="btn btn-warning">
                         <img src="../assets/images/stats.png" alt="stats">
                         Detailed Forecast
-                    </button>
-                    <button class="btn btn-primary">
+                    </a>
+                    <a class="btn btn-primary">
                         <img src="../assets/images/bell.png" alt="bell">
                         View Alerts
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -228,14 +228,14 @@
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn btn-danger">
+                    <a class="btn btn-danger">
                         <i class="ri-alarm-warning-fill"></i>
                         Call for Help
-                    </button>
-                    <button class="btn btn-primary">
+                    </a>
+                    <a class="btn btn-primary">
                         <img src="../assets/images/users.png" alt="users">
                         View Requests
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -274,14 +274,14 @@
                     <span class="metric-value">6-8 AM, 5-7 PM</span>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn btn-primary">
+                    <a class="btn btn-primary">
                         <img src="../assets/images/stats.png" alt="stats">
                         View Analytics
-                    </button>
-                    <button class="btn btn-success">
+                    </a>
+                    <a class="btn btn-success">
                         <img src="../assets/images/file.png" alt="file">
                         Export Data
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -306,18 +306,18 @@
                     <span class="metric-value">99.2%</span>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn btn-primary">
+                    <a class="btn btn-primary">
                         <img src="../assets/images/users.png" alt="users">
                         Manage Users
-                    </button>
-                    <button class="btn btn-warning">
+                    </a>
+                    <a class="btn btn-warning">
                         <img src="../assets/images/bell.png" alt="bell">
                         Send Alert
-                    </button>
-                    <button class="btn btn-success">
+                    </a>
+                    <a class="btn btn-success">
                         <img src="../assets/images/reports.png" alt="reports">
                         Activity Logs
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -330,6 +330,7 @@
             const mapContainer = document.getElementById("map-container");
             if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
                 mapContainer.style.display = "block";
+                mapContainer.scrollIntoView({ behavior: "smooth" });
             } else {
                 mapContainer.style.display = "none";
             }

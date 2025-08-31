@@ -14,7 +14,7 @@ body {
     color: white;
     padding: 15px 20px;
     border-radius: 10px;
-    margin: 50px 50px 30px 50px;
+    margin: 30px 50px;
     text-align: center;
     animation: pulse 2s infinite;
     box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
@@ -39,7 +39,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 25px;
-    margin: 30px 50px 50px 50px;
+    margin: 30px 50px;
 }
 
 .dashboard-card {
@@ -196,6 +196,11 @@ body {
     align-items: center;
     gap: 8px;
     font-size: 14px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary {

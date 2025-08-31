@@ -15,6 +15,10 @@
     <?php require "../views/dashboard_navbar.php" ?>
     <?php require "../views/sidebar.php" ?>
 
-    <?php require "../views/footer.php" ?>
+    <div class="main-content">
+
+    
+        <?php require "../views/footer.php" ?>
+    </div>
 </body>
 </html>
