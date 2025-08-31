@@ -6,7 +6,7 @@ body {
     padding-top: 85px;
 }
 
-.main-content .alert-banner {
+.alert-banner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,7 +99,17 @@ body {
     }
 }
 
+@media screen and (max-width: 700px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
 
+@media screen and (max-width: 500px) {
+    .dashboard-grid, .alert-banner {
+        margin: 30px;
+    }
+}
 
 /* .main-content .map-container {
     margin: 50px 75px 75px 75px
