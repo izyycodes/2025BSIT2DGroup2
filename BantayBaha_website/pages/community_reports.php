@@ -54,8 +54,8 @@
         <div class="reports-filters">
             <!-- Status -->
             <div class="filter-group">
-                <label for="">Status:</label>
-                <select name="" id="" class="filter-select">
+                <label for="status">Status:</label>
+                <select name="status" id="status" class="filter-select">
                     <option value="all-reports">All Reports</option>
                     <option value="verified">Verified</option>
                     <option value="pending">Pending</option>
@@ -65,8 +65,8 @@
 
             <!-- Location -->
             <div class="filter-group">
-                <label for="">Location:</label>
-                <select name="" id="" class="filter-select">
+                <label for="location">Location:</label>
+                <select name="location" id="location" class="filter-select">
                     <option value="all-locations">All Locations</option>
                     <option value="cpoint1">Crossing Point 1</option>
                     <option value="cpoint2">Crossing Point 2</option>
@@ -76,16 +76,16 @@
 
             <!-- Date -->
             <div class="filter-group">
-                <label for="">Date:</label>
-                <input type="date" class="filter-input">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" class="filter-input">
             </div>
 
             <!-- Search -->
             <div class="filter-group">
-                <label for="">Search:</label>
+                <label for="search">Search:</label>
                 <div class="search-box">
                     <i class="ri-search-line"></i>
-                    <input type="search" placeholder="Search reports...">
+                    <input type="search" id="search" name="search" placeholder="Search reports...">
                 </div>
             </div>
         </div>

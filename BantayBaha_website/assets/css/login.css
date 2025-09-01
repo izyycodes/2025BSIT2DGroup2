@@ -64,7 +64,7 @@ body {
 }
 
 .signup-container input, .signup-container select {
-    padding: 5px;
+    padding: 7px;
     font-size: 14px;
     border: 1px solid #000;
     border-radius: 8px;
