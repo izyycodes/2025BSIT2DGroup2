@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    background-color: #F8F9FA;
+    font-family: Poppins, sans-serif;
+    color: #2c3e50;
+    padding-top: 85px;
+}
+
+.page-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 50px;
+}
+
+.page-header i {
+    font-size: 32px;
+    color: #2c3e50;
+}
+
+.page-header h1 {
+    color: #2c3e50;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.emergency-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    margin: 0 50px;
+    text-align: center;
+    animation: pulse 2s infinite;
+    box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+}
+
+.emergency {
+    display: inline-flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+
+.emergency i {
+    font-size: 25px;
+}
+
+.card {
+  
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px 30px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+    margin: 20px 50px;
+}
+
+.refresh {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.938);
+  border-bottom-color: #2c3e50;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.alert-status {
+    transition: all 0.3s ease;
+}
+
+.alert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 25px;
+    margin: 20px 0;
+}
+
+.alert-card {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    border-radius: 15px;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+}
+
+.alert-status:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+}
+
+.alert-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.alert-number {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+    
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

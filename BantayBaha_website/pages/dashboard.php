@@ -19,7 +19,7 @@
 
     <div class="main-content">
         <div class="alert-banner">
-            <p><strong>🚨 FLOOD ALERT:</strong> High water levels detected at Crossing Point 3. Exercise extreme caution!</p>
+            <p style="font-size: 18px;"><strong>🚨 FLOOD ALERT:</strong> High water levels detected at Crossing Point 3. Exercise extreme caution!</p>
         </div>
 
         <div class="map-container" id="map-container" style="display:none;">
@@ -168,7 +168,7 @@
                     <span class="metric-value">2:00 PM</span>
                 </div>
                 <div class="weather-advisory">
-                    <strong>Weather Advisory</strong>
+                    <strong>Weather Advisory:</strong>
                     Heavy rainfall expected from 6-8 PM. Monitor river levels closely.
                 </div>
                 <div class="action-buttons">
@@ -239,7 +239,8 @@
                 </div>
             </div>
 
-            <!-- System Statistics -->
+            
+            <!-- System Statistics
             <div class="dashboard-card">
                 <div class="card-header">
                     <div class="card-icon">
@@ -285,7 +286,7 @@
                 </div>
             </div>
 
-            <!-- Admin Controls -->
+            Admin Controls
             <div class="dashboard-card">
                 <div class="card-header">
                     <div class="card-icon">
@@ -319,7 +320,8 @@
                         Activity Logs
                     </a>
                 </div>
-            </div>
+            </div> -->
+        
         </div>
 
         <?php require "../views/footer.php" ?>
