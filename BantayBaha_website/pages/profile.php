@@ -6,7 +6,7 @@
     <title>Profile</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="../assets/css/style.css"> -->
+    <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
@@ -17,6 +17,7 @@
 
     <div class="main-content">
 
+        <!-- Put code here -->
     
         <?php require "../views/footer.php" ?>
     </div>
