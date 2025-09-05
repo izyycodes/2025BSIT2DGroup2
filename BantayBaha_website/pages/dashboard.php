@@ -22,7 +22,7 @@
             <p style="font-size: 18px;"><strong>🚨 FLOOD ALERT:</strong> High water levels detected at Crossing Point 3. Exercise extreme caution!</p>
         </div>
 
-        <div class="map-container" id="map-container" style="display:none;">
+        <div class="map-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.0837916690966!2d122.9626614745157!3d10.650598461503094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aed1b6d51c0973%3A0x56bf406758a5856d!2sHacienda%20sacio!5e0!3m2!1sen!2sph!4v1755414643945!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         
@@ -136,7 +136,7 @@
                         <img src="../assets/images/file-pen.png" alt="file pen">
                         Submit Report
                     </a>
-                    <a href="../pages/community_reports.php" class="btn btn-success">
+                    <a href="../pages/community_reports.php #verify-reports" class="btn btn-success">
                         <img src="../assets/images/check.png" alt="check">
                         Verify Reports
                     </a>
@@ -172,11 +172,11 @@
                     Heavy rainfall expected from 6-8 PM. Monitor river levels closely.
                 </div>
                 <div class="action-buttons">
-                    <a class="btn btn-warning">
+                    <a href="../pages/flood_alerts.php #forecast" class="btn btn-warning">
                         <img src="../assets/images/stats.png" alt="stats">
                         Detailed Forecast
                     </a>
-                    <a class="btn btn-primary">
+                    <a href="../pages/flood_alerts.php #alerts"  class="btn btn-primary">
                         <img src="../assets/images/bell.png" alt="bell">
                         View Alerts
                     </a>
@@ -234,7 +234,7 @@
                     </a>
                     <a class="btn btn-primary">
                         <img src="../assets/images/users.png" alt="users">
-                        View Requests
+                        View Messages
                     </a>
                 </div>
             </div>
@@ -328,15 +328,15 @@
     </div>
 
     <script>
-         document.getElementById("map").addEventListener("click", function() {
-            const mapContainer = document.getElementById("map-container");
-            if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
-                mapContainer.style.display = "block";
-                mapContainer.scrollIntoView({ behavior: "smooth" });
-            } else {
-                mapContainer.style.display = "none";
-            }
-        });
+        //  document.getElementById("map").addEventListener("click", function() {
+        //     const mapContainer = document.getElementById("map-container");
+        //     if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
+        //         mapContainer.style.display = "block";
+        //         mapContainer.scrollIntoView({ behavior: "smooth" });
+        //     } else {
+        //         mapContainer.style.display = "none";
+        //     }
+        // });
 
        document.addEventListener("DOMContentLoaded", () => {
             if (localStorage.getItem("isLoggedIn") !== "true") {

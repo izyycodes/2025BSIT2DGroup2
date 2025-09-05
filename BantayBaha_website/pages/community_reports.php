@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <div class="reports-grid">
+        <div class="reports-grid" id="verify-reports">
             <div class="reports-list">
                 <!-- Verified card -->
                 <div class="report-card verified">
