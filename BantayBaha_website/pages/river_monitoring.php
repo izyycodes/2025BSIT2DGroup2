@@ -16,7 +16,7 @@
     <?php require "../views/sidebar.php" ?>
 
     <div class="main-content">
-        <div class="page-header">
+        <div class="page-header margin">
             <div class="page-title">
                 <i class="fa-solid fa-water"></i>
                 <h1>River Monitoring</h1>
@@ -82,21 +82,54 @@
             </div>
         </div>
 
-        <div class="river-map-container margin">
+        <div class="river-grid margin">
             <div class="card">
                 <h3>River Crossing Points Map</h3>
+                <div class="river-map-container">
+                    <div class="river-system">
+                        <div class="river-line river-main">
+                            <div class="crossing-point point1">
+                                <span>1</span>
+                                <div class="point-label">Crossing Point 1 - Safe</div>
+                            </div>
+                            <div class="crossing-point point2">
+                                <span>2</span>
+                                <div class="point-label">Crossing Point 2 - Caution</div>
+                            </div>
+                            <div class="crossing-point point3">
+                                <span>3</span>
+                                <div class="point-label">Crossing Point 3 - Impassable</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card">
                 <h3>📊 Current Status</h3>
                 <div class="status-item safe">
                     <div class="status-item-header">
-                        <div class="status-item-title"></div>
+                        <div class="status-item-title">Crossing Point 1</div>
+                        <div class="status-badge safe">Safe</div>
                     </div>
                     <div class="water-level">0.5m</div>
                     <div class="last-updated">Updated 2 minutes ago</div>
                 </div>
-                <div class="status-item caution"></div>
-                <div class="status-item danger"></div>
+                <div class="status-item caution">
+                    <div class="status-item-header">
+                        <div class="status-item-title">Crossing Point 2</div>
+                        <div class="status-badge caution">Caution</div>
+                    </div>
+                    <div class="water-level">1.2m</div>
+                    <div class="last-updated">Updated 5 minutes ago</div>
+                </div>
+                <div class="status-item danger">
+                    <div class="status-item-header">
+                        <div class="status-item-title">Crossing Point 3</div>
+                        <div class="status-badge danger">Danger</div>
+                    </div>
+                    <div class="water-level">2.1m</div>
+                    <div class="last-updated">Updated 1 minute ago</div>
+                </div>
             </div>
         </div>
     

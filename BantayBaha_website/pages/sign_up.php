@@ -64,8 +64,8 @@
                     <label for="role">Select Role</label>
                     <select name="role" id="role">
                         <option value="resident">Resident</option>
-                        <option value="resident">Volunteer</option>
-                        <option value="resident">Barangay Official</option>
+                        <option value="volunteer">Volunteer</option>
+                        <option value="barangayOfficial">Barangay Official</option>
                     </select>
                 </div>
             </div>

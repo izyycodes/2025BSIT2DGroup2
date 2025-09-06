@@ -77,6 +77,14 @@
     transition: all 0.5s ease;
 }
 
+.nav-text .ri-notification-2-fill {
+    font-size: 20px;
+}
+
+.nav-text .ri-account-circle-line {
+    font-size: 28px;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -152,11 +160,27 @@ a {
         font-size: 16px; 
         width: 100%;
     }
+
+    .nav-text .ri-notification-2-fill {
+    font-size: 18px;
+}
+
+.nav-text .ri-account-circle-line {
+    font-size: 26px;
+}
 }
 
 @media screen and (max-width: 480px) {
     .nav-text {
         font-size: 14px; 
         gap: 5px;
+    }
+
+    .nav-text .ri-notification-2-fill {
+        font-size: 15px;
+    }
+
+    .nav-text .ri-account-circle-line {
+        font-size: 23px;
     }
 }
