@@ -44,6 +44,7 @@
         </div>
 
         <div class="container margin">
+            <!-- Water Level Trends -->
             <div class="card">
                 <h3>📉 Water Level Trends</h3>
                 <div class="chart-placeholder">
@@ -62,6 +63,8 @@
                     <span class="metric-value" style="color: #f44336;">⬆️ Rising</span>
                 </div>
             </div>
+
+            <!-- Weather Impact -->
             <div class="card">
                 <h3>🌧 Weather Impact</h3>
                 <div class="chart-placeholder">
@@ -82,7 +85,8 @@
             </div>
         </div>
 
-        <div class="river-grid margin">
+        <div class="river-grid margin" id="river-map">
+            <!-- River Crossing Points Map -->
             <div class="card">
                 <h3>River Crossing Points Map</h3>
                 <div class="river-map-container">
@@ -104,6 +108,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Current Status -->
             <div class="card">
                 <h3>📊 Current Status</h3>
                 <div class="status-item safe">

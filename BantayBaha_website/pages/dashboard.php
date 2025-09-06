@@ -63,11 +63,11 @@
                     <span>Point 3: Impassable (2.1m)</span>
                 </div>
                 <div class="action-buttons">
-                    <a class="btn btn-primary" id="map">
+                    <a href="../pages/river_monitoring.php #river-map" class="btn btn-primary" id="map">
                         <img src="../assets/images/location.png" alt="location">
                         View Full Map
                     </a>
-                    <a class="btn btn-success">
+                    <a href="../pages/river_monitoring.php" class="btn btn-success">
                         <img src="../assets/images/stats.png" alt="stats">
                         Water Levels
                     </a>

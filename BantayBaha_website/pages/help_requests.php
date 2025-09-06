@@ -54,44 +54,60 @@
             </div>
 
             <!-- Emergency Details Form -->
-            <div class="card">
-                <h3>📍 Your Current Location</h3>
+            <div class="card margin">
+                <div class="emergency-header">
+                    <h3>📝 Emergency Details</h3>
+                    <i class="ri-close-line"></i>
+                </div>
                 
-                <div class="form-row">
-                    <div class="form-column">
-                        <label for="emergencyType">Type of Emergency</label>
-                        <select name="emergencyType" id="emergencyType">
-                            <option value="waterRising">Flood/Water Rising</option>
-                            <option value="stranded">Trapped/Stranded</option>
-                            <option value="medEmergency">Medical Emergency</option>
-                            <option value="evacuation">Need Evacuation</option>
-                            <option value="others">Other Emergency</option>
-                        </select>
+                <form action="" class="help-container">
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="emergencyType">Type of Emergency</label>
+                            <select name="emergencyType" id="emergencyType" required>
+                                <option value="waterRising">Flood/Water Rising</option>
+                                <option value="stranded">Trapped/Stranded</option>
+                                <option value="medEmergency">Medical Emergency</option>
+                                <option value="evacuation">Need Evacuation</option>
+                                <option value="others">Other Emergency</option>
+                            </select>
+                        </div>
+                        <div class="form-column">
+                            <label for="urgencyLevel">Urgency Level</label>
+                            <select name="urgencyLevel" id="urgencyLevel" required>
+                                <option value="low">Low Priority</option>
+                                <option value="medium">Medium Priority</option>
+                                <option value="high">High Priority</option>
+                                <option value="critical">Critical - Life Threatening</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-column">
-                        <label for="urgencyLevel">Urgency Level</label>
-                        <select name="urgencyLevel" id="urgencyLevel">
-                            <option value="low">Low Priority</option>
-                            <option value="medium">Medium Priority</option>
-                            <option value="high">High Priority</option>
-                            <option value="critical">Critical - Life Threatening</option>
-                        </select>
+    
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="numPeople">Number of People</label>
+                            <select name="numPeople" id="numPeople" required>
+                                <option value="one">1 Person</option>
+                                <option value="two">2 People</option>
+                                <option value="three">3 People</option>
+                                <option value="four">4 People</option>
+                                <option value="fiveAbove">5+ People</option>
+                                <option value="critical">Entire Family</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
+    
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="details">Additional Details</label>
+                            <textarea name="remarks" id="remarks" placeholder="Provide more information about your emergency situation..." rows="4" cols="30"></textarea>
+                        </div>
+                    </div>
 
-                <div class="form-row">
-                    <div class="form-column">
-                        <label for="numPeople">Number of People</label>
-                        <select name="numPeople" id="numPeople">
-                            <option value="one">1 Person</option>
-                            <option value="two">2 People</option>
-                            <option value="three">3 People</option>
-                            <option value="four">4 People</option>
-                            <option value="fiveAbove">5+ People</option>
-                            <option value="critical">Entire Family</option>
-                        </select>
+                    <div class="submit-emergency-container">
+                        <button type="submit" class="submit-emergency">SEND EMERGENCY REQUEST</button>
                     </div>
-                </div>
+                </form>
             </div>
     
         <?php require "../views/footer.php" ?>

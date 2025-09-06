@@ -107,7 +107,7 @@
         </div>
 
         <!-- Notifications -->
-        <div class="card">
+        <div class="card margin">
           <h4><i class="ri-notification-3-fill"></i> Notification Settings</h4>
           <div class="toggle-row">
             <span>Emergency Alerts</span>
