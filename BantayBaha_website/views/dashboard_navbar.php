@@ -24,11 +24,11 @@
             <span id="time"></span>
             <span>|</span>
             <a href="../pages/notifications.php">
-                <i class="ri-notification-2-fill" style="font-size: 20px;"></i>
+                <i class="ri-notification-2-fill"></i>
             </a>
             <span>|</span>
             <a href="../pages/profile.php">
-                <i class="ri-account-circle-line" style="font-size: 28px;"></i>
+                <i class="ri-account-circle-line"></i>
             </a>
         </div>
         
