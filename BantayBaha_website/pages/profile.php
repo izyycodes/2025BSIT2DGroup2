@@ -18,6 +18,7 @@
     <div class="main-content">
 
         <!-- Put code here -->
+         <p>akjskdbaks jbasdkabkakfb </p>
     
         <?php require "../views/footer.php" ?>
     </div>
