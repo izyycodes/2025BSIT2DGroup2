@@ -7,10 +7,8 @@ body {
   padding-top: 85px; /* keep space for navbar */
 }
 
-.main-content {
-  margin-left: 240px; /* sidebar space */
-  padding: 20px;
-  transition: margin-left 0.3s ease;
+.content {
+  margin: 30px 50px;
 }
 
 /* --- Profile Header --- */
@@ -99,6 +97,11 @@ input, select, textarea {
   border-radius: 6px;
   font-family: Poppins, sans-serif;
   font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 75px;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -203,10 +206,6 @@ input:checked + .slider:before {
 
 /* --- Responsive --- */
 @media (max-width: 992px) {
-  .main-content {
-    margin-left: 0; /* collapse sidebar */
-  }
-
   .profile-header {
     flex-direction: column;
     text-align: center;
@@ -215,6 +214,12 @@ input:checked + .slider:before {
   .avatar {
     margin-bottom: 10px;
   }
+}
+
+@media screen and (max-width: 650px) {
+    .content {
+        margin: 30px;
+    }
 }
 
 @media (max-width: 600px) {

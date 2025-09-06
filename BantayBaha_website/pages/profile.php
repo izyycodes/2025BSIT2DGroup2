@@ -22,7 +22,6 @@
 
   <div class="main-content">
     <section class="content">
-      
       <!-- Profile Header -->
       <div class="profile-header">
         <div class="avatar">JD</div>
@@ -39,8 +38,8 @@
         <div class="card">
           <h4><i class="ri-user-3-fill"></i> Personal Information</h4>
           <form>
-            <label>First Name *</label>
-            <input type="text" placeholder="Enter first name">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Enter full name">
 
             <div class="row">
               <div>
@@ -129,9 +128,8 @@
         </div>
       </div>
     </section>
-  </div>
-
-  <!-- Footer -->
+    <!-- Footer -->
   <?php require "../views/footer.php" ?>
+  </div>
 </body>
 </html>
