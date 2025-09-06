@@ -217,6 +217,15 @@ input:checked + .slider:before {
   }
 }
 
+.footer {
+  background: #275c6b;
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  margin-top: auto; /* ensures sticky at bottom */
+  font-size: 14px;
+}
+
 @media (max-width: 600px) {
   .card {
     padding: 15px;
