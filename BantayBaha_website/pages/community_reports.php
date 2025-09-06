@@ -18,7 +18,7 @@
     <?php require "../views/sidebar.php" ?>
 
     <div class="main-content">
-        <div class="page-header">
+        <div class="page-header margin">
             <div class="page-title">
                 <i class="fa-solid fa-bullhorn"></i>
                 <h1>Community Reports</h1>
@@ -26,7 +26,7 @@
             <p>Community-submitted river conditions and crossing point status reports</p>
         </div>
 
-        <div class="reports-header">
+        <div class="reports-header margin">
             <div class="reports-stats">
                 <div class="stat-item">
                     <div class="stat-number">247</div>
@@ -51,7 +51,7 @@
             </a>
         </div>
 
-        <div class="reports-filters">
+        <div class="reports-filters margin">
             <!-- Status -->
             <div class="filter-group">
                 <label for="status">Status:</label>
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <div class="reports-grid" id="verify-reports">
+        <div class="reports-grid margin" id="verify-reports">
             <div class="reports-list">
                 <!-- Verified card -->
                 <div class="report-card verified">

@@ -16,7 +16,7 @@
     <?php require "../views/sidebar.php" ?>
 
     <div class="main-content">
-        <div class="page-header">
+        <div class="page-header margin">
             <div class="page-title">
                 <i class="ri-alert-fill"></i>
                 <h1>Flood Alerts</h1>
@@ -24,7 +24,7 @@
             <p>Real-time flood risk monitoring and alert system for timely community response</p>
         </div>
 
-         <div class="emergency-banner">
+         <div class="emergency-banner margin">
              <div class="emergency">
                 <div>
                     <i class="ri-alarm-warning-fill"></i>
@@ -44,13 +44,13 @@
         </div>
 
         <!-- Auto-updates -->
-        <div class="card updates">
+        <div class="card margin updates">
             <div class="refresh"></div>
             <span style="font-size: 14px; margin-left: 8px;">Auto-updating every 30 seconds • Last update: 9:48 AM</span>
         </div>
 
         <!-- Rainfall Forecast -->
-        <div class="card" id="forecast">
+        <div class="card margin" id="forecast">
             <h3>Rainfall Forecast</h3>
             <div class="rain">
                 <div class="rain-header">
@@ -95,7 +95,7 @@
         </div>
 
         <!-- Active Alerts -->
-        <div class="card" id="alerts">
+        <div class="card margin" id="alerts">
             <div class="alerts-header">
                 <h3>Active Alerts</h3>
                 <div class="live-updates">

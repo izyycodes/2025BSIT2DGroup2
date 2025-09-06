@@ -7,7 +7,7 @@ body {
     padding-top: 85px;
 }
 
-.page-header {
+.margin {
     margin: 30px 50px;
 }
 
@@ -44,7 +44,6 @@ body {
     color: white;
     padding: 15px 30px;
     border-radius: 10px;
-    margin: 0 50px;
     text-align: center;
     animation: pulse 2s infinite;
     box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
@@ -68,7 +67,6 @@ body {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     border: 1px solid #e0e0e0;
-    margin: 30px 50px;
 }
 
 .updates {
@@ -296,8 +294,8 @@ body {
     }
 }
 
-@media screen and (max-width: 500px) {
-    .page-header, .emergency-banner, .card {
+@media screen and (max-width: 650px) {
+    .margin {
         margin: 30px;
     }
 }
