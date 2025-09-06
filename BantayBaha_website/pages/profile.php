@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="icon" type="image/ico" href="../assets/images/logo.png">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/profile.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="icon" type="image/ico" href="../assets/images/logo.png">
+
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/profile.css">
+  <link rel="stylesheet" href="../assets/css/navbar.css">
+  <link rel="stylesheet" href="../assets/css/sidebar.css">
+  <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 <body>
-    <?php require "../views/dashboard_navbar.php" ?>
-    <?php require "../views/sidebar.php" ?>
+  <!-- Navbar & Sidebar -->
+  <?php require "../views/dashboard_navbar.php" ?>
+  <?php require "../views/sidebar.php" ?>
 
-    <div class="main-content">
-
-        <section class="content">
+  <div class="main-content">
+    <section class="content">
+      
       <!-- Profile Header -->
       <div class="profile-header">
         <div class="avatar">JD</div>
         <div class="profile-info">
           <h3>Juan Dela Cruz <span class="badge">Resident</span></h3>
           <p><b>7</b> Help Requests | <b>0</b> Responses Given | <b>2</b> Years Member</p>
-          <span class="status online"><i class="fas fa-circle"></i> Online & Available</span>
+          <span class="status online"><i class="ri-checkbox-blank-circle-fill"></i> Online & Available</span>
         </div>
       </div>
 
@@ -32,7 +37,7 @@
       <div class="grid-container">
         <!-- Personal Information -->
         <div class="card">
-          <h4><i class="fas fa-user"></i> Personal Information</h4>
+          <h4><i class="ri-user-3-fill"></i> Personal Information</h4>
           <form>
             <label>First Name *</label>
             <input type="text" placeholder="Enter first name">
@@ -65,7 +70,7 @@
 
         <!-- Emergency Contacts -->
         <div class="card">
-          <h4><i class="fas fa-phone"></i> Emergency Contacts</h4>
+          <h4><i class="ri-contacts-fill"></i> Emergency Contacts</h4>
           <div class="contact-card">
             <p><b>Maria Dela Cruz</b><br>Spouse - +63 918 234 5678</p>
           </div>
@@ -80,7 +85,7 @@
       <div class="grid-container">
         <!-- Medical Info -->
         <div class="card">
-          <h4><i class="fas fa-notes-medical"></i> Medical Information</h4>
+          <h4><i class="ri-first-aid-kit-fill"></i> Medical Information</h4>
           <div class="alert-box">
             ⚠️ Important medical information for emergency responders
           </div>
@@ -104,7 +109,7 @@
 
         <!-- Notifications -->
         <div class="card">
-          <h4><i class="fas fa-bell"></i> Notification Settings</h4>
+          <h4><i class="ri-notification-3-fill"></i> Notification Settings</h4>
           <div class="toggle-row">
             <span>Emergency Alerts</span>
             <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
@@ -125,8 +130,8 @@
       </div>
     </section>
   </div>
-    
-        <?php require "../views/footer.php" ?>
-    </div>
+
+  <!-- Footer -->
+  <?php require "../views/footer.php" ?>
 </body>
 </html>
