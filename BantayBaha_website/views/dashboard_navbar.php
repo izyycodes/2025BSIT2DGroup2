@@ -34,13 +34,5 @@
         
     </header>
 
-    <script>
-        let time = document.getElementById("time");
-
-        // Set time
-        setInterval(function() {
-            let date = new Date();
-            time.innerHTML = date.toLocaleTimeString();
-        }, 1000)
-    </script>
+    <script src="../assets/js/dashboard_navbar.js"></script>
 </body>

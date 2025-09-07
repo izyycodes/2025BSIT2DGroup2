@@ -61,38 +61,5 @@
 
     </footer>
 
-    <script>
-        // const dashboardLink = document.getElementById("dashboard-link");
-
-        // dashboardLink.addEventListener("click", function(e) {
-        //     e.preventDefault();
-
-        //     if (localStorage.getItem("isLoggedIn") === "true") {
-        //     // Go directly if logged in
-        //     window.location.href = "../pages/dashboard.php";
-        //     } else {
-        //     // Redirect to login first
-        //     alert("Please login or sign up first.");
-        //     window.location.href = "../pages/login.php";
-        //     }
-        // });
-
-        function isLoggedIn() {
-            return localStorage.getItem("isLoggedIn") === "true";
-        }
-
-        // ==== Handle footer link clicks ====
-        document.querySelectorAll("footer a").forEach(link => {
-            link.addEventListener("click", function (e) {
-                if (!isLoggedIn()) {
-                    e.preventDefault(); // stop going directly to the page
-                    const targetPage = this.getAttribute("href"); // save where user wanted to go
-                    localStorage.setItem("redirectAfterLogin", targetPage);
-                    alert("Please login or sign up first.");
-                    window.location.href = "../pages/login.php"; // go to login first
-                }
-            });
-        });
-
-    </script>
+    <script src="../assets/js/footer.js"></script>
 </body>
