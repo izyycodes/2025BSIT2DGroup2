@@ -26,6 +26,7 @@
             <p>Community-submitted river conditions and crossing point status reports</p>
         </div>
 
+        <!-- Report Statistics -->
         <div class="reports-header margin">
             <div class="reports-stats">
                 <div class="stat-item">
@@ -51,6 +52,7 @@
             </a>
         </div>
 
+        <!-- Report Filters -->
         <div class="reports-filters margin">
             <!-- Status -->
             <div class="filter-group">
@@ -74,12 +76,6 @@
                 </select>
             </div>
 
-            <!-- Date -->
-            <div class="filter-group">
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="date" class="filter-input">
-            </div>
-
             <!-- Search -->
             <div class="filter-group">
                 <label for="search">Search:</label>
@@ -90,6 +86,7 @@
             </div>
         </div>
 
+        <!-- Reports -->
         <div class="reports-grid margin" id="verify-reports">
             <div class="reports-list">
                 <!-- Verified card -->

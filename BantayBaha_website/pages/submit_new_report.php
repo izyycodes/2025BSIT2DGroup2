@@ -92,7 +92,7 @@
                     <div class="form-column">
                         <label for="uploadPhoto">Upload Photo (optional)</label>
                         <input type="file" name="uploadPhoto" id="uploadPhoto">
-                        <p style="color: #666; font-size: 12px; margin-top: 7px;">Upload a clear photo of the river or crossing point (max 5MB).</p>
+                        <p style="color: #666; font-size: 14px; margin-top: 7px;">Upload a clear photo of the river or crossing point (max 5MB).</p>
                     </div>
                 </div>
             </form>

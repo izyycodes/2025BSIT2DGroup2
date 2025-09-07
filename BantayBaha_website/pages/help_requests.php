@@ -49,67 +49,202 @@
                 <h3>📍 Your Current Location</h3>
                 <div class="map-container">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.0837916690966!2d122.9626614745157!3d10.650598461503094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aed1b6d51c0973%3A0x56bf406758a5856d!2sHacienda%20sacio!5e0!3m2!1sen!2sph!4v1755414643945!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Details Form -->
+        <div class="card margin">
+            <div class="emergency-header">
+                <h3>📝 Emergency Details</h3>
+                <i class="ri-close-line"></i>
+            </div>
+            
+            <form action="" class="help-container">
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="emergencyType">Type of Emergency</label>
+                        <select name="emergencyType" id="emergencyType" required>
+                            <option value="waterRising">Flood/Water Rising</option>
+                            <option value="stranded">Trapped/Stranded</option>
+                            <option value="medEmergency">Medical Emergency</option>
+                            <option value="evacuation">Need Evacuation</option>
+                            <option value="others">Other Emergency</option>
+                        </select>
                     </div>
+                    <div class="form-column">
+                        <label for="urgencyLevel">Urgency Level</label>
+                        <select name="urgencyLevel" id="urgencyLevel" required>
+                            <option value="low">Low Priority</option>
+                            <option value="medium">Medium Priority</option>
+                            <option value="high">High Priority</option>
+                            <option value="critical">Critical - Life Threatening</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="numPeople">Number of People</label>
+                        <select name="numPeople" id="numPeople" required>
+                            <option value="one">1 Person</option>
+                            <option value="two">2 People</option>
+                            <option value="three">3 People</option>
+                            <option value="four">4 People</option>
+                            <option value="fiveAbove">5+ People</option>
+                            <option value="critical">Entire Family</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="details">Additional Details</label>
+                        <textarea name="remarks" id="remarks" placeholder="Provide more information about your emergency situation..." rows="4" cols="30"></textarea>
+                    </div>
+                </div>
+
+                <div class="submit-emergency-container">
+                    <button type="submit" class="submit-emergency-button">SEND EMERGENCY REQUEST</button>
+                </div>
+            </form>
+        </div>
+
+         <div class="grid2 margin">
+            <!-- Help Confirmation Messages -->
+            <div class="card">
+                <h3>💬 Help Confirmation Messages</h3>
+                <div class="message-container">
+
+                    <!-- Alert Sent Successfully -->
+                    <div class="status-indicator bg-green">
+                        <div class="message">
+                            <div class="icon" style="background-color: #22c55e;">
+                                <i class="ri-check-line" style="font-weight: 600;"></i>
+                            </div>
+                            <div class="msg-info">
+                                <div>
+                                    <p style="color: #166534; font-size: 14px; font-weight: 600;">Alert Sent Successfully</p>
+                                    <p style="color: #15803d; font-size: 12px;">Emergency services have been notified. Help is on the way.</p>
+                                    <p class="msg-time">2 minutes ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Volunteer Responding -->
+                    <div class="status-indicator bg-blue">
+                        <div class="message">
+                            <div class="icon" style="background-color: #3b82f6;">
+                                <i class="ri-user-2-fill"></i>
+                            </div>
+                            <div class="msg-info">
+                                <div>
+                                    <p style="color: #1e40af; font-size: 14px; font-weight: 600;">Volunteer Responding</p>
+                                    <p style="color: #1d4de8; font-size: 12px;">First aider from local community is en route (5 minutes away)</p>
+                                    <p class="msg-time">1 minute ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Services Update -->
+                    <div class="status-indicator bg-orange">
+                        <div class="message">
+                            <div class="icon" style="background-color: #f97316;">
+                                <i class="ri-time-fill"></i>
+                            </div>
+                            <div class="msg-info">
+                                <div>
+                                    <p style="color: #9a3412; font-size: 14px; font-weight: 600;">Emergency Services Update</p>
+                                    <p style="color: #c2410c; font-size: 12px;">Ambulance dispatched (ETA: 8 minutes) - Please remain where you are</p>
+                                    <p class="msg-time">Just Now</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Services -->
+                    <div class="status-indicator bg-green">
+                        <div class="message">
+                            <div class="icon" style="background-color: #22c55e;">
+                                <i class="ri-shield-cross-fill"></i>
+                            </div>
+                            <div class="msg-info">
+                                <div>
+                                    <p style="color: #166534; font-size: 14px; font-weight: 600;">Emergency Services</p>
+                                    <p style="color: #15803d; font-size: 12px;">Emergency team is 2 minutes away. Please stay positioned and follow instructions.</p>
+                                    <p class="msg-time">Now</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-msg">
+                    <input type="text" placeholder="Type a message to responders...">
+                    <button class="send-msg-btn">
+                        <i class="ri-send-plane-fill"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- Emergency Details Form -->
-            <div class="card margin">
-                <div class="emergency-header">
-                    <h3>📝 Emergency Details</h3>
-                    <i class="ri-close-line"></i>
+            <!-- Nearby Responders -->
+            <div class="card">
+                <h3>Nearby Responders</h3>
+                <div class="volunteer-container">
+                    <div class="volunteer-card">
+                        <div class="volunteer-info">
+                            <div class="volunteer-details">
+                                <div class="volunteer-avatar">JS</div>
+                                <div>
+                                    <p style="font-weight: 600;">John Smith</p>
+                                    <p style="font-size: 13px; color: #666;">First Aider</p>
+                                </div>
+                            </div>
+                            <span class="status-badge available">Available</span>
+                        </div>
+                        <div class="location-info">
+                            <i class="ri-map-pin-fill"></i>
+                            <p style="font-size: 11px; color: #666;">2.3km away</p>
+                        </div>
+                    </div>
+                    <div class="volunteer-card">
+                        <div class="volunteer-info">
+                            <div class="volunteer-details">
+                                <div class="volunteer-avatar">SJ</div>
+                                <div>
+                                    <p style="font-weight: 600;">Sarah Johnson</p>
+                                    <p style="font-size: 13px; color: #666;">Emergency Responder</p>
+                                </div>
+                            </div>
+                            <span class="status-badge available">Available</span>
+                        </div>
+                        <div class="location-info">
+                            <i class="ri-map-pin-fill"></i>
+                            <p style="font-size: 11px; color: #666;">3.7km away</p>
+                        </div>
+                    </div>
+                    <div class="volunteer-card">
+                        <div class="volunteer-info">
+                            <div class="volunteer-details">
+                                <div class="volunteer-avatar">MD</div>
+                                <div>
+                                    <p style="font-weight: 600;">Mike Davis</p>
+                                    <p style="font-size: 13px; color: #666;">Community Support</p>
+                                </div>
+                            </div>
+                            <span class="status-badge responding">Responding</span>
+                        </div>
+                        <div class="location-info">
+                            <i class="ri-map-pin-fill"></i>
+                            <p style="font-size: 11px; color: #666;">4.1km away</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <form action="" class="help-container">
-                    <div class="form-row">
-                        <div class="form-column">
-                            <label for="emergencyType">Type of Emergency</label>
-                            <select name="emergencyType" id="emergencyType" required>
-                                <option value="waterRising">Flood/Water Rising</option>
-                                <option value="stranded">Trapped/Stranded</option>
-                                <option value="medEmergency">Medical Emergency</option>
-                                <option value="evacuation">Need Evacuation</option>
-                                <option value="others">Other Emergency</option>
-                            </select>
-                        </div>
-                        <div class="form-column">
-                            <label for="urgencyLevel">Urgency Level</label>
-                            <select name="urgencyLevel" id="urgencyLevel" required>
-                                <option value="low">Low Priority</option>
-                                <option value="medium">Medium Priority</option>
-                                <option value="high">High Priority</option>
-                                <option value="critical">Critical - Life Threatening</option>
-                            </select>
-                        </div>
-                    </div>
-    
-                    <div class="form-row">
-                        <div class="form-column">
-                            <label for="numPeople">Number of People</label>
-                            <select name="numPeople" id="numPeople" required>
-                                <option value="one">1 Person</option>
-                                <option value="two">2 People</option>
-                                <option value="three">3 People</option>
-                                <option value="four">4 People</option>
-                                <option value="fiveAbove">5+ People</option>
-                                <option value="critical">Entire Family</option>
-                            </select>
-                        </div>
-                    </div>
-    
-                    <div class="form-row">
-                        <div class="form-column">
-                            <label for="details">Additional Details</label>
-                            <textarea name="remarks" id="remarks" placeholder="Provide more information about your emergency situation..." rows="4" cols="30"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="submit-emergency-container">
-                        <button type="submit" class="submit-emergency">SEND EMERGENCY REQUEST</button>
-                    </div>
-                </form>
             </div>
-    
+        </div>
+
         <?php require "../views/footer.php" ?>
     </div>
 </body>

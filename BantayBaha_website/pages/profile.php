@@ -27,7 +27,20 @@
         <div class="avatar">JD</div>
         <div class="profile-info">
           <h3>Juan Dela Cruz <span class="badge">Resident</span></h3>
-          <p><b>7</b> Help Requests | <b>0</b> Responses Given | <b>2</b> Years Member</p>
+          <div class="profile-stats">
+            <div class="stats-item">
+              <p style="font-weight: 700; font-size: 18px;">7</p>
+              <p style="color: #666; font-size: 14px;">Help Requests</p>
+            </div>
+            <div class="stats-item">
+              <p style="font-weight: 700; font-size: 18px;">0</p>
+              <p style="color: #666; font-size: 14px;">Responses Given</p>
+            </div>
+            <div class="stats-item">
+              <p style="font-weight: 700; font-size: 18px;">2</p>
+              <p style="color: #666; font-size: 14px;">Years Member</p>
+            </div>
+          </div>
           <span class="status online"><i class="ri-checkbox-blank-circle-fill"></i> Online & Available</span>
         </div>
       </div>
@@ -38,12 +51,12 @@
         <div class="card">
           <h4><i class="ri-user-3-fill"></i> Personal Information</h4>
           <form>
-            <label>Full Name *</label>
+            <label>Full Name</label>
             <input type="text" placeholder="Enter full name">
 
             <div class="row">
               <div>
-                <label>Age *</label>
+                <label>Age</label>
                 <input type="number" placeholder="Enter age">
               </div>
               <div>
@@ -56,14 +69,18 @@
               </div>
             </div>
 
-            <label>Phone Number *</label>
+            <label>Phone Number</label>
             <input type="text" placeholder="Enter phone number">
 
-            <label>Email Address *</label>
+            <label>Email Address</label>
             <input type="email" placeholder="Enter email address">
 
-            <label>Home Address *</label>
+            <label>Home Address</label>
             <textarea rows="2" placeholder="Enter home address"></textarea>
+
+            <div class="btn-container">
+              <button class="save-btn">Save</button>
+            </div>
           </form>
         </div>
 
@@ -76,7 +93,9 @@
           <div class="contact-card">
             <p><b>Pedro Dela Cruz</b><br>Father - +63 919 345 6789</p>
           </div>
-          <button class="add-btn">+ Add Emergency Contact</button>
+          <div class="btn-container">
+            <button class="add-btn">+ Add Emergency Contact</button>
+          </div>
         </div>
       </div>
 
@@ -92,10 +111,14 @@
             <label>Blood Type</label>
             <select>
               <option>Select blood type</option>
-              <option>A+</option><option>A-</option>
-              <option>B+</option><option>B-</option>
-              <option>AB+</option><option>AB-</option>
-              <option>O+</option><option>O-</option>
+              <option>A+</option>
+              <option>A-</option>
+              <option>B+</option>
+              <option>B-</option>
+              <option>AB+</option>
+              <option>AB-</option>
+              <option>O+</option>
+              <option>O-</option>
             </select>
 
             <label>Medical Conditions</label>
@@ -103,6 +126,10 @@
 
             <label>Current Medications</label>
             <textarea rows="2" placeholder="List medications and dosages..."></textarea>
+          
+            <div class="btn-container">
+              <button class="save-btn">Save</button>
+            </div>
           </form>
         </div>
 
@@ -110,19 +137,31 @@
         <div class="card margin">
           <h4><i class="ri-notification-3-fill"></i> Notification Settings</h4>
           <div class="toggle-row">
-            <span>Emergency Alerts</span>
+            <div class="notif-settings">
+              <p style="font-weight: 600; font-size: 16px;">Emergency Alerts</p>
+              <p style="color: #666; font-size: 13px;">Critical flood warnings in your area</p>
+            </div>
             <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
           </div>
           <div class="toggle-row">
-            <span>Help Request Updates</span>
+            <div class="notif-settings">
+              <p style="font-weight: 600; font-size: 16px;">Help Request Updates</p>
+              <p style="color: #666; font-size: 13px;">Status updates on your help requests</p>
+            </div>
             <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
           </div>
           <div class="toggle-row">
-            <span>Weather Updates</span>
+            <div class="notif-settings">
+              <p style="font-weight: 600; font-size: 16px;">Weather Updates</p>
+              <p style="color: #666; font-size: 13px;">Daily weather and flood forecasts</p>
+            </div>
             <label class="switch"><input type="checkbox"><span class="slider"></span></label>
           </div>
           <div class="toggle-row">
-            <span>System Maintenance</span>
+            <div class="notif-settings">
+              <p style="font-weight: 600; font-size: 16px;">System Maintenance</p>
+              <p style="color: #666; font-size: 13px;">Planned maintenance notifications</p>
+            </div>
             <label class="switch"><input type="checkbox"><span class="slider"></span></label>
           </div>
         </div>
