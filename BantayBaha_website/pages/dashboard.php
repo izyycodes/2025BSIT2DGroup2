@@ -228,13 +228,13 @@
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <a class="btn btn-danger">
+                    <a href="../pages/help_requests.php" class="btn btn-danger">
                         <i class="ri-alarm-warning-fill"></i>
                         Call for Help
                     </a>
-                    <a class="btn btn-primary">
+                    <a href="../pages/help_requests.php #messages" class="btn btn-primary">
                         <img src="../assets/images/users.png" alt="users">
-                        View Messages
+                        Send Message
                     </a>
                 </div>
             </div>

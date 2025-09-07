@@ -110,7 +110,7 @@
             </form>
         </div>
 
-         <div class="grid2 margin">
+         <div class="grid2 margin" id="messages">
             <!-- Help Confirmation Messages -->
             <div class="card">
                 <h3>💬 Help Confirmation Messages</h3>
