@@ -36,36 +36,36 @@
 
             <div class="form-row">
                 <div class="form-column">
-                    <label for="firstName">First Name</label>
+                    <label for="firstName">First Name <span style="color: #dc3545;"> *</span></label>
                     <input type="text" id="firstName" name="firstName" required>
                 </div>
                 <div class="form-column">
-                    <label for="lastName">Last Name</label>
+                    <label for="lastName">Last Name <span style="color: #dc3545;"> *</span></label>
                     <input type="text" id="lastName" name="lastName" required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-column">
-                    <label for="email">Email Address</label>
+                    <label for="email">Email Address <span style="color: #dc3545;"> *</span></label>
                     <input type="email" id="signup-email" name="signup-email" required>
                 </div>
                 <div class="form-column">
-                    <label for="phone">Phone Number</label>
+                    <label for="phone">Phone Number <span style="color: #dc3545;"> *</span></label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-column">
-                    <label for="password">Password</label>
+                    <label for="password">Password <span style="color: #dc3545;"> *</span></label>
                     <div class="password-box">
                         <input type="password" id="signup-password" name="signup-password" required>
                         <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                     </div>
                 </div>
                 <div class="form-column">
-                    <label for="role">Select Role</label>
+                    <label for="role">Select Role <span style="color: #dc3545;"> *</span></label>
                     <select name="role" id="role">
                         <option value="resident">Resident</option>
                         <option value="volunteer">Volunteer</option>

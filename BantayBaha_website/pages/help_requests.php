@@ -66,7 +66,7 @@
             <form class="help-container" id="helpForm">
                 <div class="form-row">
                     <div class="form-column">
-                        <label for="emergencyType">Type of Emergency</label>
+                        <label for="emergencyType">Type of Emergency <span style="color: #dc3545;"> *</span></label>
                         <select name="emergencyType" id="emergencyType" required>
                             <option value="">Select type of emergency</option>
                             <option value="waterRising">Flood/Water Rising</option>
@@ -77,7 +77,7 @@
                         </select>
                     </div>
                     <div class="form-column">
-                        <label for="urgencyLevel">Urgency Level</label>
+                        <label for="urgencyLevel">Urgency Level <span style="color: #dc3545;"> *</span></label>
                         <select name="urgencyLevel" id="urgencyLevel" required>
                             <option value="">Select urgency level</option>
                             <option value="low">Low Priority</option>
@@ -90,7 +90,7 @@
 
                 <div class="form-row">
                     <div class="form-column">
-                        <label for="numPeople">Number of People</label>
+                        <label for="numPeople">Number of People <span style="color: #dc3545;"> *</span></label>
                         <select name="numPeople" id="numPeople" required>
                             <option value="">Select number of people</option>
                             <option value="one">1 Person</option>
