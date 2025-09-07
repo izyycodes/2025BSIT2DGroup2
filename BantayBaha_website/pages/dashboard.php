@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dashboard</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
@@ -327,23 +330,6 @@
         <?php require "../views/footer.php" ?>
     </div>
 
-    <script>
-        //  document.getElementById("map").addEventListener("click", function() {
-        //     const mapContainer = document.getElementById("map-container");
-        //     if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
-        //         mapContainer.style.display = "block";
-        //         mapContainer.scrollIntoView({ behavior: "smooth" });
-        //     } else {
-        //         mapContainer.style.display = "none";
-        //     }
-        // });
-
-       document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem("isLoggedIn") !== "true") {
-            alert("You must login or sign up first!");
-            window.location.href = "../pages/login.php";
-            }
-        });
-    </script>
+    <script src="../assets/js/dashboard.js"></script>
 </body>
 </html>

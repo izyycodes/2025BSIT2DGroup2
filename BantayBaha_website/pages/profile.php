@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Profile</title>
   <link rel="icon" type="image/ico" href="../assets/images/logo.png">
 
-  <!-- Remix Icon -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="../assets/css/profile.css">
   <link rel="stylesheet" href="../assets/css/navbar.css">
   <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 <body>
-  <!-- Navbar & Sidebar -->
   <?php require "../views/dashboard_navbar.php" ?>
   <?php require "../views/sidebar.php" ?>
 
@@ -50,53 +48,53 @@
         <!-- Personal Information -->
         <div class="card">
           <h4><i class="ri-user-3-fill"></i> Personal Information</h4>
-          <form>
-            <label>Full Name</label>
-            <input type="text" placeholder="Enter full name">
+          <form id="personal-information">
+            <label for="fullName">Full Name <span style="color: #dc3545;"> *</span></label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required>
 
             <div class="row">
               <div>
-                <label>Age</label>
-                <input type="number" placeholder="Enter age">
+                <label for="age">Age <span style="color: #dc3545;"> *</span></label>
+                <input type="number" id="age" name="age" min="1" placeholder="Enter age" required>
               </div>
               <div>
-                <label>Gender *</label>
-                <select>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Other</option>
+                <label for="gender">Gender <span style="color: #dc3545;"> *</span></label>
+                <select id="gender" name="gender" required>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="others">Others</option>
                 </select>
               </div>
             </div>
 
-            <label>Phone Number</label>
-            <input type="text" placeholder="Enter phone number">
+            <label for="number">Phone Number <span style="color: #dc3545;"> *</span></label>
+            <input type="text" id="number" name="number" placeholder="Enter phone number" required>
 
-            <label>Email Address</label>
-            <input type="email" placeholder="Enter email address">
+            <label for="email">Email Address <span style="color: #dc3545;"> *</span></label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" required>
 
-            <label>Home Address</label>
-            <textarea rows="2" placeholder="Enter home address"></textarea>
+            <label for="address">Home Address <span style="color: #dc3545;"> *</span></label>
+            <textarea id="address" name="address" rows="2" placeholder="Enter home address"></textarea>
 
             <div class="btn-container">
-              <button class="save-btn">Save</button>
+              <button class="save-btn" type="submit">Save</button>
             </div>
           </form>
         </div>
 
         <!-- Emergency Contacts -->
-        <div class="card">
-          <h4><i class="ri-contacts-fill"></i> Emergency Contacts</h4>
-          <div class="contact-card">
-            <p><b>Maria Dela Cruz</b><br>Spouse - +63 918 234 5678</p>
-          </div>
-          <div class="contact-card">
-            <p><b>Pedro Dela Cruz</b><br>Father - +63 919 345 6789</p>
-          </div>
-          <div class="btn-container">
-            <button class="add-btn">+ Add Emergency Contact</button>
-          </div>
-        </div>
+          <div class="card">
+            <h4><i class="ri-contacts-fill"></i> Emergency Contacts</h4>
+            <div class="contact-card">
+              <p><b>Maria Dela Cruz</b><br>Spouse - +63 918 234 5678</p>
+            </div>
+            <div class="contact-card">
+              <p><b>Pedro Dela Cruz</b><br>Father - +63 919 345 6789</p>
+            </div>
+            <div class="btn-container">
+              <button class="add-btn">+ Add Emergency Contact</button>
+            </div>
+          </div>   
       </div>
 
       <!-- Medical Information + Notifications -->
@@ -107,34 +105,34 @@
           <div class="alert-box">
             ⚠️ Important medical information for emergency responders
           </div>
-          <form>
-            <label>Blood Type</label>
-            <select>
-              <option>Select blood type</option>
-              <option>A+</option>
-              <option>A-</option>
-              <option>B+</option>
-              <option>B-</option>
-              <option>AB+</option>
-              <option>AB-</option>
-              <option>O+</option>
-              <option>O-</option>
+          <form id="medical-information"> 
+            <label for="bloodType">Blood Type <span style="color: #dc3545;"> *</span></label>
+            <select id="bloodType" name="bloodType" required> 
+              <option value="">Select blood type</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
             </select>
 
-            <label>Medical Conditions</label>
-            <textarea rows="2" placeholder="List any medical conditions..."></textarea>
+            <label for="medcon">Medical Conditions</label>
+            <textarea id="medcon" name="medcon" rows="2" placeholder="List any medical conditions..."></textarea>
 
-            <label>Current Medications</label>
-            <textarea rows="2" placeholder="List medications and dosages..."></textarea>
+            <label for="medications">Current Medications</label>
+            <textarea id="medications" name="medications" rows="2" placeholder="List medications and dosages..."></textarea>
           
             <div class="btn-container">
-              <button class="save-btn">Save</button>
+              <button class="save-btn" type="submit">Save</button>
             </div>
           </form>
         </div>
 
         <!-- Notifications -->
-        <div class="card margin">
+        <div class="card margin" id="notif-settings">
           <h4><i class="ri-notification-3-fill"></i> Notification Settings</h4>
           <div class="toggle-row">
             <div class="notif-settings">
@@ -170,5 +168,7 @@
     <!-- Footer -->
   <?php require "../views/footer.php" ?>
   </div>
+
+  <script src="../assets/js/profile.js"></script>
 </body>
 </html>

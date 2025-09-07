@@ -54,6 +54,14 @@ body {
     gap: 8px;
 }
 
+.mark-all-read {
+    border: none;
+    background: none;
+    color: #2563EB;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .notif-side i {
     font-size: 25px;
 }
@@ -85,7 +93,7 @@ body {
 .filter-box li {
     padding: 8px 10px;
     border-radius: 8px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -134,26 +142,28 @@ body {
     align-items: flex-start;
     gap: 15px;
     padding: 15px;
-    border-radius: 12px;
+    border-radius: 10px;
     background: #fff;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
 .notification-card:hover {
-    transform: translateX(10px);
+    transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .card-content {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
 .close-btn {
     display: flex;
     justify-content: flex-end;
+    cursor: pointer;
 }
 
 .close-btn i {
@@ -169,6 +179,9 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .notification-card .card-content p {
@@ -180,6 +193,19 @@ body {
 .notification-card .card-content small {
     font-size: 0.8rem;
     color: #777;
+}
+
+.unread-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #2563EB; /* blue */
+    display: none;
+    margin-left: 8px;
+}
+
+.notification-card.unread .unread-indicator {
+    display: inline-block;
 }
 
 /* Colors by type */
@@ -197,17 +223,39 @@ body {
     margin-left: 5px;
 }
 
+/* No Notifications */
+.no-notifications {
+    background-color: #fff;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.empty-state i {
+    font-size: 40px;
+    color: #66666676;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-
     .notifications-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
+}
 
-    .notification-card {
-        flex-direction: column;
-        align-items: flex-start;
+@media screen and (max-width: 650px) {
+    .notifications-container {
+        margin: 30px;
     }
 }

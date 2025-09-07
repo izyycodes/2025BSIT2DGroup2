@@ -175,6 +175,7 @@ input:focus, select:focus, textarea:focus {
   color: #b22;
   padding: 10px;
   border-radius: 6px;
+  border: 1px solid #b22;
   margin-bottom: 15px;
   font-size: 14px;
   font-weight: 500;

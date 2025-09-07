@@ -85,6 +85,7 @@ body {
     position: relative;
     overflow: hidden;
     text-align: center;
+    animation: pulse 2s infinite;
 }
 
 .button-text img {
@@ -115,6 +116,10 @@ body {
 
 .emergency-header i {
     font-size: 20px;
+}
+
+.closeBtn {
+    cursor: pointer;
 }
 
 .help-container input, .help-container select, .help-container textarea {

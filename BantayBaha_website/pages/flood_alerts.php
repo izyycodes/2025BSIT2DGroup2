@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Flood Alerts</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="../assets/css/flood_alerts.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
@@ -105,13 +108,13 @@
             </div>
 
             <div class="filter-tabs">
-                <button class="filter-tab active">All Alerts</button>
-                <button class="filter-tab">Critical</button>
-                <button class="filter-tab">High</button>
-                <button class="filter-tab">Moderate</button>
+                <button data-filter="all" class="filter-btn active">All Alerts</button>
+                <button data-filter="critical" class="filter-btn">Critical</button>
+                <button data-filter="high" class="filter-btn">High</button>
+                <button data-filter="moderate" class="filter-btn">Moderate</button>
             </div>
 
-            <div class="alert-item alert-critical">
+            <div class="alert-item critical">
                 <div>
                     <div class="alerts-header" style="margin-bottom: 12px;">
                         <h4 style="color: #dc3545; font-size: 16px;">🚨 CRITICAL FLOOD WARNING</h4>
@@ -141,7 +144,7 @@
                 </div>
             </div>
 
-            <div class="alert-item alert-high">
+            <div class="alert-item high">
                 <div>
                     <div class="alerts-header" style="margin-bottom: 12px;">
                         <h4 style="color: #fd7e14; font-size: 16px;">⚠️ HIGH RISK WARNING</h4>
@@ -171,7 +174,7 @@
                 </div>
             </div>
 
-            <div class="alert-item alert-moderate">
+            <div class="alert-item moderate">
                 <div>
                     <div class="alerts-header" style="margin-bottom: 12px;">
                         <h4 style="color: #f7b731; font-size: 16px;">🌧 WEATHER ADVISORY</h4>
@@ -204,5 +207,7 @@
     
         <?php require "../views/footer.php" ?>
     </div>
+
+    <script src="../assets/js/flood_alerts.js"></script>
 </body>
 </html>

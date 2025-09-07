@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Help Requests</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="../assets/css/help_requests.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
@@ -34,7 +37,7 @@
         <div class="grid1 margin">
             <!-- Call for Help Button -->
             <div class="card" style="text-align: center;">
-                <button class="emergency-button">
+                <button class="emergency-button" id="emergencyBtn">
                     <div class="button-text">
                         <img src="../assets/images/help-bell.png" alt="help bell">
                         <p style="font-size: 20px; font-weight: 700;">CALL FOR HELP</p>
@@ -54,17 +57,18 @@
         </div>
 
         <!-- Emergency Details Form -->
-        <div class="card margin">
+        <div class="card margin" id="helpContainer" style="display: none;">
             <div class="emergency-header">
                 <h3>📝 Emergency Details</h3>
-                <i class="ri-close-line"></i>
+                <i class="ri-close-line" id="closeBtn"></i>
             </div>
             
-            <form action="" class="help-container">
+            <form class="help-container" id="helpForm">
                 <div class="form-row">
                     <div class="form-column">
                         <label for="emergencyType">Type of Emergency</label>
                         <select name="emergencyType" id="emergencyType" required>
+                            <option value="">Select type of emergency</option>
                             <option value="waterRising">Flood/Water Rising</option>
                             <option value="stranded">Trapped/Stranded</option>
                             <option value="medEmergency">Medical Emergency</option>
@@ -75,6 +79,7 @@
                     <div class="form-column">
                         <label for="urgencyLevel">Urgency Level</label>
                         <select name="urgencyLevel" id="urgencyLevel" required>
+                            <option value="">Select urgency level</option>
                             <option value="low">Low Priority</option>
                             <option value="medium">Medium Priority</option>
                             <option value="high">High Priority</option>
@@ -87,6 +92,7 @@
                     <div class="form-column">
                         <label for="numPeople">Number of People</label>
                         <select name="numPeople" id="numPeople" required>
+                            <option value="">Select number of people</option>
                             <option value="one">1 Person</option>
                             <option value="two">2 People</option>
                             <option value="three">3 People</option>
@@ -247,5 +253,7 @@
 
         <?php require "../views/footer.php" ?>
     </div>
+
+    <script src="../assets/js/help_requests.js"></script>
 </body>
 </html>
