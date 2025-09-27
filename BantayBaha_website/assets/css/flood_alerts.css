@@ -24,7 +24,7 @@ body {
 
 .page-header h1 {
     color: #2c3e50;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 700;
 }
 
@@ -167,7 +167,7 @@ body {
     border-radius: 15px;
 }
 
-.filter-tab {
+.filter-btn {
     padding: 12px 24px;
     border: none;
     border-radius: 10px;
@@ -181,7 +181,7 @@ body {
     position: relative;
 }
 
-.filter-tab.active {
+.filter-btn.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
@@ -204,17 +204,17 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.alert-critical {
+.critical {
     border-color: #dc3545;
     background: linear-gradient(135deg, #ffebee 0%, #fff5f5 100%);
 }
 
-.alert-high {
+.high {
     border-color: #fd7e14;
     background: linear-gradient(135deg, #fff3e0 0%, #fffaf7 100%);
 }
 
-.alert-moderate {
+.moderate {
     border-color: #ffc107;
     background: linear-gradient(135deg, #fff8e1 0%, #fffef7 100%);
 }

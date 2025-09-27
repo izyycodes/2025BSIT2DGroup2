@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Community Reports</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="../assets/css/community_reports.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
@@ -26,6 +29,7 @@
             <p>Community-submitted river conditions and crossing point status reports</p>
         </div>
 
+        <!-- Report Statistics -->
         <div class="reports-header margin">
             <div class="reports-stats">
                 <div class="stat-item">
@@ -51,6 +55,7 @@
             </a>
         </div>
 
+        <!-- Report Filters -->
         <div class="reports-filters margin">
             <!-- Status -->
             <div class="filter-group">
@@ -74,12 +79,6 @@
                 </select>
             </div>
 
-            <!-- Date -->
-            <div class="filter-group">
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="date" class="filter-input">
-            </div>
-
             <!-- Search -->
             <div class="filter-group">
                 <label for="search">Search:</label>
@@ -90,10 +89,11 @@
             </div>
         </div>
 
+        <!-- Reports -->
         <div class="reports-grid margin" id="verify-reports">
             <div class="reports-list">
                 <!-- Verified card -->
-                <div class="report-card verified">
+                <div class="report-card verified" data-status="verified" data-location="cpoint1">
                     <div class="report-header">
                         <div class="report-user">
                             <div class="user-avatar">MS</div>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="report-content">
                         <div class="report-location">📍 Crossing Point 1</div>
-                        <div class="report-description">Water level is low and safe for crossing. No debris observed. Clear visibility and calm current</div>
+                        <div class="report-description">Water level is low and safe for crossing. No debris observed. Clear visibility and calm current.</div>
                         <div class="report-photo">
                             <p>[Photo: Safe crossing conditions]</p>
                         </div>
@@ -130,7 +130,7 @@
                 </div>
 
                 <!-- Pending card -->
-                <div class="report-card pending">
+                <div class="report-card pending" data-status="pending" data-location="cpoint2">
                     <div class="report-header">
                         <div class="report-user">
                             <div class="user-avatar">AD</div>
@@ -170,8 +170,45 @@
                     </div>
                 </div>
 
+                <!-- Verified card -->
+                 <div class="report-card verified" data-status="verified" data-location="cpoint2">
+                    <div class="report-header">
+                        <div class="report-user">
+                            <div class="user-avatar">JB</div>
+                            <div class="user-info">
+                                <h4>Janelle Ba-al</h4>
+                                <div class="report-time">45 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="report-status status-verified">Verified</div>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-location">📍 Crossing Point 2</div>
+                        <div class="report-description">Strong winds are causing waves at the crossing point. Water level is moderate but debris is starting to gather near the banks. Caution is advised.</div>
+                        <div class="report-photo">
+                            <p>[Photo: Debris collecting near the river bank]</p>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn btn-outline btn-success btn-sm">
+                            <i class="ri-check-line"></i>
+                            Verified
+                        </button>
+                        <div class="vote-section">
+                            <div class="vote-count">
+                                <i class="ri-thumb-up-line"></i>
+                                7
+                            </div>
+                            <div class="vote-count">
+                                <i class="ri-thumb-down-line"></i>
+                                2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Flagged card -->
-                <div class="report-card flagged">
+                <div class="report-card flagged" data-status="flagged" data-location="cpoint3">
                     <div class="report-header">
                         <div class="report-user">
                             <div class="user-avatar">AY</div>
@@ -206,6 +243,56 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Pending card -->
+                <div class="report-card pending" data-status="pending" data-location="cpoint1">
+                    <div class="report-header">
+                        <div class="report-user">
+                            <div class="user-avatar">EB</div>
+                            <div class="user-info">
+                                <h4>Eanna Bravo</h4>
+                                <div class="report-time">1 hour and 3 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="report-status status-pending">Pending</div>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-location">📍 Crossing Point 1</div>
+                        <div class="report-description">Heavy rainfall earlier caused the water to rise quickly, but it has already started to recede. Current is steady and the path looks clearer now. Locals report it is safe to cross again.</div>
+                        <div class="report-photo">
+                            <p>[Photo: Water receding and path becoming clearer]</p>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn btn-outline btn-success btn-sm">
+                            <i class="ri-check-line"></i>
+                            Verify
+                        </button>
+                        <button class="btn btn-outline btn-danger btn-sm">
+                            <i class="ri-alert-line"></i>
+                            Flag
+                        </button>
+                        <div class="vote-section">
+                            <div class="vote-count">
+                                <i class="ri-thumb-up-line"></i>
+                                5
+                            </div>
+                            <div class="vote-count">
+                                <i class="ri-thumb-down-line"></i>
+                                3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="no-reports" class="no-reports" style="display: none;">
+                <div class="empty-state">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <h3>No reports</h3>
+                    <p style="color: #666;">No reports to display.</p>
+                </div>
+            </div>
+
             </div>
             <div class="sidebar-panel">
                 <!-- Report Trends -->
@@ -284,6 +371,8 @@
 
         <?php require "../views/footer.php" ?>
     </div>
+
+    <script src="../assets/js/community_reports.js"></script>
 </body>
 
 </html>

@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>BantayBaha</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
@@ -90,7 +94,5 @@
     </section>
 
     <?php require "../views/footer.php" ?>
-    
-    <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>
 </body>
 </html>

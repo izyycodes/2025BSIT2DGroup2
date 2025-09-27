@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dashboard</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
@@ -63,11 +66,11 @@
                     <span>Point 3: Impassable (2.1m)</span>
                 </div>
                 <div class="action-buttons">
-                    <a class="btn btn-primary" id="map">
+                    <a href="../pages/river_monitoring.php #river-map" class="btn btn-primary" id="map">
                         <img src="../assets/images/location.png" alt="location">
                         View Full Map
                     </a>
-                    <a class="btn btn-success">
+                    <a href="../pages/river_monitoring.php" class="btn btn-success">
                         <img src="../assets/images/stats.png" alt="stats">
                         Water Levels
                     </a>
@@ -228,13 +231,13 @@
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <a class="btn btn-danger">
+                    <a href="../pages/help_requests.php" class="btn btn-danger">
                         <i class="ri-alarm-warning-fill"></i>
                         Call for Help
                     </a>
-                    <a class="btn btn-primary">
+                    <a href="../pages/help_requests.php #messages" class="btn btn-primary">
                         <img src="../assets/images/users.png" alt="users">
-                        View Messages
+                        Send Message
                     </a>
                 </div>
             </div>
@@ -327,23 +330,6 @@
         <?php require "../views/footer.php" ?>
     </div>
 
-    <script>
-        //  document.getElementById("map").addEventListener("click", function() {
-        //     const mapContainer = document.getElementById("map-container");
-        //     if (mapContainer.style.display === "none" || mapContainer.style.display === "") {
-        //         mapContainer.style.display = "block";
-        //         mapContainer.scrollIntoView({ behavior: "smooth" });
-        //     } else {
-        //         mapContainer.style.display = "none";
-        //     }
-        // });
-
-       document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem("isLoggedIn") !== "true") {
-            alert("You must login or sign up first!");
-            window.location.href = "../pages/login.php";
-            }
-        });
-    </script>
+    <script src="../assets/js/dashboard.js"></script>
 </body>
 </html>

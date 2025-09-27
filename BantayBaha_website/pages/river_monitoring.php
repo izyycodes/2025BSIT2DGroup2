@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>River Monitoring</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="../assets/css/river_monitoring.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
@@ -44,6 +47,7 @@
         </div>
 
         <div class="container margin">
+            <!-- Water Level Trends -->
             <div class="card">
                 <h3>📉 Water Level Trends</h3>
                 <div class="chart-placeholder">
@@ -62,6 +66,8 @@
                     <span class="metric-value" style="color: #f44336;">⬆️ Rising</span>
                 </div>
             </div>
+
+            <!-- Weather Impact -->
             <div class="card">
                 <h3>🌧 Weather Impact</h3>
                 <div class="chart-placeholder">
@@ -82,7 +88,8 @@
             </div>
         </div>
 
-        <div class="river-grid margin">
+        <div class="river-grid margin" id="river-map">
+            <!-- River Crossing Points Map -->
             <div class="card">
                 <h3>River Crossing Points Map</h3>
                 <div class="river-map-container">
@@ -104,6 +111,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Current Status -->
             <div class="card">
                 <h3>📊 Current Status</h3>
                 <div class="status-item safe">

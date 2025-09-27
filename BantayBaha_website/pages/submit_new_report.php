@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>New Report</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="../assets/css/new_report.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
@@ -36,18 +39,18 @@
 
                 <div class="form-row">
                     <div class="form-column">
-                        <label for="firstName">First Name</label>
+                        <label for="firstName">First Name <span style="color: #dc3545;"> *</span></label>
                         <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
                     </div>
                     <div class="form-column">
-                        <label for="lastName">Last Name</label>
+                        <label for="lastName">Last Name <span style="color: #dc3545;"> *</span></label>
                         <input type="text" id="lastName" name="lastName" placeholder="Enter your full name" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-column">
-                        <label for="location">Location</label>
+                        <label for="location">Location <span style="color: #dc3545;"> *</span></label>
                         <select name="location" id="location" required>
                             <option value="">Select crossing point</option>
                             <option value="cpoint1">Crossing Point 1</option>
@@ -59,18 +62,18 @@
 
                 <div class="form-row">
                     <div class="form-column">
-                        <label for="reportDate">Report Date</label>
+                        <label for="reportDate">Report Date <span style="color: #dc3545;"> *</span></label>
                         <input type="date" id="reportDate" name="reportDate" required>
                     </div>
                     <div class="form-column">
-                        <label for="reportTime">Report Time</label>
+                        <label for="reportTime">Report Time <span style="color: #dc3545;"> *</span></label>
                         <input type="time" id="reportTime" name="reportTime" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-column">
-                        <label for="waterLevelDesc">Water Level Description</label>
+                        <label for="waterLevelDesc">Water Level Description <span style="color: #dc3545;"> *</span></label>
                         <select name="waterLevelDesc" id="waterLevelDesc" required>
                             <option value="">Select water level</option>
                             <option value="low">Low (Safe for crossing)</option>
@@ -92,7 +95,7 @@
                     <div class="form-column">
                         <label for="uploadPhoto">Upload Photo (optional)</label>
                         <input type="file" name="uploadPhoto" id="uploadPhoto">
-                        <p style="color: #666; font-size: 12px; margin-top: 7px;">Upload a clear photo of the river or crossing point (max 5MB).</p>
+                        <p style="color: #666; font-size: 14px; margin-top: 7px;">Upload a clear photo of the river or crossing point (max 5MB).</p>
                     </div>
                 </div>
             </form>
@@ -110,15 +113,6 @@
         <?php require "../views/footer.php" ?>
     </div>
 
-    <script>
-        const form = document.getElementById("new-report-form");
-
-        form.addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            alert("Report submiited successfully!");
-            form.reset();
-        });
-    </script>
+    <script src="../assets/js/community_reports.js"></script>
 </body>
 </html>
