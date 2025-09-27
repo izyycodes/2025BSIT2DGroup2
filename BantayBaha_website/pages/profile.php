@@ -31,7 +31,6 @@
     <section class="content">
       <!-- Profile Header -->
       <div class="profile-header">
-<<<<<<< HEAD
   <div class="avatar">
     <?php echo strtoupper(substr($firstName,0,1) . substr($lastName,0,1)); ?>
   </div>
@@ -43,7 +42,6 @@
     <span class="status online"><i class="ri-checkbox-blank-circle-fill"></i> Online & Available</span>
   </div>
 </div>
-=======
         <div class="avatar">JD</div>
         <div class="profile-info">
           <h3>Juan Dela Cruz <span class="badge">Resident</span></h3>
@@ -64,22 +62,18 @@
           <span class="status online"><i class="ri-checkbox-blank-circle-fill"></i> Online & Available</span>
         </div>
       </div>
->>>>>>> f3fced2980b2b1d78f25f81532fcf32f80192a70
 
       <!-- Profile Sections -->
       <div class="grid-container">
         <!-- Personal Information -->
         <div class="card">
           <h4><i class="ri-user-3-fill"></i> Personal Information</h4>
-<<<<<<< HEAD
           <form>
             <label>Full Name *</label>
             <input type="text" value="<?php echo $firstName . ' ' . $lastName; ?>">
-=======
           <form id="personal-information">
             <label for="fullName">Full Name <span style="color: #dc3545;"> *</span></label>
             <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required>
->>>>>>> f3fced2980b2b1d78f25f81532fcf32f80192a70
 
             <div class="row">
               <div>
@@ -96,19 +90,16 @@
               </div>
             </div>
 
-<<<<<<< HEAD
             <label>Phone Number *</label>
             <input type="text" value="<?php echo $phone; ?>">
 
             <label>Email Address *</label>
             <input type="email" value="<?php echo $email; ?>">
-=======
             <label for="number">Phone Number <span style="color: #dc3545;"> *</span></label>
             <input type="text" id="number" name="number" placeholder="Enter phone number" required>
 
             <label for="email">Email Address <span style="color: #dc3545;"> *</span></label>
             <input type="email" id="email" name="email" placeholder="Enter email address" required>
->>>>>>> f3fced2980b2b1d78f25f81532fcf32f80192a70
 
             <label for="address">Home Address <span style="color: #dc3545;"> *</span></label>
             <textarea id="address" name="address" rows="2" placeholder="Enter home address"></textarea>

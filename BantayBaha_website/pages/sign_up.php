@@ -44,34 +44,6 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-        <div class="form-row">
-            <div class="form-column">
-                <label for="email">Email Address</label>
-                <input type="email" id="signup-email" name="signup-email" required>
-            </div>
-            <div class="form-column">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-column">
-                <label for="password">Password</label>
-                <div class="password-box">
-                    <input type="password" id="signup-password" name="signup-password" required>
-                    <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
-                </div>
-            </div>
-            <div class="form-column">
-                <label for="role">Select Role</label>
-                <select name="role" id="role">
-                    <option value="resident">Resident</option>
-                    <option value="volunteer">Volunteer</option>
-                    <option value="barangayOfficial">Barangay Official</option>
-                </select>
-=======
             <div class="form-row">
                 <div class="form-column">
                     <label for="firstName">First Name <span style="color: #dc3545;"> *</span></label>
@@ -92,11 +64,9 @@
                     <label for="phone">Phone Number <span style="color: #dc3545;"> *</span></label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
->>>>>>> f3fced2980b2b1d78f25f81532fcf32f80192a70
             </div>
         </div>
 
-<<<<<<< HEAD
         <div class="form-button"> 
             <button type="submit">Sign Up</button>
         </div>
@@ -105,7 +75,6 @@
                     <p>Already have an account?</p> 
                     <a href="../pages/login.php">Login</a>
                 </div>
-=======
             <div class="form-row">
                 <div class="form-column">
                     <label for="password">Password <span style="color: #dc3545;"> *</span></label>
@@ -131,7 +100,6 @@
             <div class="login-text">
                 <p>Already have an account?</p> 
                 <a href="../pages/login.php">Login</a>
->>>>>>> f3fced2980b2b1d78f25f81532fcf32f80192a70
             </div>
         </form>
 
