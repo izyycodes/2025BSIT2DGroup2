@@ -20,17 +20,30 @@
   <?php require "../views/dashboard_navbar.php" ?>
   <?php require "../views/sidebar.php" ?>
 
+  <?php
+  $firstName = $_GET['firstName'] ?? "Juan";
+  $lastName  = $_GET['lastName'] ?? "Dela Cruz";
+  $email     = $_GET['signup-email'] ?? "juan@email.com";
+  $phone     = $_GET['phone'] ?? "09123456789";
+  $role      = $_GET['role'] ?? "Resident";
+  ?>
+
+
   <div class="main-content">
     <section class="content">
       <!-- Profile Header -->
       <div class="profile-header">
-        <div class="avatar">JD</div>
-        <div class="profile-info">
-          <h3>Juan Dela Cruz <span class="badge">Resident</span></h3>
-          <p><b>7</b> Help Requests | <b>0</b> Responses Given | <b>2</b> Years Member</p>
-          <span class="status online"><i class="ri-checkbox-blank-circle-fill"></i> Online & Available</span>
-        </div>
-      </div>
+  <div class="avatar">
+    <?php echo strtoupper(substr($firstName,0,1) . substr($lastName,0,1)); ?>
+  </div>
+  <div class="profile-info">
+    <h3><?php echo $firstName . " " . $lastName; ?> 
+      <span class="badge"><?php echo ucfirst($role); ?></span>
+    </h3>
+    <p><b>0</b> Help Requests | <b>0</b> Responses Given | <b>New</b> Member</p>
+    <span class="status online"><i class="ri-checkbox-blank-circle-fill"></i> Online & Available</span>
+  </div>
+</div>
 
       <!-- Profile Sections -->
       <div class="grid-container">
@@ -39,7 +52,7 @@
           <h4><i class="ri-user-3-fill"></i> Personal Information</h4>
           <form>
             <label>Full Name *</label>
-            <input type="text" placeholder="Enter full name">
+            <input type="text" value="<?php echo $firstName . ' ' . $lastName; ?>">
 
             <div class="row">
               <div>
@@ -57,10 +70,10 @@
             </div>
 
             <label>Phone Number *</label>
-            <input type="text" placeholder="Enter phone number">
+            <input type="text" value="<?php echo $phone; ?>">
 
             <label>Email Address *</label>
-            <input type="email" placeholder="Enter email address">
+            <input type="email" value="<?php echo $email; ?>">
 
             <label>Home Address *</label>
             <textarea rows="2" placeholder="Enter home address"></textarea>

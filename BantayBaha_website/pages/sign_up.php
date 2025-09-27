@@ -26,60 +26,59 @@
 
     <div class="signup-container">
 
-        <form id="signup-form"">
+    <form id="signup-form" method="POST" action="signup_process.php">
+        <h2>Sign Up</h2>
 
-            <h2>Sign Up</h2>
+        <div class="form-row">
+            <div class="form-column">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-column">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+        </div>
 
-            <div class="form-row">
-                <div class="form-column">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required>
-                </div>
-                <div class="form-column">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required>
+        <div class="form-row">
+            <div class="form-column">
+                <label for="email">Email Address</label>
+                <input type="email" id="signup-email" name="signup-email" required>
+            </div>
+            <div class="form-column">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-column">
+                <label for="password">Password</label>
+                <div class="password-box">
+                    <input type="password" id="signup-password" name="signup-password" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                 </div>
             </div>
-
-            <div class="form-row">
-                <div class="form-column">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="signup-email" name="signup-email" required>
-                </div>
-                <div class="form-column">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
+            <div class="form-column">
+                <label for="role">Select Role</label>
+                <select name="role" id="role">
+                    <option value="resident">Resident</option>
+                    <option value="volunteer">Volunteer</option>
+                    <option value="barangayOfficial">Barangay Official</option>
+                </select>
             </div>
+        </div>
 
-            <div class="form-row">
-                <div class="form-column">
-                    <label for="password">Password</label>
-                    <div class="password-box">
-                        <input type="password" id="signup-password" name="signup-password" required>
-                        <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
-                    </div>
+        <div class="form-button"> 
+            <button type="submit">Sign Up</button>
+        </div>
+
+                <div class="login-text">
+                    <p>Already have an account?</p> 
+                    <a href="../pages/login.php">Login</a>
                 </div>
-                <div class="form-column">
-                    <label for="role">Select Role</label>
-                    <select name="role" id="role">
-                        <option value="resident">Resident</option>
-                        <option value="volunteer">Volunteer</option>
-                        <option value="barangayOfficial">Barangay Official</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-button"> 
-                <button type="submit">Sign Up</button>
-            </div>
-
-            <div class="login-text">
-                <p>Already have an account?</p> 
-                <a href="../pages/login.php">Login</a>
             </div>
         </form>
-    </div>
 
     <?php require "../views/footer.php" ?>
 
