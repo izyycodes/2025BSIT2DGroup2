@@ -96,28 +96,50 @@
       <!-- Medical Information + Notifications -->
       <div class="grid-container">
         <!-- Medical Info -->
-        <div class="card">
-          <h4><i class="ri-first-aid-kit-fill"></i> Medical Information</h4>
-          <div class="alert-box">
-            ⚠️ Important medical information for emergency responders
-          </div>
-          <form>
-            <label>Blood Type</label>
-            <select>
-              <option>Select blood type</option>
-              <option>A+</option><option>A-</option>
-              <option>B+</option><option>B-</option>
-              <option>AB+</option><option>AB-</option>
-              <option>O+</option><option>O-</option>
-            </select>
+      <div class="card">
+        <h4><i class="ri-first-aid-kit-fill"></i> Medical Information</h4>
+      <div class="alert-box">
+        ⚠️ Important medical information for emergency responders
+      </div>
 
-            <label>Medical Conditions</label>
-            <textarea rows="2" placeholder="List any medical conditions..."></textarea>
+     <?php
+        // Default values (before submit)
+        $bloodType  = $_POST['bloodType'] ?? ($_GET['bloodType'] ?? "Select blood type");
+        $conditions = $_POST['conditions'] ?? ($_GET['conditions'] ?? "");
+        $medications = $_POST['medications'] ?? ($_GET['medications'] ?? "");
 
-            <label>Current Medications</label>
-            <textarea rows="2" placeholder="List medications and dosages..."></textarea>
-          </form>
-        </div>
+        // Show confirmation if saved
+      if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['save-medical'])) {
+          echo "<div style='background:#d4edda; color:#155724; padding:10px; margin-bottom:10px; border-radius:5px;'>
+              ✅ Medical information saved successfully!
+                </div>";
+        }
+      ?>
+
+      <form method="POST" action="">
+        <label>Blood Type</label>
+        <select name="bloodType">
+          <option <?php echo ($bloodType=="Select blood type") ? "selected" : ""; ?>>Select blood type</option>
+          <option value="A+" <?php if($bloodType=="A+") echo "selected"; ?>>A+</option>
+          <option value="A-" <?php if($bloodType=="A-") echo "selected"; ?>>A-</option>
+          <option value="B+" <?php if($bloodType=="B+") echo "selected"; ?>>B+</option>
+          <option value="B-" <?php if($bloodType=="B-") echo "selected"; ?>>B-</option>
+          <option value="AB+" <?php if($bloodType=="AB+") echo "selected"; ?>>AB+</option>
+          <option value="AB-" <?php if($bloodType=="AB-") echo "selected"; ?>>AB-</option>
+          <option value="O+" <?php if($bloodType=="O+") echo "selected"; ?>>O+</option>
+          <option value="O-" <?php if($bloodType=="O-") echo "selected"; ?>>O-</option>
+        </select>
+
+        <label>Medical Conditions</label>
+        <textarea name="conditions" rows="2" placeholder="List any medical conditions..."><?php echo htmlspecialchars($conditions); ?></textarea>
+
+        <label>Current Medications</label>
+        <textarea name="medications" rows="2" placeholder="List medications and dosages..."><?php echo htmlspecialchars($medications); ?></textarea>
+
+        <br>
+        <button type="submit" name="save-medical">💾 Save Medical Info</button>
+      </form>
+    </div>
 
         <!-- Notifications -->
         <div class="card">
