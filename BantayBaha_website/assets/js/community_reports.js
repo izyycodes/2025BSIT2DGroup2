@@ -48,11 +48,11 @@ locationFilter.addEventListener('change', applyFilters);
 searchInput.addEventListener('input', applyFilters);
 
 // Submit new report alert
-const form = document.getElementById("new-report-form");
-
-form.addEventListener("submit", function(e) {
+document.addEventListener('DOMContentLoaded', () => {
+  const report = document.getElementById("new-report-form");
+  report.addEventListener("submit", (e) => {
     e.preventDefault();
-
     alert("Report submitted successfully!");
-    form.reset();
+    report.reset();
+  });
 });

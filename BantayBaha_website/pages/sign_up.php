@@ -1,3 +1,30 @@
+<?php
+session_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['firstName'] = $_POST['firstName'];
+    $_SESSION['lastName']  = $_POST['lastName'];
+    $_SESSION['signup-email'] = $_POST['signup-email'];
+    $_SESSION['phone']     = $_POST['phone'];
+    $_SESSION['role']      = $_POST['role'];
+    // … etc …
+    // PHP does NOT redirect here, just shows a blank page or minimal HTML
+    ?>
+    <script>
+        // read from localStorage and redirect accordingly
+        const redirect = localStorage.getItem('redirectAfterLogin');
+        localStorage.setItem('isLoggedIn', 'true'); // mark logged in
+        if (redirect) {
+            localStorage.removeItem('redirectAfterLogin');
+            window.location.href = redirect;
+        } else {
+            window.location.href = '../pages/dashboard.php';
+        }
+    </script>
+    <?php
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +33,8 @@
     <title>Sign Up</title>
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
+    <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/login.css">
@@ -25,89 +53,63 @@
     </button>
 
     <div class="signup-container">
+        <form method="POST" action="sign_up.php" id="signup-form">
+            <h2>Sign Up</h2>
 
-    <form id="signup-form" method="POST" action="signup_process.php">
-        <h2>Sign Up</h2>
-
-        <div class="form-row">
-            <div class="form-column">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
-            <div class="form-column">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" required>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-column">
-                <label for="email">Email Address</label>
-                <input type="email" id="signup-email" name="signup-email" required>
-            </div>
-            <div class="form-column">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-column">
-                <label for="password">Password</label>
-                <div class="password-box">
-                    <input type="password" id="signup-password" name="signup-password" required>
-                    <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-column">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
                 </div>
             </div>
-            <div class="form-column">
-                <label for="role">Select Role</label>
-                <select name="role" id="role">
-                    <option value="resident">Resident</option>
-                    <option value="volunteer">Volunteer</option>
-                    <option value="barangayOfficial">Barangay Official</option>
-                </select>
-            </div>
-        </div>
 
-        <div class="form-button"> 
-            <button type="submit">Sign Up</button>
-        </div>
-
-                <div class="login-text">
-                    <p>Already have an account?</p> 
-                    <a href="../pages/login.php">Login</a>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" name="signup-email" required>
                 </div>
+                <div class="form-column">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="signup-password">Password</label>
+                    <div class="password-box">
+                        <input type="password" id="signup-password" name="signup-password" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+                    </div>
+                </div>
+                <div class="form-column">
+                    <label for="role">Select Role</label>
+                    <select name="role" id="role" required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="Resident">Resident</option>
+                        <option value="Volunteer">Volunteer</option>
+                        <option value="Barangay Official">Barangay Official</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-button"> 
+                <button type="submit">Sign Up</button>
+            </div>
+
+            <div class="login-text">
+                <p>Already have an account?</p> 
+                <a href="../pages/login.php">Login</a>
             </div>
         </form>
+    </div>
 
     <?php require "../views/footer.php" ?>
 
-    <script>
-        // Toggle password 
-        function togglePassword(icon) {
-            const passwordField = icon.previousElementSibling;
-
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                icon.classList.replace("fa-eye", "fa-eye-slash");
-            } else {
-                passwordField.type = "password";
-                icon.classList.replace("fa-eye-slash", "fa-eye");
-            }
-        }
-        
-        // Sign up verification
-        document.getElementById("signup-form").addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            const email = document.getElementById("signup-email").value;
-            const password = document.getElementById("signup-password").value;
-
-            // Set login state and go to dashboard.
-            localStorage.setItem("isLoggedIn", "true");
-
-            window.location.href = "../pages/dashboard.php";
-        });
-    </script>
+    <script src="../assets/js/sign_up.js"></script>
 </body>
 </html>
