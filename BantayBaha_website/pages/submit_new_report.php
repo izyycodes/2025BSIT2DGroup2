@@ -1,3 +1,15 @@
+<?php 
+    // var_dump($_POST);
+
+    $firstName = $_POST['firstName'] ?? '';
+    $lastName = $_POST['lastName'] ?? '';
+    $location = $_POST['location'] ?? '';
+    $reportDate = $_POST['reportDate'] ?? '';
+    $reportTime = $_POST['reportTime'] ?? '';
+    $waterLevelDesc = $_POST['waterLevelDesc'] ?? '';
+    $remarks = $_POST['remarks'] ?? '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +47,7 @@
                 <p>Provide details about river conditions and crossing point status for the community.</p>
             </div>
 
-            <form id="new-report-form">
+            <form id="new-report-form" method="POST" action="submit_new_report.php">
 
                 <div class="form-row">
                     <div class="form-column">
@@ -52,10 +64,10 @@
                     <div class="form-column">
                         <label for="location">Location <span style="color: #dc3545;"> *</span></label>
                         <select name="location" id="location" required>
-                            <option value="">Select crossing point</option>
-                            <option value="cpoint1">Crossing Point 1</option>
-                            <option value="cpoint2">Crossing Point 2</option>
-                            <option value="cpoint3">Crossing Point 3</option>
+                            <option value="" disabled selected>Select crossing point</option>
+                            <option value="Crossing Point 1">Crossing Point 1</option>
+                            <option value="Crossing Point 2">Crossing Point 2</option>
+                            <option value="Crossing Point 3">Crossing Point 3</option>
                         </select>
                     </div>
                 </div>
@@ -75,11 +87,11 @@
                     <div class="form-column">
                         <label for="waterLevelDesc">Water Level Description <span style="color: #dc3545;"> *</span></label>
                         <select name="waterLevelDesc" id="waterLevelDesc" required>
-                            <option value="">Select water level</option>
-                            <option value="low">Low (Safe for crossing)</option>
-                            <option value="moderate">Moderate (Exercise caution)</option>
-                            <option value="high">High (Unsafe for crossing)</option>
-                            <option value="flooded">Flooded</option>
+                            <option value="" disabled selected>Select water level</option>
+                            <option value="Low (Safe for crossing)">Low (Safe for crossing)</option>
+                            <option value="Moderate (Exercise caution)">Moderate (Exercise caution)</option>
+                            <option value="High (Unsafe for crossing)">High (Unsafe for crossing)</option>
+                            <option value="Flooded">Flooded</option>
                         </select>
                     </div>
                 </div>
@@ -110,9 +122,54 @@
             </button>
         </div>
 
+        <div id="reportModal" class="report-container">
+           <div class="report-modal">
+                <h2>New Report Details</h2>
+
+                <div class="info-row">
+                    <span class="info-label"> Full Name: </span>
+                    <span class="info-value"><?php echo $firstName . " " . $lastName; ?></span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label"> Location: </span>
+                    <span class="info-value"><?php echo $location; ?></span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label"> Report Date: </span>
+                    <span class="info-value"><?php echo $reportDate; ?></span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label"> Report Time: </span>
+                    <span class="info-value"><?php echo $reportTime; ?></span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label"> Water Level Description: </span>
+                    <span class="info-value"><?php echo $waterLevelDesc; ?></span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label"> Additional Remarks: </span>
+                    <span class="info-value"><?php echo $remarks; ?></span>
+                </div>
+
+                <div class="action-buttons" style="justify-content: space-between; margin: 0;">
+                    <a class="btn btn-cancel" id="cancelBtn">
+                        Cancel
+                    </a>
+                    <button type="submit" class="btn btn-submit" id="confirmBtn">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <?php require "../views/footer.php" ?>
     </div>
 
-    <script src="../assets/js/community_reports.js"></script>
+    <!-- <script src="../assets/js/community_reports.js"></script> -->
 </body>
 </html>

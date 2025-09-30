@@ -8,9 +8,9 @@
   $email       = $_SESSION['signup-email']?? '';
   $phoneNumber = $_SESSION['phone']       ?? '';
   $role        = $_SESSION['role']        ?? '';
-  $age = $_POST['age'] ?? '';
-  $gender = $_POST['gender'] ?? '';
-  $address = $_POST['address'] ?? '';
+  // $age = $_POST['age'] ?? '';
+  // $gender = $_POST['gender'] ?? '';
+  // $address = $_POST['address'] ?? '';
 ?>
 
 <!DOCTYPE html>

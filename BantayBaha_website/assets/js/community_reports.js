@@ -47,12 +47,4 @@ statusFilter.addEventListener('change', applyFilters);
 locationFilter.addEventListener('change', applyFilters);
 searchInput.addEventListener('input', applyFilters);
 
-// Submit new report alert
-document.addEventListener('DOMContentLoaded', () => {
-  const report = document.getElementById("new-report-form");
-  report.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("Report submitted successfully!");
-    report.reset();
-  });
-});
+
