@@ -18,6 +18,12 @@
 
     <?php require "../views/index_navbar.php" ?>
 
+    <?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?>
+    <script>
+        alert("✅ You have successfully logged out.");
+    </script>
+    <?php endif; ?>
+
     <section class="hero-container">
     
         <div class="hero-text">

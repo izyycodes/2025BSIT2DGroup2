@@ -59,7 +59,7 @@
                     <span class="tooltip">Profile</span>
                 </li>
                 <li>
-                    <a href="../pages/index.php" id="logout-btn" class="<?php echo ($current_page == 'index.php') ? 'active' : ''; ?>">
+                    <a href="../pages/logout.php" id="logout-btn">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <span class="links-name">Logout</span>
                     </a>

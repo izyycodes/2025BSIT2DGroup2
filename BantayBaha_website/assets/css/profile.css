@@ -143,10 +143,16 @@ input:focus, select:focus, textarea:focus {
 /* --- Emergency Contacts --- */
 .contact-card {
   background: #f9f9f9;
-  padding: 12px;
+  padding: 10px;
   border-radius: 8px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
+}
+
+.edit-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .btn-container {
@@ -160,7 +166,19 @@ input:focus, select:focus, textarea:focus {
   color: #fff;
   border: none;
   padding: 8px 18px;
-  border-radius: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.cancel-btn {
+  background: #dc3545; 
+  color: white; 
+  border: none; 
+  padding: 8px 18px; 
+  border-radius: 5px; 
   cursor: pointer;
   font-weight: 500;
   font-size: 14px;
@@ -169,6 +187,15 @@ input:focus, select:focus, textarea:focus {
 
 .add-btn:hover, .save-btn:hover {
   background: #0d9165;
+}
+
+.cancel-btn:hover {
+  background: #c42b3b;
+}
+
+.contact-card a:hover {
+  color: #2c3e50;
+  transition: all 0.4s ease;
 }
 
 /* --- Alert Box --- */

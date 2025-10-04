@@ -34,9 +34,7 @@ document.addEventListener("click", (event) => {
 });
 
 document.getElementById("logout-btn").addEventListener("click", function(e) {
-    e.preventDefault();
     localStorage.removeItem("isLoggedIn"); // clear login
-    window.location.href = "../pages/index.php"; // back to login
 });
 
 function updateSidebarActive() {
