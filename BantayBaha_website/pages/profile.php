@@ -46,6 +46,9 @@ $bloodType  = $_SESSION['bloodType'] ?? 'Select blood type';
 $conditions = $_SESSION['conditions'] ?? '';
 $medications = $_SESSION['medications'] ?? '';
 
+// Get the first letter of each name and make them uppercase
+$initials = strtoupper($firstName[0] . $lastName[0]);
+
 // Initialize the contacts array if it doesn’t exist
 if (!isset($_SESSION['contacts'])) {
     $_SESSION['contacts'] = [
@@ -130,7 +133,7 @@ if (isset($_GET['delete'])) {
     <section class="content">
       <!-- Profile Header -->
       <div class="profile-header">
-        <div class="avatar">JD</div>
+        <div class="avatar"><?php echo htmlspecialchars($initials); ?></div>
         <div class="profile-info">
           <h3><?php echo htmlspecialchars($firstName). " " . htmlspecialchars($lastName); ?> <span class="badge"><?php echo htmlspecialchars($role); ?></span></h3>
           <div class="profile-stats">
