@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
     $details = htmlspecialchars($_POST['details'] ?? '');
 
     // Redirect with success message
-    header('Location: help_requests.php?help_request=success');
+    header('Location: help_requests.php?help-request=success');
     exit();
 }
 
