@@ -1,3 +1,7 @@
+<?php
+$filter = $_GET['filter'] ?? 'all'; // default filter
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,11 +112,12 @@
             </div>
 
             <div class="filter-tabs">
-                <button data-filter="all" class="filter-btn active">All Alerts</button>
-                <button data-filter="critical" class="filter-btn">Critical</button>
-                <button data-filter="high" class="filter-btn">High</button>
-                <button data-filter="moderate" class="filter-btn">Moderate</button>
+                <button data-filter="all" class="filter-btn <?= $filter === 'all' ? 'active' : '' ?>">All Alerts</button>
+                <button data-filter="critical" class="filter-btn <?= $filter === 'critical' ? 'active' : '' ?>">Critical</button>
+                <button data-filter="high" class="filter-btn <?= $filter === 'high' ? 'active' : '' ?>">High</button>
+                <button data-filter="moderate" class="filter-btn <?= $filter === 'moderate' ? 'active' : '' ?>">Moderate</button>
             </div>
+
 
             <div class="alert-item critical">
                 <div>
@@ -208,6 +213,53 @@
         <?php require "../views/footer.php" ?>
     </div>
 
-    <script src="../assets/js/flood_alerts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const alerts = document.querySelectorAll('.alert-item');
+
+            // Use PHP filter or default to 'all'
+            const initialFilter = '<?= isset($filter) ? $filter : "all" ?>';
+
+            // Show/hide alerts based on filter
+            function filterAlerts(filter) {
+                alerts.forEach(alert => {
+                    alert.style.display = (filter === 'all' || alert.classList.contains(filter)) ? 'block' : 'none';
+                });
+            }
+
+            // Apply the initial filter immediately
+            filterAlerts(initialFilter);
+
+            // Update buttons active class on initial load
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-filter') === initialFilter) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Button click event
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+
+                    // Remove active from all, add to clicked
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Filter alerts
+                    filterAlerts(filter);
+
+                    // Update URL without reload
+                    const url = new URL(window.location);
+                    url.searchParams.set('filter', filter);
+                    window.history.replaceState({}, '', url);
+                });
+            });
+        });
+        </script>
+
 </body>
 </html>
