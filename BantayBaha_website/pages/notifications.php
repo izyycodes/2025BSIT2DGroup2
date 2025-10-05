@@ -44,7 +44,7 @@
                     <li data-filter="unread">Unread <span>3</span></li>
                     <li data-filter="critical">Critical <span>1</span></li>
                     <li data-filter="warning">Warnings <span>2</span></li>
-                    <li data-filter="info">Information <span>1</span></li>
+                    <li data-filter="information">Information <span>1</span></li>
                     <li data-filter="success">Success <span>1</span></li>
                 </ul>
             </div>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
 
-                <div class="notification-card info unread">
+                <div class="notification-card information unread">
                     <div class="card-content">
                         <div class="card-icon" style="color: #3498db;"><i class="ri-community-line"></i></div>
                         <div>

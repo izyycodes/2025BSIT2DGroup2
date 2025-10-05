@@ -211,7 +211,7 @@ body {
 /* Colors by type */
 .notification-card.critical { border-left: 6px solid #e74c3c; }
 .notification-card.warning { border-left: 6px solid #f39c12; }
-.notification-card.info { border-left: 6px solid #3498db; }
+.notification-card.information { border-left: 6px solid #3498db; }
 .notification-card.success { border-left: 6px solid #2ecc71; }
 
 .urgent {
