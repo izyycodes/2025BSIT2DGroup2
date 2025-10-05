@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+// Check if form was confirmed
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
+
+    // Collect form data
+    $emergencyType = htmlspecialchars($_POST['emergencyType'] ?? '');
+    $urgencyLevel = htmlspecialchars($_POST['urgencyLevel'] ?? '');
+    $numPeople = htmlspecialchars($_POST['numPeople'] ?? '');
+    $details = htmlspecialchars($_POST['details'] ?? '');
+
+    // Redirect with success message
+    header('Location: help_requests.php?help_request=success');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,27 +81,27 @@
                 <i class="ri-close-line" id="closeBtn"></i>
             </div>
             
-            <form class="help-container" id="helpForm">
+            <form class="help-container" id="helpForm" method="POST" action="">
                 <div class="form-row">
                     <div class="form-column">
                         <label for="emergencyType">Type of Emergency <span style="color: #dc3545;"> *</span></label>
                         <select name="emergencyType" id="emergencyType" required>
-                            <option value="">Select type of emergency</option>
-                            <option value="waterRising">Flood/Water Rising</option>
-                            <option value="stranded">Trapped/Stranded</option>
-                            <option value="medEmergency">Medical Emergency</option>
-                            <option value="evacuation">Need Evacuation</option>
-                            <option value="others">Other Emergency</option>
+                            <option value="" disabled selected>Select type of emergency</option>
+                            <option value="Flood/Water Rising">Flood/Water Rising</option>
+                            <option value="Trapped/Stranded">Trapped/Stranded</option>
+                            <option value="Medical Emergency">Medical Emergency</option>
+                            <option value="Need Evacuation">Need Evacuation</option>
+                            <option value="Other Emergency">Other Emergency</option>
                         </select>
                     </div>
                     <div class="form-column">
                         <label for="urgencyLevel">Urgency Level <span style="color: #dc3545;"> *</span></label>
                         <select name="urgencyLevel" id="urgencyLevel" required>
-                            <option value="">Select urgency level</option>
-                            <option value="low">Low Priority</option>
-                            <option value="medium">Medium Priority</option>
-                            <option value="high">High Priority</option>
-                            <option value="critical">Critical - Life Threatening</option>
+                            <option value="" disabled selected>Select urgency level</option>
+                            <option value="Low Priority">Low Priority</option>
+                            <option value="Medium Priority">Medium Priority</option>
+                            <option value="High Priority">High Priority</option>
+                            <option value="Critical - Life Threatening">Critical - Life Threatening</option>
                         </select>
                     </div>
                 </div>
@@ -92,13 +110,13 @@
                     <div class="form-column">
                         <label for="numPeople">Number of People <span style="color: #dc3545;"> *</span></label>
                         <select name="numPeople" id="numPeople" required>
-                            <option value="">Select number of people</option>
-                            <option value="one">1 Person</option>
-                            <option value="two">2 People</option>
-                            <option value="three">3 People</option>
-                            <option value="four">4 People</option>
-                            <option value="fiveAbove">5+ People</option>
-                            <option value="critical">Entire Family</option>
+                            <option value="" disabled selected>Select number of people</option>
+                            <option value="1 Person">1 Person</option>
+                            <option value="2 People">2 People</option>
+                            <option value="3 People">3 People</option>
+                            <option value="4 People">4 People</option>
+                            <option value="5+ People">5+ People</option>
+                            <option value="Entire Family">Entire Family</option>
                         </select>
                     </div>
                 </div>
@@ -106,7 +124,7 @@
                 <div class="form-row">
                     <div class="form-column">
                         <label for="details">Additional Details</label>
-                        <textarea name="remarks" id="remarks" placeholder="Provide more information about your emergency situation..." rows="4" cols="30"></textarea>
+                        <textarea name="details" id="details" placeholder="Provide more information about your emergency situation..." rows="4" cols="30"></textarea>
                     </div>
                 </div>
 
@@ -247,6 +265,18 @@
                             <p style="font-size: 11px; color: #666;">4.1km away</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="confirmModal" class="modal">
+            <div class="modal-content">
+                <h3>Confirm Your Help Request</h3>
+                <div id="modalDetails"></div>
+                <div class="modal-buttons">
+                    <button class="modal-btn-cancel" id="cancelModal">Cancel</button>
+                    <button class="modal-btn-confirm" id="confirmSubmit">Confirm</button>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ const confirmBtn = document.getElementById('confirmSubmit');
 const cancelBtn = document.getElementById('cancelModal');
 const submitBtn = document.querySelector('.btn-submit');
 
-// 🖼️ For image preview
+// For image preview
 const uploadPhoto = document.getElementById('uploadPhoto');
 let uploadedImageURL = ""; // store preview URL temporarily
 

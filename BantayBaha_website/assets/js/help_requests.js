@@ -28,11 +28,61 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-const form = document.getElementById("helpForm");
+// Form javascript
+const form = document.getElementById('helpForm');
+const modal = document.getElementById('confirmModal');
+const modalDetails = document.getElementById('modalDetails');
+const confirmBtn = document.getElementById('confirmSubmit');
+const cancelBtn = document.getElementById('cancelModal');
+const submitBtn = document.querySelector('.submit-emergency-button');
 
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
+// When "Submit Report" button is clicked
+submitBtn.addEventListener('click', function (e) {
+    e.preventDefault(); // stop default submit first
 
-    alert("Help Request sent successfully!");
-    form.reset();
+    // Check form validity before showing modal
+    if (!form.checkValidity()) {
+        form.reportValidity(); // triggers browser validation messages
+        return; // stop here if form not valid
+    }
+
+    // Collect form data if valid
+    const data = new FormData(form);
+    const entries = Object.fromEntries(data.entries());
+
+    // Show details in modal
+    modalDetails.innerHTML = `
+        <p style="color:#555;"><strong style="color:#222; display:inline-block; width:180px;">Type of Emergency:</strong> ${entries.emergencyType}</p>
+        <p style="color:#555;"><strong style="color:#222; display:inline-block; width:180px;">Urgency Level:</strong> ${entries.urgencyLevel}</p>
+        <p style="color:#555;"><strong style="color:#222; display:inline-block; width:180px;">Number of People:</strong> ${entries.numPeople}</p>
+        <p style="color:#555;"><strong style="color:#222; display:inline-block; width:180px;">Additional Details:</strong> ${entries.details || 'N/A'}</p>
+    `;
+
+    // Show modal (only after passing validation)
+    modal.style.display = 'flex';
+});
+
+// Cancel button hides modal
+cancelBtn.addEventListener('click', function () {
+    modal.style.display = 'none';
+});
+
+// Confirm button actually submits the form
+confirmBtn.addEventListener('click', function () {
+    // Add hidden input so PHP knows it was confirmed
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'confirmSubmit';
+    input.value = '1';
+    form.appendChild(input);
+
+    modal.style.display = 'none';
+    form.submit(); // Now it will POST safely
+});
+
+// Close modal if clicking outside it
+window.addEventListener('click', function (e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
 });
