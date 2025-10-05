@@ -1,14 +1,46 @@
-<?php 
-    // var_dump($_POST);
+<?php
+session_start();
 
-    $firstName = $_POST['firstName'] ?? '';
-    $lastName = $_POST['lastName'] ?? '';
-    $location = $_POST['location'] ?? '';
-    $reportDate = $_POST['reportDate'] ?? '';
-    $reportTime = $_POST['reportTime'] ?? '';
-    $waterLevelDesc = $_POST['waterLevelDesc'] ?? '';
-    $remarks = $_POST['remarks'] ?? '';
+// Check if form was confirmed
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
+
+    // Collect form data
+    $firstName = htmlspecialchars($_POST['firstName'] ?? '');
+    $lastName = htmlspecialchars($_POST['lastName'] ?? '');
+    $location = htmlspecialchars($_POST['location'] ?? '');
+    $reportDate = htmlspecialchars($_POST['reportDate'] ?? '');
+    $reportTime = htmlspecialchars($_POST['reportTime'] ?? '');
+    $waterLevelDesc = htmlspecialchars($_POST['waterLevelDesc'] ?? '');
+    $remarks = htmlspecialchars($_POST['remarks'] ?? '');
+
+    // Handle uploaded photo
+    $uploadDir = '../uploads/'; // make sure this folder exists & is writable
+    $photoPath = '';
+
+    if (isset($_FILES['uploadPhoto']) && $_FILES['uploadPhoto']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['uploadPhoto']['tmp_name'];
+        $fileName = basename($_FILES['uploadPhoto']['name']);
+        $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        $allowedExts = ['jpg', 'jpeg', 'png', 'heic', 'raw'];
+
+        if (in_array($fileExt, $allowedExts)) {
+            $newFileName = uniqid('photo_', true) . '.' . $fileExt;
+            $destination = $uploadDir . $newFileName;
+
+            if (move_uploaded_file($fileTmpPath, $destination)) {
+                $photoPath = $destination;
+            } else {
+                $photoPath = '';
+            }
+        }
+    }
+
+    // Redirect with success message
+    header('Location: community_reports.php?report=success');
+    exit();
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +79,7 @@
                 <p>Provide details about river conditions and crossing point status for the community.</p>
             </div>
 
-            <form id="new-report-form" method="POST" action="submit_new_report.php">
+            <form id="new-report-form" method="POST" action="" enctype="multipart/form-data">
 
                 <div class="form-row">
                     <div class="form-column">
@@ -75,7 +107,7 @@
                 <div class="form-row">
                     <div class="form-column">
                         <label for="reportDate">Report Date <span style="color: #dc3545;"> *</span></label>
-                        <input type="date" id="reportDate" name="reportDate" required>
+                        <input type="date" id="reportDate" name="reportDate" max="" required>
                     </div>
                     <div class="form-column">
                         <label for="reportTime">Report Time <span style="color: #dc3545;"> *</span></label>
@@ -106,7 +138,7 @@
                 <div class="form-row">
                     <div class="form-column">
                         <label for="uploadPhoto">Upload Photo (optional)</label>
-                        <input type="file" name="uploadPhoto" id="uploadPhoto">
+                        <input type="file" name="uploadPhoto" id="uploadPhoto" accept=".jpg,.jpeg,.png,.heic,.raw">
                         <p style="color: #666; font-size: 14px; margin-top: 7px;">Upload a clear photo of the river or crossing point (max 5MB).</p>
                     </div>
                 </div>
@@ -122,47 +154,14 @@
             </button>
         </div>
 
-        <div id="reportModal" class="report-container">
-           <div class="report-modal">
-                <h2>New Report Details</h2>
-
-                <div class="info-row">
-                    <span class="info-label"> Full Name: </span>
-                    <span class="info-value"><?php echo $firstName . " " . $lastName; ?></span>
-                </div>
-
-                <div class="info-row">
-                    <span class="info-label"> Location: </span>
-                    <span class="info-value"><?php echo $location; ?></span>
-                </div>
-
-                <div class="info-row">
-                    <span class="info-label"> Report Date: </span>
-                    <span class="info-value"><?php echo $reportDate; ?></span>
-                </div>
-
-                <div class="info-row">
-                    <span class="info-label"> Report Time: </span>
-                    <span class="info-value"><?php echo $reportTime; ?></span>
-                </div>
-
-                <div class="info-row">
-                    <span class="info-label"> Water Level Description: </span>
-                    <span class="info-value"><?php echo $waterLevelDesc; ?></span>
-                </div>
-
-                <div class="info-row">
-                    <span class="info-label"> Additional Remarks: </span>
-                    <span class="info-value"><?php echo $remarks; ?></span>
-                </div>
-
-                <div class="action-buttons" style="justify-content: space-between; margin: 0;">
-                    <a class="btn btn-cancel" id="cancelBtn">
-                        Cancel
-                    </a>
-                    <button type="submit" class="btn btn-submit" id="confirmBtn">
-                        Confirm
-                    </button>
+        <!-- Modal -->
+        <div id="confirmModal" class="modal">
+            <div class="modal-content">
+                <h3>Confirm Your Report</h3>
+                <div id="modalDetails"></div>
+                <div class="modal-buttons">
+                    <button class="modal-btn-cancel" id="cancelModal">Cancel</button>
+                    <button class="modal-btn-confirm" id="confirmSubmit">Confirm</button>
                 </div>
             </div>
         </div>
@@ -170,6 +169,6 @@
         <?php require "../views/footer.php" ?>
     </div>
 
-    <!-- <script src="../assets/js/community_reports.js"></script> -->
+    <script src="../assets/js/new_report.js"></script>
 </body>
 </html>
