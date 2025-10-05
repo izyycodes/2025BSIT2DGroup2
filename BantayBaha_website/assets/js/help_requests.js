@@ -86,3 +86,84 @@ window.addEventListener('click', function (e) {
         modal.style.display = 'none';
     }
 });
+
+// // Messaging system
+// const msgForm = document.getElementById('msgForm');
+// const container = document.getElementById('messageContainer');
+
+// // --- User message submit (AJAX) ---
+// msgForm.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+
+//     const input = document.getElementById('user_message');
+//     const message = input.value.trim();
+//     if (message === '') return;
+
+//     const formData = new FormData();
+//     formData.append('user_message', message);
+
+//     const response = await fetch('', { method: 'POST', body: formData });
+//     if (response.ok) {
+//         const newMsg = await response.json();
+
+//         const div = document.createElement('div');
+//         div.className = 'status-indicator bg-green';
+//         div.innerHTML = `
+//             <div class="message">
+//                 <div class="icon" style="background-color: #22c55e;">
+//                     <i class="ri-user-3-fill"></i>
+//                 </div>
+//                 <div class="msg-info">
+//                     <div>
+//                         <p style="color: #166534; font-size: 14px; font-weight: 600;">You</p>
+//                         <p style="color: #15803d; font-size: 12px;">${newMsg.text}</p>
+//                         <p class="msg-time">${newMsg.time}</p>
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+//         container.appendChild(div);
+//         container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+//         input.value = '';
+//     }
+// });
+
+// // --- Automatic random updates every 15 seconds ---
+// const updates = [
+//     '🚑 Rescue team is 5 minutes closer to your location',
+//     '☀️ Weather conditions improving in your area',
+//     '🧍 Additional support teams mobilized',
+//     '📡 Communication established with local authorities'
+// ];
+
+// setInterval(() => {
+//     const randomUpdate = updates[Math.floor(Math.random() * updates.length)];
+
+//     const updateDiv = document.createElement('div');
+//     updateDiv.className = 'status-indicator bg-yellow';
+//     updateDiv.innerHTML = `
+//         <div class="message">
+//             <div class="icon" style="background-color: #fbbf24;">
+//                 <i class="ri-notification-2-fill"></i>
+//             </div>
+//             <div class="msg-info">
+//                 <div>
+//                     <p style="color: #92400e; font-size: 14px; font-weight: 600;">Update</p>
+//                     <p style="color: #b45309; font-size: 12px;">${randomUpdate}</p>
+//                     <p class="msg-time">Just now</p>
+//                 </div>
+//             </div>
+//         </div>
+//     `;
+
+//     container.appendChild(updateDiv);
+//     container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+
+//     // Remove after 5 seconds
+//     setTimeout(() => {
+//         updateDiv.style.transition = 'opacity 0.5s';
+//         updateDiv.style.opacity = '0';
+//         setTimeout(() => updateDiv.remove(), 500);
+//     }, 5000);
+
+// }, 15000);

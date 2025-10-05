@@ -14,6 +14,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
     header('Location: help_requests.php?help_request=success');
     exit();
 }
+
+// Initialize messages array in session
+if (!isset($_SESSION['messages'])) {
+    $_SESSION['messages'] = [];
+}
+
+// Handle new POST message
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['user-message'])) {
+    $msg = trim($_POST['user-message']);
+    if ($msg !== '') {
+        // Store message with timestamp
+        date_default_timezone_set('Asia/Manila'); // ensure local timezone
+        $_SESSION['messages'][] = [
+            'text' => htmlspecialchars($msg),
+            'time' => date('h:i A') // or use "date('g:i A')" for no leading zero
+        ];
+    }
+    // Redirect to avoid resubmission on refresh
+    header("Location: help_requests.php?message=sent");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -203,14 +224,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
                             </div>
                         </div>
                     </div>
+
+                    <!-- User submitted messages -->
+                    <?php if (!empty($_SESSION['messages'])): ?>
+                        <?php foreach ($_SESSION['messages'] as $m): ?>
+                            <div class="status-indicator bg-blue">
+                                <div class="message">
+                                    <div class="icon" style="background-color:#3b82f6;">
+                                        <i class="ri-user-fill"></i>
+                                    </div>
+                                    <div class="msg-info">
+                                        <p style="color:#1e40af;font-size: 14px;font-weight:600;">You</p>
+                                        <p style="color:#1d4ed8;font-size: 12px;"><?php echo $m['text']; ?></p>
+                                        <p class="msg-time"><?php echo $m['time']; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
 
-                <div class="type-msg">
-                    <input type="text" placeholder="Type a message to responders...">
+                <!-- Message Input Form -->
+                <form class="type-msg" method="POST" action="">
+                    <input type="text" name="user-message" placeholder="Type a message to responders..." required>
                     <button class="send-msg-btn">
                         <i class="ri-send-plane-fill"></i>
                     </button>
-                </div>
+                </form>
             </div>
 
             <!-- Nearby Responders -->
