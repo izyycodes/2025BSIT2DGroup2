@@ -1,115 +1,125 @@
 <?php
-session_start();
-// var_dump($_POST);
-// var_dump($_SESSION);
+  session_start();
+  require 'conn.php';
 
-// When personal info form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save-personal'])) {
-  $_SESSION['age']     = $_POST['age'];
-  $_SESSION['gender']  = $_POST['gender'];
-  $_SESSION['address'] = $_POST['address'];
-  $_SESSION['phone']   = $_POST['phone'];
-  $_SESSION['signup-email']   = $_POST['signup-email'];
-
-  // Handle full name input
-    if (!empty($_POST['fullName'])) {
-        $fullName = trim($_POST['fullName']);
-        $nameParts = explode(' ', $fullName, 2); // split into two parts only
-
-        $_SESSION['firstName'] = $nameParts[0]; // first word = first name
-        $_SESSION['lastName']  = $nameParts[1] ?? ''; // rest = last name (optional)
-    }
-
-    header('Location: profile.php?personalinfo=saved');
-    exit();
-}
-
-// When medical info form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save-medical'])) {
-  $_SESSION['bloodType']   = $_POST['bloodType'];
-  $_SESSION['conditions']  = $_POST['conditions'];
-  $_SESSION['medications'] = $_POST['medications'];
-
-  header('Location: profile.php?medicalinfo=saved');
-  exit();
-}
-
-// Retrieve all session data (keep after reload)
-$firstName  = $_SESSION['firstName'] ?? 'Juan';
-$lastName   = $_SESSION['lastName'] ?? 'Dela Cruz';
-$email      = $_SESSION['signup-email'] ?? 'juan@gmail.com';
-$phone      = $_SESSION['phone'] ?? '09123456789';
-$role       = $_SESSION['role'] ?? 'Resident';
-$age        = $_SESSION['age'] ?? '';
-$gender     = $_SESSION['gender'] ?? 'Select gender';
-$address    = $_SESSION['address'] ?? '';
-
-$bloodType  = $_SESSION['bloodType'] ?? 'Select blood type';
-$conditions = $_SESSION['conditions'] ?? '';
-$medications = $_SESSION['medications'] ?? '';
-
-// Get the first letter of each name and make them uppercase
-$initials = strtoupper($firstName[0] . $lastName[0]);
-
-// Initialize the contacts array if it doesn’t exist
-if (!isset($_SESSION['contacts'])) {
-    $_SESSION['contacts'] = [
-        ['name' => 'Maria Dela Cruz', 'relationship' => 'Spouse', 'contact' => '09182345678'],
-        ['name' => 'Pedro Dela Cruz', 'relationship' => 'Father', 'contact' => '09193456789']
-    ];
-}
-
-// Adds new contact
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save-contact'])) {
-    $name = trim($_POST['contact_name']);
-    $relationship = trim($_POST['relationship']);
-    $contact = trim($_POST['contact_number']);
-
-    // Save into session (append)
-    if ($name && $relationship && $contact) {
-        $_SESSION['contacts'][] = [
-            'name' => htmlspecialchars($name),
-            'relationship' => htmlspecialchars($relationship),
-            'contact' => htmlspecialchars($contact)
-        ];
-    }
-
-    header("Location: " . strtok($_SERVER["REQUEST_URI"], '?') . "?added=success");
+  // Check if user is logged in
+  if (!isset($_SESSION['user']['id'])) {
+    header("Location: login.php");
     exit;
-}
+  }
 
-// Edits existing contact
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update-contact'])) {
-    $index = $_POST['contact_index'];
-    $name = trim($_POST['contact_name']);
-    $relationship = trim($_POST['relationship']);
-    $contact = trim($_POST['contact_number']);
+  $user_id = $_SESSION['user']['id'];
 
-    if (isset($_SESSION['contacts'][$index])) {
-        $_SESSION['contacts'][$index] = [
-            'name' => htmlspecialchars($name),
-            'relationship' => htmlspecialchars($relationship),
-            'contact' => htmlspecialchars($contact)
-        ];
-    }
+  // Fetch latest user data from database
+  $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+  $stmt->bind_param("i", $user_id);
+  $stmt->execute();
+  $user = $stmt->get_result()->fetch_assoc();
 
-    header("Location: " . strtok($_SERVER["REQUEST_URI"], '?') . "?edited=success");
-    exit;
-}
+  // Assign values to variables for displaying
+  $firstName  = $user['first_name'];
+  $lastName   = $user['last_name'];
+  $email      = $user['email_address'];
+  $phone      = $user['phone_number'];
+  $role       = $user['role'];
+  $age        = $user['age'] ?? '';
+  $gender     = $user['gender'] ?? 'Select gender';
+  $address    = $user['address'] ?? '';
+  $bloodType  = $user['blood_type'] ?? 'Select blood type';
+  $conditions = $user['conditions'] ?? '';
+  $medications = $user['medications'] ?? '';
 
-// Deletes contact
-if (isset($_GET['delete'])) {
-    $index = $_GET['delete'];
+  $initials = strtoupper($firstName[0] . $lastName[0]);
 
-    // Check if contact exists before deleting
-    if (isset($_SESSION['contacts'][$index])) {
-        array_splice($_SESSION['contacts'], $index, 1);
-    }
+  /* --- Update Personal Info --- */
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save-personal'])) {
+      $fullName = trim($_POST['fullName']);
+      $nameParts = explode(' ', $fullName, 2);
+      $firstName = $nameParts[0];
+      $lastName = $nameParts[1] ?? '';
+      $age = $_POST['age'];
+      $gender = $_POST['gender'];
+      $address = $_POST['address'];
+      $phone = $_POST['phone'];
+      $email = $_POST['email'];
 
-    header("Location: " . strtok($_SERVER["REQUEST_URI"], '?') . "?deleted=success");
-    exit;
-}
+      $update = $conn->prepare("UPDATE users SET first_name=?, last_name=?, age=?, gender=?, address=?, phone_number=?, email_address=? WHERE id=?");
+      $update->bind_param("ssissssi", $firstName, $lastName, $age, $gender, $address, $phone, $email, $user_id);
+      $update->execute();
+
+      $_SESSION['user']['first_name'] = $firstName;
+      $_SESSION['user']['last_name'] = $lastName;
+      $_SESSION['user']['email_address'] = $email;
+      $_SESSION['user']['phone_number'] = $phone;
+
+      header("Location: profile.php?personalinfo=saved");
+      exit;
+  }
+
+  /* --- Update Medical Info --- */
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save-medical'])) {
+      $bloodType = $_POST['bloodType'];
+      $conditions = $_POST['conditions'];
+      $medications = $_POST['medications'];
+
+      $update = $conn->prepare("UPDATE users SET blood_type=?, conditions=?, medications=? WHERE id=?");
+      $update->bind_param("sssi", $bloodType, $conditions, $medications, $user_id);
+      $update->execute();
+
+      header("Location: profile.php?medicalinfo=saved");
+      exit;
+  }
+
+  /* --- Add Contact --- */
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save-contact'])) {
+      $name = trim($_POST['contact_name']);
+      $relationship = trim($_POST['relationship']);
+      $contact = trim($_POST['contact_number']);
+
+      if ($name && $relationship && $contact) {
+          $insert = $conn->prepare("INSERT INTO emergency_contacts (user_id, name, relationship, contact) VALUES (?, ?, ?, ?)");
+          $insert->bind_param("isss", $user_id, $name, $relationship, $contact);
+          $insert->execute();
+      }
+
+      header("Location: profile.php?added=success");
+      exit;
+  }
+
+  /* --- Update Contact --- */
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update-contact'])) {
+      $id = $_POST['contact_index'];
+      $name = $_POST['contact_name'];
+      $relationship = $_POST['relationship'];
+      $contact = $_POST['contact_number'];
+
+      $update = $conn->prepare("UPDATE emergency_contacts SET name=?, relationship=?, contact=? WHERE id=? AND user_id=?");
+      $update->bind_param("sssii", $name, $relationship, $contact, $id, $user_id);
+      $update->execute();
+
+      header("Location: profile.php?edited=success");
+      exit;
+  }
+
+  /* --- Delete Contact --- */
+  if (isset($_GET['delete'])) {
+      $id = $_GET['delete'];
+
+      $delete = $conn->prepare("DELETE FROM emergency_contacts WHERE id=? AND user_id=?");
+      $delete->bind_param("ii", $id, $user_id);
+      $delete->execute();
+
+      header("Location: profile.php?deleted=success");
+      exit;
+  }
+
+  /* --- Fetch Contacts --- */
+  $contactsQuery = $conn->prepare("SELECT * FROM emergency_contacts WHERE user_id=?");
+  $contactsQuery->bind_param("i", $user_id);
+  $contactsQuery->execute();
+  $contacts = $contactsQuery->get_result()->fetch_all(MYSQLI_ASSOC);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -197,7 +207,7 @@ if (isset($_GET['delete'])) {
             <input type="tel" pattern="^09[0-9]{9}$" name="phone" value="<?php echo htmlspecialchars($phone); ?>" required>
 
             <label for="email">Email Address <span style="color: #dc3545;"> *</span></label>
-            <input type="email" name="signup-email" value="<?php echo htmlspecialchars($email); ?>" required>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
 
             <label for="address">Home Address <span style="color: #dc3545;"> *</span></label>
             <textarea id="address" name="address" rows="2" placeholder="Enter home address" required><?php echo htmlspecialchars($address); ?></textarea>
@@ -212,20 +222,20 @@ if (isset($_GET['delete'])) {
           <div class="card">
             <h4><i class="ri-contacts-fill"></i> Emergency Contacts</h4>
 
-            <?php foreach ($_SESSION['contacts'] as $i => $contact): ?>
+            <?php foreach ($contacts as $contact): ?>
               <div class="contact-card">
-                <div class="edit-card" id="display-<?php echo $i; ?>">
+                <div class="edit-card" id="display-<?php echo $contact['id']; ?>">
                   <p><b><?php echo $contact['name']; ?></b><br>
                   <?php echo $contact['relationship']; ?> - <?php echo $contact['contact']; ?></p>
                   <div style="display:flex; gap: 10px; font-size: 20px; color: #3d5a91;">
-                    <a onclick="showEditForm(<?php echo $i; ?>)"><i class="ri-edit-2-fill"></i></i></a>
-                    <a href="?delete=<?php echo $i; ?>" onclick="return confirm('Delete this contact?')"><i class="ri-delete-bin-6-fill"></i></a>
+                    <a onclick="showEditForm(<?php echo $contact['id']; ?>)"><i class="ri-edit-2-fill"></i></i></a>
+                    <a href="?delete=<?php echo $contact['id']; ?>" onclick="return confirm('Delete this contact?')"><i class="ri-delete-bin-6-fill"></i></a>
                   </div>
                 </div>
 
                 <!-- Hidden edit form -->
-                <form method="POST" id="editForm-<?php echo $i; ?>" style="display:none; margin-top:10px;">
-                  <input type="hidden" name="contact_index" value="<?php echo $i; ?>">
+                <form method="POST" id="editForm-<?php echo $contact['id']; ?>" style="display:none; margin-top:10px;">
+                  <input type="hidden" name="contact_index" value="<?php echo $contact['id']; ?>">
                   <label>Full Name:</label>
                   <input type="text" name="contact_name" value="<?php echo htmlspecialchars($contact['name']); ?>" required style="width:100%; margin-bottom:5px; padding:6px;">
 
@@ -236,7 +246,7 @@ if (isset($_GET['delete'])) {
                   <input type="tel" pattern="^09[0-9]{9}$" name="contact_number" value="<?php echo htmlspecialchars($contact['contact']); ?>" required style="width:100%; margin-bottom:10px; padding:6px;">
 
                   <button type="submit" name="update-contact" class="save-btn">Save</button>
-                  <button type="button" onclick="cancelEdit(<?php echo $i; ?>)" class="cancel-btn">Cancel</button>
+                  <button type="button" onclick="cancelEdit(<?php echo $contact['id']; ?>)" class="cancel-btn">Cancel</button>
                 </form>
               </div>
             <?php endforeach; ?>

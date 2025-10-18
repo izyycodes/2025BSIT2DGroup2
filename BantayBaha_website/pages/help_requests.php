@@ -1,19 +1,36 @@
 <?php
 session_start();
 
+require 'conn.php'; // make sure database connection is included
+
 if (isset($_POST['ajax']) && $_POST['ajax'] === '1') {
     $msg = trim($_POST['user-message'] ?? '');
     if ($msg !== '') {
         date_default_timezone_set('Asia/Manila');
+
+        // Sanitize message
+        $safeMsg = htmlspecialchars($msg);
+        $time = date('Y-m-d H:i:s');
+
+        // Optional: Get current logged in user ID (if available)
+        $user_id = $_SESSION['user']['id'] ?? null;
+
+        // Save message to DB
+        $stmt = $conn->prepare("INSERT INTO help_messages (user_id, message, message_time) VALUES (?, ?, ?)");
+        $stmt->bind_param("iss", $user_id, $safeMsg, $time);
+        $stmt->execute();
+
+        // Also store temporarily in session (for instant feedback)
         $_SESSION['messages'][] = [
-            'text' => htmlspecialchars($msg),
+            'text' => $safeMsg,
             'time' => date('h:i A')
         ];
 
+        // Return JSON response
         header('Content-Type: application/json');
         echo json_encode([
             'status' => 'success',
-            'text' => htmlspecialchars($msg),
+            'text' => $safeMsg,
             'time' => date('h:i A')
         ]);
         exit();
@@ -22,6 +39,22 @@ if (isset($_POST['ajax']) && $_POST['ajax'] === '1') {
     exit();
 }
 
+if (isset($_SESSION['user']['id'])) {
+    $user_id = $_SESSION['user']['id'];
+    $stmt = $conn->prepare("SELECT message, message_time FROM help_messages WHERE user_id = ? ORDER BY message_time ASC");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $_SESSION['messages'] = []; // clear current session messages
+
+    while ($row = $result->fetch_assoc()) {
+        $_SESSION['messages'][] = [
+            'text' => $row['message'],
+            'time' => date('h:i A', strtotime($row['message_time']))
+        ];
+    }
+}
 
 // Check if form was confirmed
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {

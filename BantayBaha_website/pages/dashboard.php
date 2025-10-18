@@ -1,9 +1,11 @@
 <?php
-    session_start();
-    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-        echo "<script>localStorage.setItem('isLoggedIn','true');</script>";
-    }
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -337,6 +339,5 @@
         <?php require "../views/footer.php" ?>
     </div>
 
-    <script src="../assets/js/dashboard.js"></script>
 </body>
 </html>

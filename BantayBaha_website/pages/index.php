@@ -99,6 +99,6 @@
 
     </section>
 
-    <?php require "../views/footer.php" ?>
+    <?php require "../views/index_footer.php" ?>
 </body>
 </html>

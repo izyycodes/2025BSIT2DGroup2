@@ -1,29 +1,57 @@
 <?php
-session_start();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['firstName'] = $_POST['firstName'];
-    $_SESSION['lastName']  = $_POST['lastName'];
-    $_SESSION['signup-email'] = $_POST['signup-email'];
-    $_SESSION['phone']     = $_POST['phone'];
-    $_SESSION['role']      = $_POST['role'];
-    // … etc …
-    // PHP does NOT redirect here, just shows a blank page or minimal HTML
-    ?>
-    <script>
-        // read from localStorage and redirect accordingly
-        const redirect = localStorage.getItem('redirectAfterLogin');
-        localStorage.setItem('isLoggedIn', 'true'); // mark logged in
-        if (redirect) {
-            localStorage.removeItem('redirectAfterLogin');
-            window.location.href = redirect;
-        } else {
-            window.location.href = '../pages/dashboard.php';
+    session_start();
+    require 'conn.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $email = $_POST['email_address'];
+        $phone = $_POST['phone_number'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $role = $_POST['role'];
+
+        // Check if email already exists
+        $checkEmail = $conn->prepare("SELECT * FROM users WHERE email_address = ?");
+        $checkEmail->bind_param("s", $email);
+        $checkEmail->execute();
+        $result = $checkEmail->get_result();
+
+        if ($result->num_rows > 0) {
+            echo "<script>alert('Email already exists! Try logging in.'); window.location.href='login.php';</script>";
+            exit;
         }
-    </script>
-    <?php
-    exit;
-}
+
+        // Insert new user
+        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email_address, phone_number, password, role) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $first_name, $last_name, $email, $phone, $password, $role);
+
+        if ($stmt->execute()) {
+            // Retrieve the new user record
+            $newUserId = $stmt->insert_id;
+            $getUser = $conn->prepare("SELECT * FROM users WHERE id = ?");
+            $getUser->bind_param("i", $newUserId);
+            $getUser->execute();
+            $userResult = $getUser->get_result();
+            $user = $userResult->fetch_assoc();
+
+            // Set session with user data
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'first_name' => $user['first_name'],
+                'last_name' => $user['last_name'],
+                'email_address' => $user['email_address'],
+                'phone_number' => $user['phone_number'],
+                'role' => $user['role']
+            ];
+
+            header("Location: dashboard.php");
+            exit;
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,31 +86,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-row">
                 <div class="form-column">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required>
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name" required>
                 </div>
                 <div class="form-column">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-column">
-                    <label for="signup-email">Email Address</label>
-                    <input type="email" id="signup-email" name="signup-email" required>
-                </div>
-                <div class="form-column">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" pattern="^09[0-9]{9}$" id="phone" name="phone" required>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-column">
-                    <label for="signup-password">Password</label>
+                    <label for="email_address">Email Address</label>
+                    <input type="email" id="email_address" name="email_address" required>
+                </div>
+                <div class="form-column">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="tel" pattern="^09[0-9]{9}$" id="phone_number" name="phone_number" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="password">Password</label>
                     <div class="password-box">
-                        <input type="password" id="signup-password" name="signup-password" required>
+                        <input type="password" id="password" name="password" required>
                         <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                     </div>
                 </div>
@@ -110,6 +138,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php require "../views/footer.php" ?>
 
-    <script src="../assets/js/sign_up.js"></script>
+    <script>
+        // Toggle password 
+        function togglePassword(icon) {
+            const passwordField = icon.previousElementSibling;
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                icon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        }
+    </script>
 </body>
 </html>
