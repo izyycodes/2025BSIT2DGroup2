@@ -87,83 +87,63 @@ window.addEventListener('click', function (e) {
     }
 });
 
-// // Messaging system
-// const msgForm = document.getElementById('msgForm');
-// const container = document.getElementById('messageContainer');
+document.addEventListener("DOMContentLoaded", function () {
+    const msgForm = document.querySelector('.type-msg');
+    const input = msgForm.querySelector('input[name="user-message"]');
+    const messageContainer = document.querySelector('.message-container');
 
-// // --- User message submit (AJAX) ---
-// msgForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
+    msgForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const message = input.value.trim();
+        if (message === '') return;
 
-//     const input = document.getElementById('user_message');
-//     const message = input.value.trim();
-//     if (message === '') return;
+        const formData = new FormData();
+        formData.append('ajax', '1');
+        formData.append('user-message', message);
 
-//     const formData = new FormData();
-//     formData.append('user_message', message);
+        fetch('', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('Response from PHP:', data);
+            if (data.status === 'success') {
+                
+                const url = new URL(window.location);
+                url.searchParams.set('message', 'sent');
+                window.history.replaceState({}, '', url);
 
-//     const response = await fetch('', { method: 'POST', body: formData });
-//     if (response.ok) {
-//         const newMsg = await response.json();
+                const newMsg = document.createElement('div');
+                newMsg.className = 'status-indicator bg-blue';
+                newMsg.style.opacity = '0'; // for fade-in start
+                newMsg.innerHTML = `
+                    <div class="message">
+                        <div class="icon" style="background-color:#3b82f6;">
+                            <i class="ri-user-fill"></i>
+                        </div>
+                        <div class="msg-info">
+                            <p style="color:#1e40af;font-size: 14px;font-weight:600;">You</p>
+                            <p style="color:#1d4ed8;font-size: 12px;">${data.text}</p>
+                            <p class="msg-time">${data.time}</p>
+                        </div>
+                    </div>
+                `;
 
-//         const div = document.createElement('div');
-//         div.className = 'status-indicator bg-green';
-//         div.innerHTML = `
-//             <div class="message">
-//                 <div class="icon" style="background-color: #22c55e;">
-//                     <i class="ri-user-3-fill"></i>
-//                 </div>
-//                 <div class="msg-info">
-//                     <div>
-//                         <p style="color: #166534; font-size: 14px; font-weight: 600;">You</p>
-//                         <p style="color: #15803d; font-size: 12px;">${newMsg.text}</p>
-//                         <p class="msg-time">${newMsg.time}</p>
-//                     </div>
-//                 </div>
-//             </div>
-//         `;
-//         container.appendChild(div);
-//         container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
-//         input.value = '';
-//     }
-// });
+                messageContainer.appendChild(newMsg);
+                messageContainer.scrollTo({ top: messageContainer.scrollHeight, behavior: 'smooth' });
 
-// // --- Automatic random updates every 15 seconds ---
-// const updates = [
-//     '🚑 Rescue team is 5 minutes closer to your location',
-//     '☀️ Weather conditions improving in your area',
-//     '🧍 Additional support teams mobilized',
-//     '📡 Communication established with local authorities'
-// ];
+                // Fade in smoothly
+                setTimeout(() => {
+                    newMsg.style.transition = 'opacity 0.5s';
+                    newMsg.style.opacity = '1';
+                }, 50);
 
-// setInterval(() => {
-//     const randomUpdate = updates[Math.floor(Math.random() * updates.length)];
+                input.value = '';
+            }
+        })
+        .catch(err => console.error('Error:', err));
+    });
+});
 
-//     const updateDiv = document.createElement('div');
-//     updateDiv.className = 'status-indicator bg-yellow';
-//     updateDiv.innerHTML = `
-//         <div class="message">
-//             <div class="icon" style="background-color: #fbbf24;">
-//                 <i class="ri-notification-2-fill"></i>
-//             </div>
-//             <div class="msg-info">
-//                 <div>
-//                     <p style="color: #92400e; font-size: 14px; font-weight: 600;">Update</p>
-//                     <p style="color: #b45309; font-size: 12px;">${randomUpdate}</p>
-//                     <p class="msg-time">Just now</p>
-//                 </div>
-//             </div>
-//         </div>
-//     `;
 
-//     container.appendChild(updateDiv);
-//     container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
-
-//     // Remove after 5 seconds
-//     setTimeout(() => {
-//         updateDiv.style.transition = 'opacity 0.5s';
-//         updateDiv.style.opacity = '0';
-//         setTimeout(() => updateDiv.remove(), 500);
-//     }, 5000);
-
-// }, 15000);

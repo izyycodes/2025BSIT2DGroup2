@@ -1,6 +1,28 @@
 <?php
 session_start();
 
+if (isset($_POST['ajax']) && $_POST['ajax'] === '1') {
+    $msg = trim($_POST['user-message'] ?? '');
+    if ($msg !== '') {
+        date_default_timezone_set('Asia/Manila');
+        $_SESSION['messages'][] = [
+            'text' => htmlspecialchars($msg),
+            'time' => date('h:i A')
+        ];
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'status' => 'success',
+            'text' => htmlspecialchars($msg),
+            'time' => date('h:i A')
+        ]);
+        exit();
+    }
+    echo json_encode(['status' => 'error']);
+    exit();
+}
+
+
 // Check if form was confirmed
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
 
@@ -15,26 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
     exit();
 }
 
-// Initialize messages array in session
-if (!isset($_SESSION['messages'])) {
-    $_SESSION['messages'] = [];
-}
-
-// Handle new POST message
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['user-message'])) {
-    $msg = trim($_POST['user-message']);
-    if ($msg !== '') {
-        // Store message with timestamp
-        date_default_timezone_set('Asia/Manila'); // ensure local timezone
-        $_SESSION['messages'][] = [
-            'text' => htmlspecialchars($msg),
-            'time' => date('h:i A') // or use "date('g:i A')" for no leading zero
-        ];
-    }
-    // Redirect to avoid resubmission on refresh
-    header("Location: help_requests.php?message=sent");
-    exit();
-}
 ?>
 
 <!DOCTYPE html>

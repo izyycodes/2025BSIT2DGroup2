@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save-personal'])) {
         $_SESSION['lastName']  = $nameParts[1] ?? ''; // rest = last name (optional)
     }
 
-  $personalSaved = true; // flag to show success message
+    header('Location: profile.php?personalinfo=saved');
+    exit();
 }
 
 // When medical info form is submitted
@@ -29,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save-medical'])) {
   $_SESSION['conditions']  = $_POST['conditions'];
   $_SESSION['medications'] = $_POST['medications'];
 
-  $medicalSaved = true; // flag to show success message
+  header('Location: profile.php?medicalinfo=saved');
+  exit();
 }
 
 // Retrieve all session data (keep after reload)
@@ -160,7 +162,7 @@ if (isset($_GET['delete'])) {
         <div class="card">
           <h4><i class="ri-user-3-fill"></i> Personal Information</h4>
 
-          <?php if (isset($personalSaved) && $personalSaved): ?>
+          <?php if (isset($_GET['personalinfo']) && $_GET['personalinfo'] === 'saved'): ?>
             <div style="background:#d4edda; color:#155724; padding:10px 15px; margin-bottom:10px; border-radius:5px; border:1px solid #c3e6cb; display:flex; align-items:center; justify-content:space-between; font-size:15px;">
               <span>✅ Personal information saved successfully!</span>
               <button 
@@ -168,7 +170,7 @@ if (isset($_GET['delete'])) {
                 onclick="this.parentElement.style.display='none'">
                 ×
               </button>
-            </div>  
+            </div>
           <?php endif; ?>
 
           <form id="personal-information" method="POST" action="profile.php">
@@ -271,7 +273,7 @@ if (isset($_GET['delete'])) {
             ⚠️ Important medical information for emergency responders
           </div>
 
-      <?php if (isset($medicalSaved) && $medicalSaved): ?>
+      <?php if (isset($_GET['medicalinfo']) && $_GET['medicalinfo'] === 'saved'): ?>
         <div style="background:#d4edda; color:#155724; padding:10px 15px; margin-bottom:10px; border-radius:5px; border:1px solid #c3e6cb; display:flex; align-items:center; justify-content:space-between; font-size:15px;">
           <span>✅ Medical information saved successfully!</span>
           <button 
@@ -279,7 +281,7 @@ if (isset($_GET['delete'])) {
             onclick="this.parentElement.style.display='none'">
             ×
           </button>
-        </div>  
+        </div>
       <?php endif; ?>
 
 

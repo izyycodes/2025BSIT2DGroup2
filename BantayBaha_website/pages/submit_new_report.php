@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
                 <div class="form-row">
                     <div class="form-column">
                         <label for="reportDate">Report Date <span style="color: #dc3545;"> *</span></label>
-                        <input type="date" id="reportDate" name="reportDate" max="" required>
+                        <input type="date" id="reportDate" name="reportDate" required>
                     </div>
                     <div class="form-column">
                         <label for="reportTime">Report Time <span style="color: #dc3545;"> *</span></label>
