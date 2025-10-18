@@ -6,7 +6,6 @@ if (!isset($_SESSION['user'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,10 @@ if (!isset($_SESSION['user'])) {
 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c835d6c14b.js" crossorigin="anonymous"></script>
+
+    <!-- Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
@@ -48,16 +51,8 @@ if (!isset($_SESSION['user'])) {
                     <h3>Live River Status</h3>
                 </div>
                 <div class="small-map-container">
-                    <div class="map-placeholder">
-                        Interactive River Map 
-                        <br>
-                        <small>Crossing Points Overview</small>
-                    </div>
-                    <div class="river-points">
-                        <div class="point point1" title="Crossing Point 1 - Safe"></div>
-                        <div class="point point2" title="Crossing Point 2 - Caution"></div>
-                        <div class="point point3" title="Crossing Point 3 - Impassable"></div>
-                    </div>
+
+                    <div id="map"></div>
                 </div>
                 <!-- Point 1: Safe to Cross -->
                 <div class="status-indicator">
@@ -75,7 +70,7 @@ if (!isset($_SESSION['user'])) {
                     <span>Point 3: Impassable (2.1m)</span>
                 </div>
                 <div class="action-buttons">
-                    <a href="../pages/river_monitoring.php #river-map" class="btn btn-primary" id="map">
+                    <a href="../pages/river_monitoring.php #river-map" class="btn btn-primary">
                         <img src="../assets/images/location.png" alt="location">
                         View Full Map
                     </a>
@@ -338,6 +333,57 @@ if (!isset($_SESSION['user'])) {
 
         <?php require "../views/footer.php" ?>
     </div>
+
+    <script>
+        window.onload = function() {
+            // Initialize map centered on Hacienda Sacio, Panaquiao, Isabela
+            const map = L.map('map').setView([10.2435, 123.0419], 14);
+
+            // Add OpenStreetMap layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Define crossing points
+            const points = [
+            { coords: [10.2460, 123.0400], name: "Crossing Point 1", status: "Safe" },
+            { coords: [10.2410, 123.0430], name: "Crossing Point 2", status: "Caution" },
+            { coords: [10.2380, 123.0450], name: "Crossing Point 3", status: "Danger" }
+            ];
+
+            // Create numbered custom markers with hover tooltip
+            points.forEach((point, index) => {
+            const color =
+                point.status === "Safe"
+                ? "green"
+                : point.status === "Caution"
+                ? "orange"
+                : "red";
+
+            // Custom HTML marker with number label
+            const icon = L.divIcon({
+                className: "numbered-marker",
+                html: `
+                <div class="marker-circle" style="background-color: ${color}; border: 2px solid white;">
+                    ${index + 1}
+                </div>
+                `,
+                iconSize: [30, 30],
+                iconAnchor: [15, 15],
+            });
+
+            const marker = L.marker(point.coords, { icon: icon }).addTo(map);
+
+            // Add tooltip that shows on hover
+            marker.bindTooltip(
+                `<b>${point.name}</b><br>Status: ${point.status}`,
+                { direction: 'top', opacity: 0.9 }
+            );
+            });
+
+        };
+    </script>
 
 </body>
 </html>

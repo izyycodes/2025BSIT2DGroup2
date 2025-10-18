@@ -8,6 +8,13 @@
     <link rel="icon" type="image/ico" href="../assets/images/logo.png">
 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
     <link rel="stylesheet" href="../assets/css/river_monitoring.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
@@ -50,8 +57,8 @@
             <!-- Water Level Trends -->
             <div class="card">
                 <h3>📉 Water Level Trends</h3>
-                <div class="chart-placeholder">
-                    <p>[Line Chart - 24-hour Water Level History]</p>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
                 </div>
                 <div class="metric-row">
                     <span>Highest Level Today</span>
@@ -70,8 +77,8 @@
             <!-- Weather Impact -->
             <div class="card">
                 <h3>🌧 Weather Impact</h3>
-                <div class="chart-placeholder">
-                    <p>[Bar Chart - Rainfall vs Water Level]</p>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
                 </div>
                 <div class="metric-row">
                     <span>Current Rainfall</span>
@@ -92,24 +99,7 @@
             <!-- River Crossing Points Map -->
             <div class="card">
                 <h3>River Crossing Points Map</h3>
-                <div class="river-map-container">
-                    <div class="river-system">
-                        <div class="river-line river-main">
-                            <div class="crossing-point point1">
-                                <span>1</span>
-                                <div class="point-label">Crossing Point 1 - Safe</div>
-                            </div>
-                            <div class="crossing-point point2">
-                                <span>2</span>
-                                <div class="point-label">Crossing Point 2 - Caution</div>
-                            </div>
-                            <div class="crossing-point point3">
-                                <span>3</span>
-                                <div class="point-label">Crossing Point 3 - Impassable</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="map"></div>
             </div>
 
             <!-- Current Status -->
@@ -144,5 +134,105 @@
     
         <?php require "../views/footer.php" ?>
     </div>
+
+    <script>
+        window.onload = function() {
+            // Line Chart (Water Level Trends)
+            const ctxLine = document.getElementById('lineChart');
+            new Chart(ctxLine, {
+                type: 'line',
+                data: {
+                    labels: ['12 AM', '3 AM', '6 AM', '9 AM', '12 PM', '3 PM', '6 PM', '9 PM'],
+                    datasets: [{
+                        label: 'Water Level (m)',
+                        data: [0.8, 1.0, 1.3, 1.5, 1.8, 2.1, 2.3, 2.35],
+                        borderColor: '#1386b3',
+                        backgroundColor: 'rgba(19, 134, 179, 0.2)',
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+
+            // Bar Chart (Rainfall vs Water Level)
+            const ctxBar = document.getElementById('barChart');
+            new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: ['Point 1', 'Point 2', 'Point 3'],
+                    datasets: [
+                        {
+                            label: 'Rainfall (mm)',
+                            data: [10, 18, 25],
+                            backgroundColor: 'rgba(33, 150, 243, 0.6)'
+                        },
+                        {
+                            label: 'Water Level (m)',
+                            data: [0.5, 1.2, 2.1],
+                            backgroundColor: 'rgba(255, 87, 34, 0.6)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+
+            // Initialize map centered on Hacienda Sacio, Panaquiao, Isabela
+            const map = L.map('map').setView([10.2435, 123.0419], 14);
+
+            // Add OpenStreetMap layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Define crossing points
+            const points = [
+            { coords: [10.2460, 123.0400], name: "Crossing Point 1", status: "Safe" },
+            { coords: [10.2410, 123.0430], name: "Crossing Point 2", status: "Caution" },
+            { coords: [10.2380, 123.0450], name: "Crossing Point 3", status: "Danger" }
+            ];
+
+            // Create numbered custom markers with hover tooltip
+            points.forEach((point, index) => {
+            const color =
+                point.status === "Safe"
+                ? "green"
+                : point.status === "Caution"
+                ? "orange"
+                : "red";
+
+            // Custom HTML marker with number label
+            const icon = L.divIcon({
+                className: "numbered-marker",
+                html: `
+                <div class="marker-circle" style="background-color: ${color}; border: 2px solid white;">
+                    ${index + 1}
+                </div>
+                `,
+                iconSize: [30, 30],
+                iconAnchor: [15, 15],
+            });
+
+            const marker = L.marker(point.coords, { icon: icon }).addTo(map);
+
+            // Add tooltip that shows on hover
+            marker.bindTooltip(
+                `<b>${point.name}</b><br>Status: ${point.status}`,
+                { direction: 'top', opacity: 0.9 }
+            );
+            });
+
+        };
+    </script>
 </body>
 </html>
