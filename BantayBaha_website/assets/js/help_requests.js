@@ -77,6 +77,7 @@ confirmBtn.addEventListener('click', function () {
     form.appendChild(input);
 
     modal.style.display = 'none';
+
     form.submit(); // Now it will POST safely
 });
 
@@ -146,4 +147,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// === Toast Notification ===
+function showToast(message, type = 'success') {
+  const toast = document.getElementById('toast');
+  if (!toast) {
+    console.error('Toast element not found!');
+    return;
+  }
+  toast.textContent = message;
+  toast.className = 'toast show ' + (type === 'error' ? 'error' : '');
+  
+  // Hide after 4 seconds
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 4000);
+}
+
+// Show toast automatically if redirected with success flag
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('help-request') === 'success') {
+    showToast('🚨 Emergency team notified. Help is on the way.');
+  }
+});
 

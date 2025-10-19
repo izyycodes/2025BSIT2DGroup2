@@ -344,6 +344,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
             </div>
         </div>
 
+        <!-- Toast Notification -->
+        <div id="toast" class="toast"></div>
+
         <!-- Modal -->
         <div id="confirmModal" class="modal">
             <div class="modal-content">

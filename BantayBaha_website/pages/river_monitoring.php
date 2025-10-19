@@ -35,20 +35,62 @@
         </div>
 
         <!-- River Data Box -->
-        <div class="card margin">
+        <div class="card margin" style="padding: 20px;">
             <h3>River Data</h3>
             <div class="blue-container">
                 <div class="blue-card">
-                    <p>Water Level</p>
-                    <h3 style="font-size: 20px;">2.35m</h3>
+                    <div class="icon" style="background:linear-gradient(180deg, #2196F3, #165da4);">
+                        <i class="fa-solid fa-ruler-vertical"></i>
+                    </div>
+                    <div class="info">
+                        <h3 style="font-size: 19px;">2.35 m</h3>
+                        <p style="font-size: 14px;">Water Level</p>
+                    </div>
                 </div>
                 <div class="blue-card">
-                    <p>Flow Speed</p>
-                    <h3 style="font-size: 20px;">1.5m/s</h3>
+                    <div class="icon" style="background:linear-gradient(180deg, #4CAF50, #439446);">
+                        <i class="fa-solid fa-gauge"></i>
+                    </div>
+                    <div class="info">
+                        <h3 style="font-size: 19px;">1.5 m/s</h3>
+                        <p style="font-size: 14px;">Flow Speed</p>
+                    </div>
                 </div>
                 <div class="blue-card">
-                    <p>Rainfall</p>
-                    <h3 style="font-size: 20px;">14mm</h3>
+                    <div class="icon" style="background:linear-gradient(180deg, #9c27b0, #661b86);">
+                        <i class="fa-solid fa-cloud-rain"></i>
+                    </div>
+                    <div class="info">
+                        <h3 style="font-size: 19px;">14 mm/h</h3>
+                        <p style="font-size: 14px;">Rainfall</p>
+                    </div>
+                </div>
+                <div class="blue-card">
+                    <div class="icon" style="background:linear-gradient(180deg, #f44336, #9e2c2c);">
+                        <i class="fa-solid fa-temperature-half"></i>
+                    </div>
+                    <div class="info">
+                        <h3 style="font-size: 19px;">26.8°C</h3>
+                        <p style="font-size: 14px;">Temperature</p>
+                    </div>
+                </div>
+                <div class="blue-card">
+                    <div class="icon" style="background:linear-gradient(180deg, #607d8b, #3d4e56);">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <div class="info">
+                        <h3 style="font-size: 19px;">4.5 NTU</h3>
+                        <p style="font-size: 14px;">Turbidity</p>
+                    </div>
+                </div>
+                <div class="blue-card">
+                    <div class="icon" style="background:linear-gradient(180deg, #ffb445, #e97804);">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div class="info">
+                        <h3 style="font-size: 19px;">2:45 PM</h3>
+                        <p style="font-size: 14px;">Last Updated</p>
+                    </div>
                 </div>
             </div>
         </div>

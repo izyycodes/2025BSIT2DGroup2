@@ -1,6 +1,7 @@
 // // Disable future report dates
-// var today = new Date().toISOString().split('T')[0];
-// document.getElementById('reportDate').setAttribute("max", today);
+const dateInput = document.getElementById('reportDate');
+const today = new Date().toISOString().split('T')[0];
+dateInput.max = today;
 
 // Form javascript
 const form = document.getElementById('new-report-form');

@@ -113,6 +113,38 @@
       exit;
   }
 
+  /* --- Update Profile Photo --- */
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change-photo'])) {
+      if (isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] === UPLOAD_ERR_OK) {
+          $targetDir = "../assets/images/uploads/";
+          if (!is_dir($targetDir)) {
+              mkdir($targetDir, 0777, true);
+          }
+
+          $fileName = uniqid() . "_" . basename($_FILES['profile_photo']['name']);
+          $targetFile = $targetDir . $fileName;
+          $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+          $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+
+          if (in_array($fileType, $allowedTypes)) {
+              if (move_uploaded_file($_FILES['profile_photo']['tmp_name'], $targetFile)) {
+                  // Save to database
+                  $stmt = $conn->prepare("UPDATE users SET profile_photo = ? WHERE id = ?");
+                  $stmt->bind_param("si", $fileName, $user_id);
+                  $stmt->execute();
+
+                  header("Location: profile.php?photo=updated");
+                  exit;
+              } else {
+                  echo "<script>alert('Error uploading file.');</script>";
+              }
+          } else {
+              echo "<script>alert('Invalid file type. Only JPG, PNG, GIF allowed.');</script>";
+          }
+      }
+  }
+
   /* --- Fetch Contacts --- */
   $contactsQuery = $conn->prepare("SELECT * FROM emergency_contacts WHERE user_id=?");
   $contactsQuery->bind_param("i", $user_id);
@@ -143,28 +175,58 @@
 
   <div class="main-content">
     <section class="content">
+      <?php if (isset($_GET['photo']) && $_GET['photo'] === 'updated'): ?>
+          <div style="background:#d4edda; color:#155724; padding:10px 15px; margin-bottom:15px; border-radius:5px; border:1px solid #c3e6cb; display:flex; align-items:center; justify-content:space-between; font-size:15px;">
+            ✅ Profile photo updated successfully!
+            <button 
+              style="background:none; border:none; color:#155724; font-size:20px; cursor:pointer; line-height:1;" 
+              onclick="this.parentElement.style.display='none'">
+              ×
+            </button>
+          </div>
+        <?php endif; ?>
+
       <!-- Profile Header -->
       <div class="profile-header">
-        <div class="avatar"><?php echo htmlspecialchars($initials); ?></div>
+        <div class="profile-pic">
+          <div class="avatar">
+            <?php if (!empty($user['profile_photo'])): ?>
+              <img src="../assets/images/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>">
+            <?php else: ?>
+              <?php echo htmlspecialchars($initials); ?>
+            <?php endif; ?>
+          </div>
+    
+          <form method="POST" enctype="multipart/form-data" style="margin-top:10px;">
+            <input type="file" name="profile_photo" accept="image/*" id="profile_photo" style="display:none;" onchange="this.form.submit()">
+            <button type="button" class="change-photo-btn" onclick="document.getElementById('profile_photo').click()">Change Photo</button>
+            <input type="hidden" name="change-photo" value="1">
+          </form>
+        </div> 
+      
         <div class="profile-info">
-          <h3><?php echo htmlspecialchars($firstName). " " . htmlspecialchars($lastName); ?> <span class="badge"><?php echo htmlspecialchars($role); ?></span></h3>
+          <h3>
+            <?php echo htmlspecialchars($firstName) . " " . htmlspecialchars($lastName); ?>
+            <span class="badge"><?php echo htmlspecialchars($role); ?></span>
+          </h3>
           <div class="profile-stats">
             <div class="stats-item">
-              <p style="font-weight: 700; font-size: 18px;">7</p>
-              <p style="color: #666; font-size: 14px;">Help Requests</p>
+              <p style="font-weight:700; font-size:18px;">7</p>
+              <p style="color:#666; font-size:14px;">Help Requests</p>
             </div>
             <div class="stats-item">
-              <p style="font-weight: 700; font-size: 18px;">0</p>
-              <p style="color: #666; font-size: 14px;">Responses Given</p>
+              <p style="font-weight:700; font-size:18px;">0</p>
+              <p style="color:#666; font-size:14px;">Responses Given</p>
             </div>
             <div class="stats-item">
-              <p style="font-weight: 700; font-size: 18px;">2</p>
-              <p style="color: #666; font-size: 14px;">Years Member</p>
+              <p style="font-weight:700; font-size:18px;">2</p>
+              <p style="color:#666; font-size:14px;">Years Member</p>
             </div>
           </div>
           <span class="status online"><i class="ri-checkbox-blank-circle-fill"></i> Online & Available</span>
         </div>
       </div>
+
 
       <!-- Profile Sections -->
       <div class="grid-container">
