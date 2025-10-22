@@ -92,6 +92,91 @@
         <!-- Reports -->
         <div class="reports-grid margin" id="verify-reports">
             <div class="reports-list">
+                <?php
+                require 'conn.php';
+
+                // Display newest reports first
+                $query = "SELECT * FROM community_reports ORDER BY created_at DESC";
+                $result = $conn->query($query);
+
+                if ($result->num_rows > 0):
+                while ($row = $result->fetch_assoc()):
+                    $avatar = strtoupper(substr($row['first_name'], 0, 1) . substr($row['last_name'], 0, 1));
+                ?>
+                <div class="report-card <?php echo $row['status']; ?>" 
+                    data-status="<?php echo $row['status']; ?>" 
+                    data-location="<?php echo strtolower(str_replace(' ', '', $row['location'])); ?>">
+
+                    <div class="report-header">
+                    <div class="report-user">
+                        <div class="user-avatar"><?php echo $avatar; ?></div>
+                        <div class="user-info">
+                        <h4><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></h4>
+                        <div class="report-time">
+                            <?php echo date('F j, Y', strtotime($row['report_date'])) . ' ' . date('g:i A', strtotime($row['report_time'])); ?>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="report-status status-<?php echo $row['status']; ?>">
+                        <?php echo ucfirst($row['status']); ?>
+                    </div>
+                    </div>
+
+                    <div class="report-content">
+                        <div class="report-location">📍 <?php echo htmlspecialchars($row['location']); ?></div>
+                        <div class="report-description"><?php echo htmlspecialchars($row['water_level_desc']); ?></div>
+                        <?php if (!empty($row['remarks'])): ?>
+                            <p class="report-remarks"><?php echo htmlspecialchars($row['remarks']); ?></p>
+                        <?php endif; ?>
+
+                        <?php if (!empty($row['photo_path']) && file_exists($row['photo_path'])): ?>
+                            <div class="report-photo">
+                            <img src="<?php echo htmlspecialchars($row['photo_path']); ?>" alt="Report photo">
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="report-actions">
+                        <form method="POST" action="update_report_status.php" style="display:inline;">
+                            <input type="hidden" name="report_id" value="<?php echo $row['id']; ?>">
+                            <input type="hidden" name="status" value="verified">
+                            <button type="submit" class="btn btn-outline btn-success btn-sm">
+                                <i class="ri-check-line"></i>
+                                Verify
+                            </button>
+                        </form>
+
+                        <form method="POST" action="update_report_status.php" style="display:inline;">
+                            <input type="hidden" name="report_id" value="<?php echo $row['id']; ?>">
+                            <input type="hidden" name="status" value="flagged">
+                            <button type="submit" class="btn btn-outline btn-danger btn-sm">
+                                <i class="ri-alert-line"></i>
+                                Flag
+                            </button>
+                        </form>
+                        <div class="vote-section">
+                            <div class="vote-count">
+                                <i class="ri-thumb-up-line"></i>
+                                0
+                            </div>
+                            <div class="vote-count">
+                                <i class="ri-thumb-down-line"></i>
+                                0
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <?php endwhile; else: ?>
+                <div id="no-reports" class="no-reports">
+                    <div class="empty-state">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <h3>No reports</h3>
+                    <p style="color: #666;">No reports to display.</p>
+                    </div>
+                </div>
+                <?php endif; ?>
+
                 <!-- Verified card -->
                 <div class="report-card verified" data-status="verified" data-location="cpoint1">
                     <div class="report-header">

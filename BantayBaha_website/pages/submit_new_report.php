@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'conn.php';
 
 // Check if form was confirmed
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
@@ -14,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
     $remarks = htmlspecialchars($_POST['remarks'] ?? '');
 
     // Handle uploaded photo
-    $uploadDir = '../uploads/'; // make sure this folder exists & is writable
+    $uploadDir = "../assets/images/uploads/"; // make sure this folder exists & is writable
     $photoPath = '';
 
     if (isset($_FILES['uploadPhoto']) && $_FILES['uploadPhoto']['error'] === UPLOAD_ERR_OK) {
@@ -35,9 +36,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmSubmit'])) {
         }
     }
 
-    // Redirect with success message
-    header('Location: community_reports.php?report=success');
-    exit();
+    $sql = "INSERT INTO community_reports 
+        (first_name, last_name, location, report_date, report_time, water_level_desc, remarks, photo_path, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending')";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssssss", 
+        $firstName, 
+        $lastName, 
+        $location, 
+        $reportDate, 
+        $reportTime, 
+        $waterLevelDesc, 
+        $remarks, 
+        $photoPath
+    );
+
+    if ($stmt->execute()) {
+        header('Location: community_reports.php?report=success');
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 }
 ?>
 
