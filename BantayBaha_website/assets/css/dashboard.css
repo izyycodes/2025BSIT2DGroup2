@@ -282,6 +282,50 @@ body {
     border-left: 4px solid #ffc107;
 }
 
+/* Scroll to top button */
+.scroll-to-top {
+    right: 1.5%;
+    top: 88%;
+    font-size: 50px;
+    color: #fff;
+    background: #578fca;
+    border-radius: 100%;
+    animation-name: appear;
+    animation-timeline: scroll(y);
+}
+
+.scroll-to-top:hover {
+    transform: scale(1.05);
+    transition: all .2s;
+    cursor: pointer;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        display: none;
+        position: fixed;
+    }
+
+    3% {
+        opacity: 0;
+        display: none;
+    }
+
+    3.5% {
+        opacity: 0.8;
+        display: block;
+        z-index: 3;
+    }
+
+    100% {
+        opacity: 0.8;
+        display: block;
+        position: fixed;
+        z-index: 3;
+    }
+}
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -311,5 +355,12 @@ body {
 @media screen and (max-width: 700px) {
     .dashboard-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .scroll-to-top {
+        right: 3%;
+        font-size: 45px;
     }
 }

@@ -69,3 +69,56 @@ document.addEventListener('DOMContentLoaded', () => {
 statusFilter.addEventListener('change', applyFilters);
 locationFilter.addEventListener('change', applyFilters);
 searchInput.addEventListener('input', applyFilters);
+
+// Vote actions
+document.querySelectorAll('.report-card').forEach(card => {
+  const likeBtn = card.querySelector('.like-btn');
+  const dislikeBtn = card.querySelector('.dislike-btn');
+  const likeCount = card.querySelector('.like-count');
+  const dislikeCount = card.querySelector('.dislike-count');
+
+  let liked = false;
+  let disliked = false;
+
+  likeBtn.addEventListener('click', () => {
+    if (liked) {
+      // Undo like
+      liked = false;
+      likeCount.textContent = parseInt(likeCount.textContent) - 1;
+      likeBtn.classList.remove('active');
+    } else {
+      // Add like
+      liked = true;
+      likeCount.textContent = parseInt(likeCount.textContent) + 1;
+      likeBtn.classList.add('active');
+
+      // Remove dislike if previously disliked
+      if (disliked) {
+        disliked = false;
+        dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
+        dislikeBtn.classList.remove('active');
+      }
+    }
+  });
+
+  dislikeBtn.addEventListener('click', () => {
+    if (disliked) {
+      // Undo dislike
+      disliked = false;
+      dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
+      dislikeBtn.classList.remove('active');
+    } else {
+      // Add dislike
+      disliked = true;
+      dislikeCount.textContent = parseInt(dislikeCount.textContent) + 1;
+      dislikeBtn.classList.add('active');
+
+      // Remove like if previously liked
+      if (liked) {
+        liked = false;
+        likeCount.textContent = parseInt(likeCount.textContent) - 1;
+        likeBtn.classList.remove('active');
+      }
+    }
+  });
+});

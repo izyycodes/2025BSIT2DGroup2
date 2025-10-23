@@ -246,8 +246,7 @@ if (!isset($_SESSION['user'])) {
                 </div>
             </div>
 
-            
-            <!-- System Statistics
+            <!-- System Statistics -->
             <div class="dashboard-card">
                 <div class="card-header">
                     <div class="card-icon">
@@ -293,7 +292,7 @@ if (!isset($_SESSION['user'])) {
                 </div>
             </div>
 
-            Admin Controls
+            <!-- Admin Controls -->
             <div class="dashboard-card">
                 <div class="card-header">
                     <div class="card-icon">
@@ -327,9 +326,14 @@ if (!isset($_SESSION['user'])) {
                         Activity Logs
                     </a>
                 </div>
-            </div> -->
+            </div>
         
         </div>
+
+         <!-- Scroll to top button -->
+        <section>
+            <i class="ri-arrow-drop-up-line scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></i>
+        </section>
 
         <?php require "../views/footer.php" ?>
     </div>

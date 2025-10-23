@@ -417,8 +417,14 @@
         </div>
       </div>
     </section>
-    <!-- Footer -->
-  <?php require "../views/footer.php" ?>
+
+      <!-- Scroll to top button -->
+      <section>
+          <i class="ri-arrow-drop-up-line scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></i>
+      </section>
+
+      <!-- Footer -->
+      <?php require "../views/footer.php" ?>
   </div>
 
   <script src="../assets/js/profile.js"></script>

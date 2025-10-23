@@ -173,6 +173,11 @@
                 </div>
             </div>
         </div>
+
+        <!-- Scroll to top button -->
+        <section>
+            <i class="ri-arrow-drop-up-line scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></i>
+        </section>
     
         <?php require "../views/footer.php" ?>
     </div>

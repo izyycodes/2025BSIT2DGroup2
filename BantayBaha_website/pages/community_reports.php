@@ -73,9 +73,9 @@
                 <label for="location">Location:</label>
                 <select name="location" id="location" class="filter-select">
                     <option value="all-locations">All Locations</option>
-                    <option value="cpoint1">Crossing Point 1</option>
-                    <option value="cpoint2">Crossing Point 2</option>
-                    <option value="cpoint3">Crossing Point 3</option>
+                    <option value="crossingpoint1">Crossing Point 1</option>
+                    <option value="crossingpoint2">Crossing Point 2</option>
+                    <option value="crossingpoint3">Crossing Point 3</option>
                 </select>
             </div>
 
@@ -137,35 +137,25 @@
                     </div>
 
                     <div class="report-actions">
-                        <form method="POST" action="update_report_status.php" style="display:inline;">
-                            <input type="hidden" name="report_id" value="<?php echo $row['id']; ?>">
-                            <input type="hidden" name="status" value="verified">
-                            <button type="submit" class="btn btn-outline btn-success btn-sm">
-                                <i class="ri-check-line"></i>
-                                Verify
-                            </button>
-                        </form>
-
-                        <form method="POST" action="update_report_status.php" style="display:inline;">
-                            <input type="hidden" name="report_id" value="<?php echo $row['id']; ?>">
-                            <input type="hidden" name="status" value="flagged">
-                            <button type="submit" class="btn btn-outline btn-danger btn-sm">
-                                <i class="ri-alert-line"></i>
-                                Flag
-                            </button>
-                        </form>
+                        <button class="btn btn-outline btn-success btn-sm">
+                            <i class="ri-check-line"></i>
+                            Verify
+                        </button>
+                        <button class="btn btn-outline btn-danger btn-sm">
+                            <i class="ri-alert-line"></i>
+                            Flag
+                        </button>
                         <div class="vote-section">
                             <div class="vote-count">
-                                <i class="ri-thumb-up-line"></i>
-                                0
+                                <i class="ri-thumb-up-line like-btn"></i>
+                                <span class="like-count">0</span>
                             </div>
                             <div class="vote-count">
-                                <i class="ri-thumb-down-line"></i>
-                                0
+                                <i class="ri-thumb-down-line dislike-btn"></i>
+                                <span class="dislike-count">0</span>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <?php endwhile; else: ?>
                 <div id="no-reports" class="no-reports">
@@ -178,85 +168,7 @@
                 <?php endif; ?>
 
                 <!-- Verified card -->
-                <div class="report-card verified" data-status="verified" data-location="cpoint1">
-                    <div class="report-header">
-                        <div class="report-user">
-                            <div class="user-avatar">MS</div>
-                            <div class="user-info">
-                                <h4>Marisol Samillano</h4>
-                                <div class="report-time">5 minutes ago</div>
-                            </div>
-                        </div>
-                        <div class="report-status status-verified">Verified</div>
-                    </div>
-                    <div class="report-content">
-                        <div class="report-location">📍 Crossing Point 1</div>
-                        <div class="report-description">Water level is low and safe for crossing. No debris observed. Clear visibility and calm current.</div>
-                        <div class="report-photo">
-                            <p>[Photo: Safe crossing conditions]</p>
-                        </div>
-                    </div>
-                    <div class="report-actions">
-                        <button class="btn btn-outline btn-success btn-sm">
-                            <i class="ri-check-line"></i>
-                            Verified
-                        </button>
-                        <div class="vote-section">
-                            <div class="vote-count">
-                                <i class="ri-thumb-up-line"></i>
-                                8
-                            </div>
-                            <div class="vote-count">
-                                <i class="ri-thumb-down-line"></i>
-                                0
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pending card -->
-                <div class="report-card pending" data-status="pending" data-location="cpoint2">
-                    <div class="report-header">
-                        <div class="report-user">
-                            <div class="user-avatar">AD</div>
-                            <div class="user-info">
-                                <h4>Aizhelle de la Cruz</h4>
-                                <div class="report-time">15 minutes ago</div>
-                            </div>
-                        </div>
-                        <div class="report-status status-pending">Pending</div>
-                    </div>
-                    <div class="report-content">
-                        <div class="report-location">📍 Crossing Point 2</div>
-                        <div class="report-description">Water level rising due to heavy rain upstream. Becoming muddy and current getting stronger. Use caution.</div>
-                        <div class="report-photo">
-                            <p>[Photo: Rising water levels]</p>
-                        </div>
-                    </div>
-                    <div class="report-actions">
-                        <button class="btn btn-outline btn-success btn-sm">
-                            <i class="ri-check-line"></i>
-                            Verify
-                        </button>
-                        <button class="btn btn-outline btn-danger btn-sm">
-                            <i class="ri-alert-line"></i>
-                            Flag
-                        </button>
-                        <div class="vote-section">
-                            <div class="vote-count">
-                                <i class="ri-thumb-up-line"></i>
-                                3
-                            </div>
-                            <div class="vote-count">
-                                <i class="ri-thumb-down-line"></i>
-                                1
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Verified card -->
-                 <div class="report-card verified" data-status="verified" data-location="cpoint2">
+                 <div class="report-card verified" data-status="verified" data-location="crossingpoint2">
                     <div class="report-header">
                         <div class="report-user">
                             <div class="user-avatar">JB</div>
@@ -271,7 +183,7 @@
                         <div class="report-location">📍 Crossing Point 2</div>
                         <div class="report-description">Strong winds are causing waves at the crossing point. Water level is moderate but debris is starting to gather near the banks. Caution is advised.</div>
                         <div class="report-photo">
-                            <p>[Photo: Debris collecting near the river bank]</p>
+                            <img src="../assets/images/verified-photo.jpg" alt="[Photo: Debris collecting near the river bank]">
                         </div>
                     </div>
                     <div class="report-actions">
@@ -281,19 +193,19 @@
                         </button>
                         <div class="vote-section">
                             <div class="vote-count">
-                                <i class="ri-thumb-up-line"></i>
-                                7
+                                <i class="ri-thumb-up-line like-btn"></i>
+                                <span class="like-count">7</span>
                             </div>
                             <div class="vote-count">
-                                <i class="ri-thumb-down-line"></i>
-                                2
+                                <i class="ri-thumb-down-line dislike-btn"></i>
+                                <span class="dislike-count">2</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Flagged card -->
-                <div class="report-card flagged" data-status="flagged" data-location="cpoint3">
+                <div class="report-card flagged" data-status="flagged" data-location="crossingpoint3">
                     <div class="report-header">
                         <div class="report-user">
                             <div class="user-avatar">AY</div>
@@ -308,7 +220,7 @@
                         <div class="report-location">📍 Crossing Point 3</div>
                         <div class="report-description">Report flagged for review due to conflicting information with other recent reports from the same location.</div>
                         <div class="report-photo">
-                            <p>[Photo under review]</p>
+                            <img src="" alt="[Photo under review]">
                         </div>
                     </div>
                     <div class="report-actions">
@@ -318,19 +230,19 @@
                         </button>
                         <div class="vote-section">
                             <div class="vote-count">
-                                <i class="ri-thumb-up-line"></i>
-                                2
+                                <i class="ri-thumb-up-line like-btn"></i>
+                                <span class="like-count">2</span>
                             </div>
                             <div class="vote-count">
-                                <i class="ri-thumb-down-line"></i>
-                                6
+                                <i class="ri-thumb-down-line dislike-btn"></i>
+                                <span class="dislike-count">6</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Pending card -->
-                <div class="report-card pending" data-status="pending" data-location="cpoint1">
+                <div class="report-card pending" data-status="pending" data-location="crossingpoint1">
                     <div class="report-header">
                         <div class="report-user">
                             <div class="user-avatar">EB</div>
@@ -345,7 +257,7 @@
                         <div class="report-location">📍 Crossing Point 1</div>
                         <div class="report-description">Heavy rainfall earlier caused the water to rise quickly, but it has already started to recede. Current is steady and the path looks clearer now. Locals report it is safe to cross again.</div>
                         <div class="report-photo">
-                            <p>[Photo: Water receding and path becoming clearer]</p>
+                            <img src="../assets/images/pending-photo.jpg" alt="[Photo: Water receding and path becoming clearer]">
                         </div>
                     </div>
                     <div class="report-actions">
@@ -359,12 +271,12 @@
                         </button>
                         <div class="vote-section">
                             <div class="vote-count">
-                                <i class="ri-thumb-up-line"></i>
-                                5
+                                <i class="ri-thumb-up-line like-btn"></i>
+                                <span class="like-count">5</span>
                             </div>
                             <div class="vote-count">
-                                <i class="ri-thumb-down-line"></i>
-                                3
+                                <i class="ri-thumb-down-line dislike-btn"></i>
+                                <span class="dislike-count">3</span>
                             </div>
                         </div>
                     </div>
@@ -454,7 +366,13 @@
             </div>
         </div>
 
+        <!-- Scroll to top button -->
+        <section>
+            <i class="ri-arrow-drop-up-line scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></i>
+        </section>
+
         <?php require "../views/footer.php" ?>
+
     </div>
 
     <script src="../assets/js/community_reports.js"></script>
