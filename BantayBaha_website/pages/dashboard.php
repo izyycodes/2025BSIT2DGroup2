@@ -70,7 +70,7 @@ if (!isset($_SESSION['user'])) {
                     <span>Point 3: Impassable (2.1m)</span>
                 </div>
                 <div class="action-buttons">
-                    <a href="../pages/river_monitoring.php #river-map" class="btn btn-primary">
+                    <a href="../pages/river_monitoring.php#river-map" class="btn btn-primary">
                         <img src="../assets/images/location.png" alt="location">
                         View Full Map
                     </a>
@@ -143,7 +143,7 @@ if (!isset($_SESSION['user'])) {
                         <img src="../assets/images/file-pen.png" alt="file pen">
                         Submit Report
                     </a>
-                    <a href="../pages/community_reports.php #verify-reports" class="btn btn-success">
+                    <a href="../pages/community_reports.php#verify-reports" class="btn btn-success">
                         <img src="../assets/images/check.png" alt="check">
                         Verify Reports
                     </a>
@@ -179,11 +179,11 @@ if (!isset($_SESSION['user'])) {
                     Heavy rainfall expected from 6-8 PM. Monitor river levels closely.
                 </div>
                 <div class="action-buttons">
-                    <a href="../pages/flood_alerts.php #forecast" class="btn btn-warning">
+                    <a href="../pages/flood_alerts.php#forecast" class="btn btn-warning">
                         <img src="../assets/images/stats.png" alt="stats">
                         Detailed Forecast
                     </a>
-                    <a href="../pages/flood_alerts.php #alerts"  class="btn btn-primary">
+                    <a href="../pages/flood_alerts.php#alerts"  class="btn btn-primary">
                         <img src="../assets/images/bell.png" alt="bell">
                         View Alerts
                     </a>
@@ -239,91 +239,9 @@ if (!isset($_SESSION['user'])) {
                         <i class="ri-alarm-warning-fill"></i>
                         Call for Help
                     </a>
-                    <a href="../pages/help_requests.php #messages" class="btn btn-primary">
+                    <a href="../pages/help_requests.php#messages" class="btn btn-primary">
                         <img src="../assets/images/users.png" alt="users">
                         Send Message
-                    </a>
-                </div>
-            </div>
-
-            <!-- System Statistics -->
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <img src="../assets/images/stats.png" alt="stats" class="stats">
-                    </div>
-                    <h3>System Statistics</h3>
-                </div>
-                <div class="quick-stats">
-                    <div class="stat-box">
-                        <div class="stat-number">156</div>
-                        <div class="stat-label">Total Users</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">89%</div>
-                        <div class="stat-label">Accuracy</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">1,247</div>
-                        <div class="stat-label">Reports</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">23</div>
-                        <div class="stat-label">Incidents</div>
-                    </div>
-                </div>
-                <div class="metric">
-                    <span>Most Active Point</span>
-                    <span class="metric-value">Crossing Point 2</span>
-                </div>
-                <div class="metric">
-                    <span>Peak Hours</span>
-                    <span class="metric-value">6-8 AM, 5-7 PM</span>
-                </div>
-                <div class="action-buttons">
-                    <a class="btn btn-primary">
-                        <img src="../assets/images/stats.png" alt="stats">
-                        View Analytics
-                    </a>
-                    <a class="btn btn-success">
-                        <img src="../assets/images/file.png" alt="file">
-                        Export Data
-                    </a>
-                </div>
-            </div>
-
-            <!-- Admin Controls -->
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <img src="../assets/images/controls.png" alt="controls" class="controls">
-                    </div>
-                    <h3>Admin Controls</h3>
-                </div>
-                <div class="metric">
-                    <span>Registered Users</span>
-                    <span class="metric-value">156</span>
-                </div>
-                <div class="metric">
-                    <span>Active Volunteers</span>
-                    <span class="metric-value">23</span>
-                </div>
-                <div class="metric">
-                    <span>System Uptime</span>
-                    <span class="metric-value">99.2%</span>
-                </div>
-                <div class="action-buttons">
-                    <a class="btn btn-primary">
-                        <img src="../assets/images/users.png" alt="users">
-                        Manage Users
-                    </a>
-                    <a class="btn btn-warning">
-                        <img src="../assets/images/bell.png" alt="bell">
-                        Send Alert
-                    </a>
-                    <a class="btn btn-success">
-                        <img src="../assets/images/reports.png" alt="reports">
-                        Activity Logs
                     </a>
                 </div>
             </div>

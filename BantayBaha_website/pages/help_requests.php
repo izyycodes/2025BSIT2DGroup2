@@ -23,7 +23,7 @@ if (isset($_POST['ajax']) && $_POST['ajax'] === '1') {
         // Also store temporarily in session (for instant feedback)
         $_SESSION['messages'][] = [
             'text' => $safeMsg,
-            'time' => date('h:i A')
+            'time' => date('M d, Y h:i A')
         ];
 
         // Return JSON response
@@ -31,7 +31,7 @@ if (isset($_POST['ajax']) && $_POST['ajax'] === '1') {
         echo json_encode([
             'status' => 'success',
             'text' => $safeMsg,
-            'time' => date('h:i A')
+            'time' => date('M d, Y h:i A')
         ]);
         exit();
     }
@@ -51,7 +51,7 @@ if (isset($_SESSION['user']['id'])) {
     while ($row = $result->fetch_assoc()) {
         $_SESSION['messages'][] = [
             'text' => $row['message'],
-            'time' => date('h:i A', strtotime($row['message_time']))
+            'time' => date('M d, Y h:i A', strtotime($row['message_time']))
         ];
     }
 }

@@ -220,7 +220,7 @@
                         <div class="report-location">📍 Crossing Point 3</div>
                         <div class="report-description">Report flagged for review due to conflicting information with other recent reports from the same location.</div>
                         <div class="report-photo">
-                            <img src="" alt="[Photo under review]">
+                            <img src="../assets/images/flagged-photo.jpeg" alt="[Photo under review]">
                         </div>
                     </div>
                     <div class="report-actions">
